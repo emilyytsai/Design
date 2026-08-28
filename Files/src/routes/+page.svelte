@@ -7,6 +7,7 @@
   import Projects from '$lib/projects.svelte';
   import Contact from '$lib/contact.svelte';
   import Gallery from '$lib/gallery.svelte';
+  import DotGrid from '$lib/dotgridbg.svelte';
 
   let showIntro = true;
   let mobileMenuOpen = false;
@@ -71,42 +72,6 @@
     class="fixed inset-0 bg-zinc-900 flex items-center justify-center z-50 overflow-hidden"
     out:fade={{ duration: 500 }}
   >
-    <!--bg vid -->
-    <video
-      class="absolute inset-0 w-full h-full object-cover z-0 opacity-40 pointer-events-none"
-      autoplay muted loop playsinline preload="auto"
-    >
-      <source src="/bg-video.mp4" type="video/mp4" />
-    </video>
-
-<!-- stars bg -->
-<pre class="stars-bg">
-                          ⠀⠀⠀⠀⠀⠀⠀⣀⡄⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀      ⠀⠀       ⠀⠀⡀⠀⡀⡀⠂⠂⠈⠀⡐⠁⠀⠈ ⡐ ⠀
-                          ⠀⠀⠀⠀⠀⠀⠐⢿⠓⠀⢀⡴⡏⠀⠀⠀⠀⠀        ⠀⠀     ⠀⣀⠔⢂⠁⠁⠀⠀⡐⠈⡐⠁⠀⡐⠁⡐
-                          ⠀⠀⠹⡒⠤⣀⡀⠀⢀⡴⠋⢠⠇⠀⠀⠀       ⠀⠀       ⠠⠐⠈⠀⠀⠀⠀⡀⠐⠁⡐⠁⠀⠄⡐
-                          ⠀⠀⠀⠱⡀⠀⠉⠑⠋⠀⠀⣸⠀   ⠀      ⠀⠀    ⠐⠈⠀⠀⠀⠀⠀⢀⠄⠁⢀⠂⠀⠀⠀⠨⠀
-                          ⠀⠀⠀⠀⢱⡄⠀⠀⠀⠀⠀⠉⠒⠤⣀⡀⠀⠀⠀⠀  ⠀⠀            ⡄⠁⠀⡀⠠⠁⠀⠀⠐⠁⠀
-                          ⠀⠀⠀⡴⠋⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣈⠵⠦    ⠀⠀         ⡠⠈⠀⠀⠀⡐⠁⠀⠀⠀⠂⠀⠀
-                          ⢀⡤⠋⣀⣀⣀⣤⠀⠀⠀⢰⠋⠉⠀⠀⠀               ⢀⠂⠀⠀⠀⠈⠠⠀⠀⠀⠀⠰⡁⠀⠀
-                          ⠈⠉⠁⠀⠀⠀⠀⢧⠀⠀⡏⠀⠀⠀      ⠀⠀       ⠀⠔⠁⠀⠀⠀⠀⡐⠀⠀⠀⠀⠀⠅⠀⠀⠀
-                          ⠀⢐⣶⣆⠀⠀⢠⠈⢇⢰⠃⠀⠀     ⠀          ⠄⠁⠀⠀⢀⠀⢀⠂⠀⠀⣰⡄⠀⠂⠐⠀⠀⠀
-                          ⠀⠈⠙⠀⠀⠀⣏⣧⠈⠟⠀     ⠀⠀        ⢀⠁⠀⠀⠀⠽⡿⠆⠇⠀⠀⢀⣿⣿⣦⣶⣶⠟⠀⠀
-                          ⠀⠀⠀⠀⣀⣸⣿⣯⢧⠤⣤⣦⣴⠦       ⠀⠀⠐        ⠀⠁⠀⠀⠛⠿⣿⣿⣿⣿⣿⡁⠀⠀⠀
-                          ⠀⠙⠯⡻⣿⣿⣿⣿⣿⣿⡿⠟⠁⠀⠰⣄⣠⡇   ⠐⠀           ⠀⠂⠀⠀⢸⣿⡿⠛⠛⠿⣆⠀⠀
-                          ⠀⠀⠀⠈⢻⣿⣿⣿⣿⣿⠁⠀⠀⠀⣠⢿⣿⠟⠒⠀ ⠐ ⠀   ⠀⠀      ⠐ ⠀⠸⠊⠁⠀⢐⠀⠀⠀⠀
-                          ⠀⠀⠀⠀⡾⣿⠿⠺⢝⡯⢧⠀⠀⠀⠀⠀⠻⠀⠀  ⠐  ⠀⠀         ⠀⠂⠀⠀⠀⠀⡐⠂⠀⠀⠠⠁
-                          ⠀⠀⠀⢼⠓⠁⠀⠀⠀⠉⠺⠆⠀⠀⠀⠀⠀⠀  ⠐⠀⠀           ⠀⡸⠀⠀⢀⢿⠐⠀⠀⠀⡐⠁⠀
-                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠐ ⠀⠀          ⢀⠂⠀⠀⡜⡌⡇⠀⠀⡐⠀⠀⠀
-                        ⠀⠀⠀   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠐⠀⠀          ⠙⢟⡒⠒⠛⠁⠀⠘⠒⠒⢲⡶⠂⠀
-                        ⠀⠀⠀⠀⠀⠀   ⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀ ⠐  ⠀⠀         ⣤⣖⠀⠈⢢⠀⠀⠀⠀⡤⠛⠁⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⠀ ⠀    ⠐ ⠀⠀⠀⠀      ⠈⠻⠉⠀⢠⠇⢀⡤⣀⠌⢳⠀⠀⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠐        ⠀⠀   ⠐  ⠀⡿⠊⠁⠀⠈⠳⣼⡄⠀⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⠐⠀   ⠀⠀   ⠀⠀  ⠐      ⠀⠀⢀⠂⠈⠉⠀⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠐ ⠀⠀   ⠀   ⠀⠀ ⠐        ⠀⢰⡆⠀⣀⠀⠀⢀⣄⡀
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀           ⠀⠐         ⠶⢾⣿⣟⠁⠀⠀⠺⡟⠃
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⠀   ⠀       ⠐⠀         ⠀⢻⡏⢉⠓⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-</pre>
 
   <!-- animate.css -->
     <h1 class="font-outfit text-6xl font-medium text-white relative z-20 animate__animated animate__backInDown">
@@ -133,51 +98,9 @@
   class:invisible={showIntro}
 >
 
-<!--bg vid -->
-  <video
-    class="fixed inset-0 w-full h-full object-cover z-0 opacity-30 pointer-events-none"
-    autoplay muted loop playsinline preload="auto"
-  >
-    <source src="/bg-video.mp4" type="video/mp4" />
-  </video>
-
-  <!-- stars bg main -->
-    <pre class="stars-bg-main">
-                          ⠀⠀⠀⠀⠀⠀⠀⣀⡄⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀      ⠀⠀       ⠀⠀⡀⠀⡀⡀⠂⠂⠈⠀⡐⠁⠀⠈ ⡐ ⠀
-                          ⠀⠀⠀⠀⠀⠀⠐⢿⠓⠀⢀⡴⡏⠀⠀⠀⠀⠀        ⠀⠀     ⠀⣀⠔⢂⠁⠁⠀⠀⡐⠈⡐⠁⠀⡐⠁⡐
-                          ⠀⠀⠹⡒⠤⣀⡀⠀⢀⡴⠋⢠⠇⠀⠀⠀       ⠀⠀       ⠠⠐⠈⠀⠀⠀⠀⡀⠐⠁⡐⠁⠀⠄⡐
-                          ⠀⠀⠀⠱⡀⠀⠉⠑⠋⠀⠀⣸⠀   ⠀      ⠀⠀    ⠐⠈⠀⠀⠀⠀⠀⢀⠄⠁⢀⠂⠀⠀⠀⠨⠀
-                          ⠀⠀⠀⠀⢱⡄⠀⠀⠀⠀⠀⠉⠒⠤⣀⡀⠀⠀⠀⠀  ⠀⠀            ⡄⠁⠀⡀⠠⠁⠀⠀⠐⠁⠀
-                          ⠀⠀⠀⡴⠋⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣈⠵⠦    ⠀⠀         ⡠⠈⠀⠀⠀⡐⠁⠀⠀⠀⠂⠀⠀
-                          ⢀⡤⠋⣀⣀⣀⣤⠀⠀⠀⢰⠋⠉⠀⠀⠀               ⢀⠂⠀⠀⠀⠈⠠⠀⠀⠀⠀⠰⡁⠀⠀
-                          ⠈⠉⠁⠀⠀⠀⠀⢧⠀⠀⡏⠀⠀⠀      ⠀⠀       ⠀⠔⠁⠀⠀⠀⠀⡐⠀⠀⠀⠀⠀⠅⠀⠀⠀
-                          ⠀⢐⣶⣆⠀⠀⢠⠈⢇⢰⠃⠀⠀     ⠀          ⠄⠁⠀⠀⢀⠀⢀⠂⠀⠀⣰⡄⠀⠂⠐⠀⠀⠀
-                          ⠀⠈⠙⠀⠀⠀⣏⣧⠈⠟⠀     ⠀⠀        ⢀⠁⠀⠀⠀⠽⡿⠆⠇⠀⠀⢀⣿⣿⣦⣶⣶⠟⠀⠀
-                          ⠀⠀⠀⠀⣀⣸⣿⣯⢧⠤⣤⣦⣴⠦       ⠀⠀⠐        ⠀⠁⠀⠀⠛⠿⣿⣿⣿⣿⣿⡁⠀⠀⠀
-                          ⠀⠙⠯⡻⣿⣿⣿⣿⣿⣿⡿⠟⠁⠀⠰⣄⣠⡇   ⠐⠀           ⠀⠂⠀⠀⢸⣿⡿⠛⠛⠿⣆⠀⠀
-                          ⠀⠀⠀⠈⢻⣿⣿⣿⣿⣿⠁⠀⠀⠀⣠⢿⣿⠟⠒⠀ ⠐ ⠀   ⠀⠀      ⠐ ⠀⠸⠊⠁⠀⢐⠀⠀⠀⠀
-                          ⠀⠀⠀⠀⡾⣿⠿⠺⢝⡯⢧⠀⠀⠀⠀⠀⠻⠀⠀  ⠐  ⠀⠀         ⠀⠂⠀⠀⠀⠀⡐⠂⠀⠀⠠⠁
-                          ⠀⠀⠀⢼⠓⠁⠀⠀⠀⠉⠺⠆⠀⠀⠀⠀⠀⠀  ⠐⠀⠀           ⠀⡸⠀⠀⢀⢿⠐⠀⠀⠀⡐⠁⠀
-                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  ⠐ ⠀⠀          ⢀⠂⠀⠀⡜⡌⡇⠀⠀⡐⠀⠀⠀
-                        ⠀⠀⠀   ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠐⠀⠀          ⠙⢟⡒⠒⠛⠁⠀⠘⠒⠒⢲⡶⠂⠀
-                        ⠀⠀⠀⠀⠀⠀   ⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀ ⠐  ⠀⠀         ⣤⣖⠀⠈⢢⠀⠀⠀⠀⡤⠛⠁⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⠀ ⠀    ⠐ ⠀⠀⠀⠀      ⠈⠻⠉⠀⢠⠇⢀⡤⣀⠌⢳⠀⠀⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠐        ⠀⠀   ⠐  ⠀⡿⠊⠁⠀⠈⠳⣼⡄⠀⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⠐⠀   ⠀⠀   ⠀⠀  ⠐      ⠀⠀⢀⠂⠈⠉⠀⠀⠀⠀
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠐ ⠀⠀   ⠀   ⠀⠀ ⠐        ⠀⢰⡆⠀⣀⠀⠀⢀⣄⡀
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀           ⠀⠐         ⠶⢾⣿⣟⠁⠀⠀⠺⡟⠃
-                        ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⠀   ⠀       ⠐⠀         ⠀⢻⡏⢉⠓⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-    </pre>
-    <div class="fixed inset-0 z-0 pointer-events-none"></div>
-
-    <!-- <div class="fixed inset-0 z-10">
-      <Aurora
-        colorStops={['#001675', '#A2A5A8', '#6c80d9']}
-        amplitude={2}
-        blend={10}
-        speed={0.1}
-      />
-    </div> -->
+<!-- dot grid bg -->
+<!-- <div class="dot-grid-bg fixed inset-0 z-0 pointer-events-none"></div> -->
+<DotGrid />
 
 <!-- navbar (desktop) -->
   <nav class="fixed top-0 left-0 w-full bg-white/10 border border-white/5 backdrop-blur-md z-30">
