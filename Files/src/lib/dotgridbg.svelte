@@ -3,7 +3,7 @@
 
   export let spacing = 55;
   export let radius = 1.75;
-  export let repelRadius = 200;
+  export let repelRadius = 250;
   export let strength = 50;
   export let color = 'rgba(255,255,255,0.22)';
 
