@@ -11,7 +11,7 @@
 
   <section
     id="gallery"
-    class="fade-in2 font-outfit relative z-20 mx-auto w-full max-w-2xl px-4 py-6 sm:mt-6 sm:space-y-3 lg:max-w-5xl lg:space-y-5"
+    class="fade-in font-outfit relative z-20 mx-auto w-full max-w-2xl px-4 py-6 sm:mt-6 sm:space-y-3 lg:max-w-5xl lg:space-y-5"
   >
     <h4 class="text-center text-3xl font-bold text-white sm:text-4xl md:text-5xl">
       Gallery

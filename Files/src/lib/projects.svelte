@@ -3,7 +3,7 @@
 
   <h4 class="fade-in text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center">Projects</h4>
 
-  <p class="text-base sm:text-lg lg:text-xl text-white text-center py-6">
+  <p class="text-base sm:text-lg lg:text-xl text-white text-center py-3 sm:py-6">
     A few things I built along the way •ᴗ•
   </p>
 

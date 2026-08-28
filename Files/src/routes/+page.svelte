@@ -73,8 +73,8 @@
   >
 
   <!-- animate.css -->
-    <h1 class="font-outfit text-6xl font-medium text-white relative z-20 animate__animated animate__backInDown">
-      Emily Tsai
+    <h1 class="font-outfit text-6xl font-medium text-white relative z-20 animate__animated animate__flash">
+      (˶ᵔ ᵕ ᵔ˶)
     </h1>
 
     <div class="fixed inset-0 z-0 pointer-events-none"></div>
