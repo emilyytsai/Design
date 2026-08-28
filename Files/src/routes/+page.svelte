@@ -2,7 +2,6 @@
   import { onMount } from 'svelte';
   import { slide } from 'svelte/transition';
   import { fade } from 'svelte/transition';
-  import Aurora from '$lib/aurora.svelte';
   import About from '$lib/about.svelte';
   import Projects from '$lib/projects.svelte';
   import Contact from '$lib/contact.svelte';
@@ -79,16 +78,6 @@
     </h1>
 
     <div class="fixed inset-0 z-0 pointer-events-none"></div>
-
-    <!--<div class="absolute inset-0 z-10">
-    <Aurora
-      colorStops={['#001675', '#A2A5A8', '#6c80d9']}
-      amplitude={2}
-      blend={10}
-      speed={0.1}
-    />
-    </div>-->
-
   </section>
 {/if}
 
@@ -187,7 +176,7 @@
     </div>
   </div>
 
-  <!-- desktop has two column layout -->
+<!-- desktop has two column layout -->
   <section class="hidden md:grid md:grid-cols-2 md:gap-12 md:items-center mt-28 w-full max-w-5xl mx-auto px-4 z-20">
 
     <div class="rounded-2xl overflow-hidden bg-white/5 backdrop-blur-md border border-white/15 shadow-2xl duration-300 hover:-translate-y-2">

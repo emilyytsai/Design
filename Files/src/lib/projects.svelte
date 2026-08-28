@@ -1,6 +1,11 @@
 <!-- projects -->
-<section id="projects" class="font-outfit relative z-20 w-full max-w-2xl lg:max-w-5xl mx-auto px-4 py-6 sm:mt-12">
-  <h4 class="fade-in text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center mb-6 sm:mb-8">Projects</h4>
+<section id="projects" class="font-outfit relative z-20 w-full max-w-2xl lg:max-w-5xl mx-auto px-4 pt-2 pb-4 sm:mt-12">
+
+  <h4 class="fade-in text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center">Projects</h4>
+
+  <p class="text-base sm:text-lg lg:text-xl text-white text-center py-6">
+    A few things I built along the way •ᴗ•
+  </p>
 
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
 

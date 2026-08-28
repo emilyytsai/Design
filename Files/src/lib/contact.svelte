@@ -11,7 +11,7 @@
 
 <!-- contact -->
 <section id="contact" class="fade-in font-outfit relative z-20 w-full max-w-2xl lg:max-w-5xl mx-auto px-4 py-6 space-y-1 sm:space-y-3 lg:space-y-5 sm:mt-2">
-  <h4 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center">Contact</h4>
+  <h4 class="fade-in text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center">Contact</h4>
 
   <p class="text-base sm:text-lg lg:text-xl text-white text-center py-2">
     Feel free to reach out I would love to connect!
