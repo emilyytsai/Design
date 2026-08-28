@@ -80,6 +80,7 @@ mask-image: linear-gradient(to bottom, rgba(0,0,0,0.75), rgba(0,0,0,0));
   background-size: 50px 50px;
 }
 
+/* button */
 .button {
 display: inline-flex;
 align-items: center;
@@ -102,6 +103,32 @@ transform: scale(1.05);
 }
 
 .button:active {
+transform: scale(0.95);
+}
+
+/* black button */
+.black-button {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 0.75rem 2rem;
+font-weight: 600;
+border-radius: 1.2rem;
+
+background: rgba(0, 0, 0, 0.55);
+backdrop-filter: blur(12px);
+border: 1px solid rgba(255, 255, 255, 0.15);
+
+color: white;
+transition: all 0.1s ease;
+}
+
+.black-button:hover {
+border-color: #6c80d9;
+transform: scale(1.05);
+}
+
+.black-button:active {
 transform: scale(0.95);
 }
 

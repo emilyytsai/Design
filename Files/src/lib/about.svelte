@@ -15,6 +15,6 @@
     </p>
 
     <div class="flex justify-center text-2xl md:text-3xl">
-      <a href="/Emily_Tsai_Resume.pdf" target="_blank" rel="noopener noreferrer" class="button"> Resume </a>
+      <a href="/Emily_Tsai_Resume.pdf" target="_blank" rel="noopener noreferrer" class="black-button"> Resume </a>
     </div>
   </section>

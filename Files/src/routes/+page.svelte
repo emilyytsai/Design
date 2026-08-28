@@ -103,50 +103,64 @@
 <DotGrid />
 
 <!-- navbar (desktop) -->
-  <nav class="fixed top-0 left-0 w-full bg-white/10 border border-white/5 backdrop-blur-md z-30">
-    <div class="max-w-6xl mx-auto px-3 py-3 flex justify-between items-center">
-      <a href="#home" class="flex items-center">
-        <div class="underline-center hover:text-[#98aafa] font-outfit text-3xl font-semibold" data-text="Emily Tsai">Emily Tsai</div>
-      </a>
-      <ul class="hidden md:flex space-x-6 text-[1.375rem] font-outfit text-white">
-        <li><a href="#home" class="nav-link">Home</a></li>
-        <!-- About Me hidden on desktop since it's inlined in the home section -->
-        <li class="md:hidden"><a href="#about" class="nav-link">About Me</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-        <li><a href="#gallery" class="nav-link">Gallery</a></li>
-      </ul>
+<nav class="fixed top-4 left-1/2 -translate-x-1/2 z-30 w-[calc(100%-2rem)] max-w-5xl">
+  <div class="flex items-center justify-between px-6 py-3 rounded-full
+              bg-white/10 border border-white/15 backdrop-blur-md shadow-2xl">
 
-<!-- side menu button (mobile) -->
-      <button
-      class="md:hidden relative w-7 h-7"
+    <!-- name -->
+    <a href="#home" class="flex items-center shrink-0">
+      <div class="underline-center hover:text-[#98aafa] font-outfit text-3xl font-semibold whitespace-nowrap" data-text="Emily Tsai">Emily Tsai</div>
+    </a>
+
+    <!-- links -->
+    <ul class="hidden md:flex items-center gap-8 text-[1.25rem] font-outfit text-white">
+      <li><a href="#home" class="nav-link">Home</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+      <li><a href="#gallery" class="nav-link">Gallery</a></li>
+    </ul>
+
+    <!-- smile pill -->
+    <div class="group hidden md:grid place-items-center shrink-0 px-5 py-2 rounded-3xl
+                bg-zinc-950/70 border border-white/10 font-outfit text-base text-white select-none
+                cursor-default transition-colors hover:bg-zinc-950/90">
+      <span class="col-start-1 row-start-1 transition-opacity duration-200 group-hover:opacity-0">(˶˃ ᵕ ˂˶)</span>
+      <span class="col-start-1 row-start-1 opacity-0 transition-opacity duration-200 group-hover:opacity-100">Hii !</span>
+    </div>
+
+    <!-- side menu button (mobile) -->
+    <button
+      class="md:hidden relative w-7 h-7 shrink-0"
       on:click={toggleMenu}
       aria-label="Toggle menu"
-      >
-        <span class={`absolute left-0 w-7 h-0.5 bg-white transition-all duration-300
-          ${mobileMenuOpen ? 'rotate-45 top-3' : 'top-1'}`}></span>
+    >
+      <span class={`absolute left-0 w-7 h-0.5 bg-white transition-all duration-300
+        ${mobileMenuOpen ? 'rotate-45 top-3' : 'top-1'}`}></span>
 
-        <span class={`absolute left-0 w-7 h-0.5 bg-white transition-all duration-300
-          ${mobileMenuOpen ? 'opacity-0 top-3' : 'top-3'}`}></span>
+      <span class={`absolute left-0 w-7 h-0.5 bg-white transition-all duration-300
+        ${mobileMenuOpen ? 'opacity-0 top-3' : 'top-3'}`}></span>
 
-        <span class={`absolute left-0 w-7 h-0.5 bg-white transition-all duration-300
-          ${mobileMenuOpen ? '-rotate-45 top-3' : 'top-5'}`}></span>
-      </button>
-    </div>
-    </nav>
+      <span class={`absolute left-0 w-7 h-0.5 bg-white transition-all duration-300
+        ${mobileMenuOpen ? '-rotate-45 top-3' : 'top-5'}`}></span>
+    </button>
+  </div>
+</nav>
 
+<!-- mobile dropdown -->
 {#if mobileMenuOpen}
-  <div
-    class="md:hidden fixed top-[72px] left-0 w-full bg-zinc-950/40 backdrop-blur-md z-40 flex flex-col items-center 
-           py-8 space-y-6 text-xl font-outfit rounded-2xl border border-white/15 shadow-2xl"
-    in:slide={{ duration: 200 }}
-    out:slide={{ duration: 200 }}
-  >
-    <a href="#home" on:click={toggleMenu} class="hover:text-[#98aafa] transition">Home</a>
-    <a href="#about" on:click={toggleMenu} class="hover:text-[#98aafa] transition">About Me</a>
-    <a href="#projects" on:click={toggleMenu} class="hover:text-[#98aafa] transition">Projects</a>
-    <a href="#contact" on:click={toggleMenu} class="hover:text-[#98aafa] transition">Contact</a>
-    <a href="#gallery" on:click={toggleMenu} class="hover:text-[#98aafa] transition">Gallery</a>
+  <div class="md:hidden fixed top-[80px] left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-5xl z-40 overflow-hidden">
+    <div
+      class="bg-zinc-950/40 backdrop-blur-md flex flex-col items-center
+             py-8 space-y-6 text-xl font-outfit rounded-2xl border border-white/15 shadow-2xl"
+      in:slide={{ duration: 200 }}
+      out:slide={{ duration: 200 }}
+    >
+      <a href="#home" on:click={toggleMenu} class="hover:text-[#98aafa] transition">Home</a>
+      <a href="#about" on:click={toggleMenu} class="hover:text-[#98aafa] transition">About Me</a>
+      <a href="#projects" on:click={toggleMenu} class="hover:text-[#98aafa] transition">Projects</a>
+      <a href="#contact" on:click={toggleMenu} class="hover:text-[#98aafa] transition">Contact</a>
+      <a href="#gallery" on:click={toggleMenu} class="hover:text-[#98aafa] transition">Gallery</a>
+    </div>
   </div>
 {/if}
 
@@ -208,7 +222,7 @@
       </p>
 
       <div class="flex justify-center text-2xl">
-        <a href="/Emily_Tsai_Resume.pdf" target="_blank" rel="noopener noreferrer" class="button">Resume</a>
+        <a href="/Emily_Tsai_Resume.pdf" target="_blank" rel="noopener noreferrer" class="black-button">Resume</a>
       </div>
     </div>
   </section>
