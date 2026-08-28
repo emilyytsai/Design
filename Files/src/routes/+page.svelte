@@ -116,8 +116,8 @@
     <ul class="hidden md:flex items-center gap-8 text-[1.25rem] font-outfit text-white">
       <li><a href="#home" class="nav-link">Home</a></li>
       <li><a href="#projects" class="nav-link">Projects</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
       <li><a href="#gallery" class="nav-link">Gallery</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
 
     <!-- smile pill -->
@@ -158,8 +158,8 @@
       <a href="#home" on:click={toggleMenu} class="hover:text-[#98aafa] transition">Home</a>
       <a href="#about" on:click={toggleMenu} class="hover:text-[#98aafa] transition">About Me</a>
       <a href="#projects" on:click={toggleMenu} class="hover:text-[#98aafa] transition">Projects</a>
-      <a href="#contact" on:click={toggleMenu} class="hover:text-[#98aafa] transition">Contact</a>
       <a href="#gallery" on:click={toggleMenu} class="hover:text-[#98aafa] transition">Gallery</a>
+      <a href="#contact" on:click={toggleMenu} class="hover:text-[#98aafa] transition">Contact</a>
     </div>
   </div>
 {/if}
@@ -235,11 +235,12 @@
 
 <!-- projects -->
     <Projects />
-<!-- contact -->
-    <Contact />
 
 <!-- gallery -->
     <Gallery />
+
+<!-- contact -->
+    <Contact />
 
 <!-- footer -->
   <!-- signature -->
