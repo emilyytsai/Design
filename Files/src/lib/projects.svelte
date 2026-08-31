@@ -23,10 +23,31 @@
           <span class="tech-tag">ArcGIS Maps SDK</span>
           <span class="tech-tag">Gemini API</span>
         </div>
-        <p class="mb-4">Winner of Best Social Impact & Sustainability at FullyHacks 2026, where I built the ArcGIS map integration and designed the UI/UX.</p>
+        <p class="mb-4">Winner of Best Social Impact & Sustainability at FullyHacks 2026, where I built the ArcGIS map integration and designed the UI/UX for a real-time sea routing tool that visualizes underwater noise impact.</p>
         <div class="btn-row">
           <a href="https://sonarpath.vercel.app/" target="_blank" rel="noopener noreferrer" class="pill-btn violet">Demo</a>
           <a href="https://devpost.com/software/sonarpath" target="_blank" rel="noopener noreferrer" class="pill-btn violet">Devpost</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="relative aspect-[16/9] overflow-hidden">
+        <img src="/project-2.png" alt="image" class="w-full h-full object-cover"/>
+      </div>
+      <div class="project-card-body text-base sm:text-lg text-white text-center">
+        <p class="mb-1"><b>NodeBud</b></p>
+        <div class="tech-tag-row mb-3">
+          <span class="tech-tag">Next.js</span>
+          <span class="tech-tag">React</span>
+          <span class="tech-tag">TypeScript</span>
+          <span class="tech-tag">Tailwind CSS</span>
+          <span class="tech-tag">shadcn/ui</span>
+        </div>
+        <p class="mb-4">Owned the UI/UX design and frontend build of an AI mock-interview web app, from wireframes to reusable React components, and shipped a shadcn/ui and Tailwind design system refined through peer usability testing.</p>
+        <div class="btn-row">
+          <a href="https://nodebud.vercel.app/" target="_blank" rel="noopener noreferrer" class="pill-btn navy">Demo</a>
+          <a href="https://devpost.com/software/nodebud" target="_blank" rel="noopener noreferrer" class="pill-btn navy">Devpost</a>
         </div>
       </div>
     </div>
@@ -45,8 +66,8 @@
         </div>
         <p class="mb-4">Engineered UI button animation classes and oversaw development workflows and creative direction.</p>
         <div class="btn-row">
-          <a href="https://store.steampowered.com/app/3848990/Oddinary_Farm/" target="_blank" rel="noopener noreferrer" class="pill-btn blue">Steam</a>
-          <a href="https://discord.gg/k5CdXyMwHm" target="_blank" rel="noopener noreferrer" class="pill-btn blue">Discord</a>
+          <a href="https://store.steampowered.com/app/3848990/Oddinary_Farm/" target="_blank" rel="noopener noreferrer" class="pill-btn orange">Steam</a>
+          <a href="https://discord.gg/k5CdXyMwHm" target="_blank" rel="noopener noreferrer" class="pill-btn orange">Discord</a>
         </div>
       </div>
     </div>
@@ -90,7 +111,8 @@
     </div>
 
     <!-- this card is centered bc of odd number -->
-    <div class="project-card lg:col-span-2 lg:max-w-xl lg:mx-auto lg:w-full">
+    <!--<div class="project-card lg:col-span-2 lg:max-w-xl lg:mx-auto lg:w-full">-->
+    <div class="project-card">
       <div class="relative aspect-[16/9] overflow-hidden">
         <img src="/game-6.png" alt="image" class="w-full h-full object-cover"/>
       </div>

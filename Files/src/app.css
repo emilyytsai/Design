@@ -244,6 +244,8 @@ transform: scale(0.95);
 .pill-btn.blue   { color: #9CE2FF; border-color: rgba(156, 226, 255, 0.35); }
 .pill-btn.pink   { color: #e9b4d9; border-color: rgba(240, 160, 192, 0.35); }
 .pill-btn.gray   { color: #b6ecba; border-color: rgba(133, 150, 158, 0.35); }
+.pill-btn.navy   { color: #4D7BF0; border-color: rgba(77, 123, 240, 0.35); }
+.pill-btn.orange   { color: #EB9F3D; border-color: rgba(235, 159, 61, 0.35); }
 
 /* contact page icons */
 .icon-tile {
