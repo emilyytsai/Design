@@ -94,7 +94,7 @@
 <!-- navbar (desktop) -->
 <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-30 w-[calc(100%-2rem)] max-w-5xl">
   <div class="flex items-center justify-between px-6 py-3 rounded-full
-              bg-white/10 border border-white/15 backdrop-blur-md shadow-2xl">
+              bg-white/10 border border-black/15 backdrop-blur-md shadow-2xl">
 
     <!-- name -->
     <a href="#home" class="flex items-center shrink-0">
@@ -111,7 +111,7 @@
 
     <!-- smile pill -->
     <div class="group hidden md:grid place-items-center shrink-0 px-5 py-2 rounded-3xl
-                bg-zinc-950/70 border border-white/10 font-outfit text-base text-white select-none
+                bg-black/55 border border-black/10 font-outfit text-base text-white select-none
                 cursor-default transition-colors hover:bg-zinc-950/90">
       <span class="col-start-1 row-start-1 transition-opacity duration-200 group-hover:opacity-0">(˶˃ ᵕ ˂˶)</span>
       <span class="col-start-1 row-start-1 opacity-0 transition-opacity duration-200 group-hover:opacity-100">Hii !</span>
@@ -140,7 +140,7 @@
   <div class="md:hidden fixed top-[80px] left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-5xl z-40 overflow-hidden">
     <div
       class="bg-zinc-950/40 backdrop-blur-md flex flex-col items-center
-             py-8 space-y-6 text-xl font-outfit rounded-2xl border border-white/15 shadow-2xl"
+             py-8 space-y-6 text-xl font-outfit rounded-2xl border border-black/50 shadow-2xl"
       in:slide={{ duration: 200 }}
       out:slide={{ duration: 200 }}
     >
@@ -158,7 +158,7 @@
 
 <!-- mobile only has a centered single card -->
 <div class="md:hidden card mt-28 mx-auto w-full max-w-full sm:max-w-md px-0 z-20 rounded-2xl
-                        overflow-hidden bg-white/5 backdrop-blur-md border border-white/15 shadow-2xl">
+                        overflow-hidden bg-white/5 backdrop-blur-md border border-black/50 shadow-2xl">
  
     <div class="relative aspect-[4/3] sm:h-[360px] overflow-hidden">
       <img src="/emi-image5.jpg" alt="emi" class="absolute inset-0 w-full h-full object-cover"/>
@@ -179,11 +179,11 @@
 <!-- desktop has two column layout -->
   <section class="hidden md:grid md:grid-cols-2 md:gap-12 md:items-center mt-28 w-full max-w-5xl mx-auto px-4 z-20">
 
-    <div class="rounded-2xl overflow-hidden bg-white/5 backdrop-blur-md border border-white/15 shadow-2xl duration-300 hover:-translate-y-2">
+    <div class="rounded-2xl overflow-hidden bg-white/5 backdrop-blur-md border border-black/50 shadow-2xl duration-300 hover:-translate-y-2">
       <img src="/emi-image5.jpg" alt="emi" class="w-full h-[520px] object-cover"/>
     </div>
 
-    <div class="rounded-2xl bg-white/5 backdrop-blur-md border border-white/15 shadow-2xl px-8 py-8
+    <div class="rounded-2xl bg-white/5 backdrop-blur-md border border-black/35 shadow-2xl px-8 py-8
                 font-outfit text-white flex flex-col gap-6 duration-300 hover:-translate-y-2">
 
     <h2 class="text-3xl md:text-4xl font-bold text-center flex items-center justify-center gap-2 flex-wrap">

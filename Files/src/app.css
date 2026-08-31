@@ -117,7 +117,7 @@ border-radius: 1.2rem;
 
 background: rgba(0, 0, 0, 0.55);
 backdrop-filter: blur(12px);
-border: 1px solid rgba(255, 255, 255, 0.15);
+border: 1px solid rgba(0, 0, 0, 0.20);
 
 color: white;
 transition: all 0.1s ease;
@@ -173,7 +173,7 @@ transform: scale(0.95);
 /* project card */
 .project-card {
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.35);
   border-radius: 1.25rem;
   padding: 0;
   overflow: hidden;
@@ -191,7 +191,7 @@ transform: scale(0.95);
 /* tech stack border */
 .tech-tag {
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.20);
   border-radius: 999px;
   padding: 0.2rem 0.75rem;
   font-size: 0.78rem;
@@ -243,7 +243,7 @@ transform: scale(0.95);
 .pill-btn.violet { color: #a07fd4; border-color: rgba(160, 127, 212, 0.35); }
 .pill-btn.blue   { color: #9CE2FF; border-color: rgba(156, 226, 255, 0.35); }
 .pill-btn.pink   { color: #e9b4d9; border-color: rgba(240, 160, 192, 0.35); }
-.pill-btn.gray   { color: #b6ecba; border-color: rgba(133, 150, 158, 0.35); }
+.pill-btn.green   { color: #b6ecba; border-color: rgba(133, 150, 158, 0.35); }
 .pill-btn.navy   { color: #4D7BF0; border-color: rgba(77, 123, 240, 0.35); }
 .pill-btn.orange   { color: #EB9F3D; border-color: rgba(235, 159, 61, 0.35); }
 
@@ -257,7 +257,7 @@ transform: scale(0.95);
 
   background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.75);
 
   transition: all 0.15s ease;
 }

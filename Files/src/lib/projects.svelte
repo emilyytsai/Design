@@ -86,7 +86,7 @@
         </div>
         <p class="mb-4">Led a team of developers, created main gameplay loops, UI systems, implemented procedural difficulty scaling, and managed asset creation and integration.</p>
         <div class="btn-row">
-          <a href="https://github.com/emilyytsai/CountryLifeCafe" target="_blank" rel="noopener noreferrer" class="pill-btn gray">GitHub</a>
+          <a href="https://github.com/emilyytsai/CountryLifeCafe" target="_blank" rel="noopener noreferrer" class="pill-btn green">GitHub</a>
         </div>
       </div>
     </div>

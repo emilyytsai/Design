@@ -24,7 +24,7 @@
     <div class="mx-auto grid grid-cols-1 gap-2 sm:gap-3 lg:grid-cols-3 lg:gap-4">
       {#each galleryImages as image, i}
         <div
-          class="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/15 shadow-2xl transition-transform duration-300 ease-out hover:scale-[1.05]"
+          class="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-black/20 shadow-2xl transition-transform duration-300 ease-out hover:scale-[1.05]"
         >
           <img
             src={image.src}
