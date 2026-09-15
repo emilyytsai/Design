@@ -479,7 +479,29 @@ transform: scale(0.95);
 
 /* gallery marquee carousel */
 .marquee-viewport {
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(22, 22, 26, 0.25) transparent;
+}
+
+.marquee-viewport.dragging {
+  cursor: grabbing;
+}
+
+.marquee-viewport::-webkit-scrollbar {
+  height: 8px;
+}
+
+.marquee-viewport::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.marquee-viewport::-webkit-scrollbar-thumb {
+  background: rgba(22, 22, 26, 0.25);
+  border-radius: 999px;
 }
 
 .marquee-track {
@@ -490,7 +512,8 @@ transform: scale(0.95);
   animation: marquee-scroll 260s linear infinite;
 }
 
-.marquee-track:hover {
+.marquee-track:hover,
+.marquee-track.paused {
   animation-play-state: paused;
 }
 

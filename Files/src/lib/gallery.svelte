@@ -22,6 +22,61 @@
     function close() {
       active = null;
     }
+
+    // manual scrolling: pause the auto-scroll while the user touches/drags/scrolls,
+    // then resume it after a short idle period
+    let viewport: HTMLDivElement;
+    let userInteracting = false;
+    let resumeTimer: ReturnType<typeof setTimeout>;
+    let dragging = false;
+    let dragStartX = 0;
+    let dragStartScroll = 0;
+
+    function pauseAuto() {
+      userInteracting = true;
+      clearTimeout(resumeTimer);
+    }
+
+    function scheduleResume() {
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => {
+        userInteracting = false;
+      }, 300);
+    }
+
+    function handleScroll() {
+      pauseAuto();
+      scheduleResume();
+    }
+
+    function handleWheel(e: WheelEvent) {
+      // let native horizontal trackpad gestures pass through untouched;
+      // convert vertical mouse-wheel scrolling into horizontal movement
+      if (Math.abs(e.deltaX) >= Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      viewport.scrollLeft += e.deltaY;
+      pauseAuto();
+      scheduleResume();
+    }
+
+    function handlePointerDown(e: PointerEvent) {
+      if (e.pointerType !== 'mouse') return;
+      dragging = true;
+      dragStartX = e.clientX;
+      dragStartScroll = viewport.scrollLeft;
+      viewport.setPointerCapture(e.pointerId);
+      pauseAuto();
+    }
+
+    function handlePointerMove(e: PointerEvent) {
+      if (!dragging) return;
+      viewport.scrollLeft = dragStartScroll - (e.clientX - dragStartX);
+    }
+
+    function handlePointerUp() {
+      dragging = false;
+      scheduleResume();
+    }
   </script>
 
   <section id="gallery" class="relative z-20 w-full" style="background-color: #fbf3e7;">
@@ -46,8 +101,20 @@
       </p>
     </div>
 
-    <div class="marquee-viewport fade-in mt-4 w-full">
-      <div class="marquee-track">
+    <div
+      class="marquee-viewport fade-in mt-4 w-full"
+      class:dragging
+      bind:this={viewport}
+      on:scroll={handleScroll}
+      on:wheel={handleWheel}
+      on:pointerdown={handlePointerDown}
+      on:pointermove={handlePointerMove}
+      on:pointerup={handlePointerUp}
+      on:pointerleave={handlePointerUp}
+      on:touchstart={pauseAuto}
+      on:touchend={scheduleResume}
+    >
+      <div class="marquee-track" class:paused={userInteracting}>
         {#each marqueeImages as image, i (i)}
           <button
             type="button"
