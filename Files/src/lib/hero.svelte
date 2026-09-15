@@ -67,7 +67,7 @@
   </div>
 
   <!-- soft seam into the dark section below -->
-  <svg class="-mb-px block w-full text-[#0b0b0d]" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+  <svg class="-mb-px block h-[60px] w-full text-[#0b0b0d]" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
     <path fill="currentColor" d="M0 60 L1440 60 L1440 0 C1140 45 720 55 0 10 Z"></path>
   </svg>
 </section>

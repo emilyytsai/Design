@@ -454,6 +454,29 @@ transform: scale(0.95);
   color: var(--cs-accent, #98aafa);
 }
 
+/* playful sticker tile for contact icons, matching the hero's badge motif */
+.sticker-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.1rem;
+  border-radius: 999px;
+  background: #fbf3e7;
+  border: 2.5px solid #16161a;
+  box-shadow: 4px 4px 0 0 #f4b8d0;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.sticker-tile:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 0 #f4b8d0;
+}
+
+.sticker-tile:active {
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0 0 #f4b8d0;
+}
+
 .case-step-dot {
   width: 1.6rem;
   height: 1.6rem;

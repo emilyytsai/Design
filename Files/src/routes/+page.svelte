@@ -158,11 +158,11 @@
 <!-- projects (bento grid) -->
 <ProjectsBento />
 
-<!-- gallery + contact live on the dark surface started by the bento section -->
-<div class="w-full" style="background-color: #0b0b0d;">
-<!-- gallery -->
-    <Gallery />
+<!-- gallery (light surface, matches the hero) -->
+<Gallery />
 
+<!-- contact + footer live on the dark surface -->
+<div class="w-full" style="background-color: #0b0b0d;">
 <!-- contact -->
     <Contact />
 
