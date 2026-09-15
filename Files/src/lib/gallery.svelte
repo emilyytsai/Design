@@ -26,8 +26,13 @@
 
   <section id="gallery" class="relative z-20 w-full" style="background-color: #fbf3e7;">
     <!-- seam from the dark projects section above -->
-    <svg class="-mb-px block h-[60px] w-full text-[#0b0b0d]" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+    <!-- mobile: original -->
+    <svg class="-mb-px block h-[60px] w-full text-[#0b0b0d] sm:hidden" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
       <path fill="currentColor" d="M0 0 L1440 0 L1440 60 C1140 15 720 5 0 50 Z"></path>
+    </svg>
+    <!-- sm+: wavy -->
+    <svg class="-mb-px hidden h-[60px] w-full text-[#0b0b0d] sm:block" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+      <path fill="currentColor" d="M0 35 C120 27, 240 43, 360 35 S600 27, 720 35 S960 43, 1080 35 S1320 27, 1440 35 L1440 0 L0 0 Z"></path>
     </svg>
 
     <div class="fade-in font-outfit mx-auto w-full max-w-2xl px-4 py-10 sm:space-y-3 lg:max-w-5xl lg:space-y-5">
@@ -62,8 +67,11 @@
     </div>
 
     <!-- seam into the dark contact section below -->
-    <svg class="-mb-px mt-10 block h-[60px] w-full text-[#0b0b0d]" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+    <svg class="-mb-px mt-10 block h-[60px] w-full text-[#0b0b0d] sm:hidden" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
       <path fill="currentColor" d="M0 60 L1440 60 L1440 0 C1140 45 720 55 0 10 Z"></path>
+    </svg>
+    <svg class="-mb-px mt-10 hidden h-[60px] w-full text-[#0b0b0d] sm:block" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+      <path fill="currentColor" d="M0 25 C120 17, 240 33, 360 25 S600 17, 720 25 S960 33, 1080 25 S1320 17, 1440 25 L1440 60 L0 60 Z"></path>
     </svg>
   </section>
 
