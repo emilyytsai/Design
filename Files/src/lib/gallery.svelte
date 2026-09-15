@@ -1,5 +1,7 @@
 <!-- gallery -->
   <script lang="ts">
+    import PhotoModal from './photo-modal.svelte';
+
     const galleryImages = [
       35, 34, 33, 31, 30, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19,
       18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
@@ -7,6 +9,19 @@
       src: `/${number}.${[33, 26].includes(number) ? 'jpeg' : 'png'}`,
       alt: 'My leadership and life'
     }));
+
+    // duplicated so the marquee track can loop seamlessly at -50%
+    const marqueeImages = [...galleryImages, ...galleryImages];
+
+    let active: { src: string; alt: string } | null = null;
+
+    function open(image: { src: string; alt: string }) {
+      active = image;
+    }
+
+    function close() {
+      active = null;
+    }
   </script>
 
   <section id="gallery" class="relative z-20 w-full" style="background-color: #fbf3e7;">
@@ -24,27 +39,34 @@
       <p class="py-2 text-center text-base text-[#16161a]/60 sm:text-lg lg:text-xl">
         A look into my leadership life + more!
       </p>
+    </div>
 
-      <div class="mx-auto grid grid-cols-1 gap-2 sm:gap-3 lg:grid-cols-3 lg:gap-4">
-        {#each galleryImages as image, i}
-          <div
-            class="group relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-black/20 shadow-xl transition-transform duration-300 ease-out hover:scale-[1.05]"
+    <div class="marquee-viewport fade-in mt-4 w-full">
+      <div class="marquee-track">
+        {#each marqueeImages as image, i (i)}
+          <button
+            type="button"
+            on:click={() => open(image)}
+            class="group relative aspect-[4/3] w-60 shrink-0 overflow-hidden rounded-2xl border border-black/20 transition-transform duration-300 ease-out hover:scale-[1.05] sm:w-72 lg:w-80"
           >
             <img
               src={image.src}
               alt={image.alt}
-              loading={i < 3 ? 'eager' : 'lazy'}
+              loading={i < 8 ? 'eager' : 'lazy'}
               decoding="async"
               class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-115"
             />
-          </div>
+          </button>
         {/each}
       </div>
     </div>
 
     <!-- seam into the dark contact section below -->
-    <svg class="-mb-px block h-[60px] w-full text-[#0b0b0d]" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+    <svg class="-mb-px mt-10 block h-[60px] w-full text-[#0b0b0d]" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
       <path fill="currentColor" d="M0 60 L1440 60 L1440 0 C1140 45 720 55 0 10 Z"></path>
     </svg>
   </section>
 
+  {#if active}
+    <PhotoModal src={active.src} alt={active.alt} on:close={close} />
+  {/if}
