@@ -27,6 +27,8 @@ export default {
 			raleway: ['Raleway', 'sans-serif'],
 			dmsans: ['DM Sans', 'sans-serif'],
 			outfit: ['Outfit', 'sans-serif'],
+				fredoka: ['Fredoka', 'sans-serif'],
+				playfair: ['Playfair Display', 'serif'],
 		},
   },
 },

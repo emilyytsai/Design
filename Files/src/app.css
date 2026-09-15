@@ -5,7 +5,8 @@
 /* no horizontal scrolling*/
 html, body {
   overflow-x: hidden;
-  background-color: #18181b; 
+  /* light by default: the hero owns this color; dark sections paint their own background */
+  background-color: #fbf3e7;
 }
 
 /* scrolling bar stuff */
@@ -272,5 +273,196 @@ transform: scale(0.95);
 }
 
 * {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 32 32'%3E%3Cpath fill='white' d='M16 29C10 22 2 17 2 10 2 5 6 2.5 9.5 2.5 13 2.5 15.2 6.5 16 11 16.8 6.5 19 2.5 22.5 2.5 26 2.5 30 5 30 10 30 17 22 22 16 29Z'/%3E%3C/svg%3E") 9 9, auto;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 32 32'%3E%3Cpath fill='white' stroke='black' stroke-width='1.5' d='M16 29C10 22 2 17 2 10 2 5 6 2.5 9.5 2.5 13 2.5 15.2 6.5 16 11 16.8 6.5 19 2.5 22.5 2.5 26 2.5 30 5 30 10 30 17 22 22 16 29Z'/%3E%3C/svg%3E") 9 9, auto;
+}
+
+/* ============================================================
+   Product design portfolio: hero, bento grid, case study modal
+   ============================================================ */
+
+/* playful sharp CTA button (hero) */
+.cta-sharp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 0;
+  background: #16161a;
+  color: #fbf3e7;
+  border: 2.5px solid #16161a;
+  box-shadow: 5px 5px 0 0 #16161a;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cta-sharp:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0 0 #16161a;
+}
+
+.cta-sharp:active {
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0 0 #16161a;
+}
+
+.cta-sharp-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 0;
+  background: transparent;
+  color: #16161a;
+  border: 2.5px solid #16161a;
+  box-shadow: 5px 5px 0 0 rgba(22, 22, 26, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.cta-sharp-outline:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0 0 rgba(22, 22, 26, 0.35);
+  background: rgba(22, 22, 26, 0.05);
+}
+
+.cta-sharp-outline:active {
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0 0 rgba(22, 22, 26, 0.35);
+}
+
+/* animated gradient text for the hero name, matching the photo border gradient */
+.name-gradient {
+  background: linear-gradient(135deg, #98aafa 0%, #f4b8d0 50%, #98aafa 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: name-gradient-shift 6s ease-in-out infinite;
+}
+
+@keyframes name-gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* floating illustrative badges around the hero portrait */
+@keyframes float-a {
+  0%, 100% { transform: translate(0, 0) rotate(-6deg); }
+  50% { transform: translate(0, -16px) rotate(5deg); }
+}
+@keyframes float-b {
+  0%, 100% { transform: translate(0, 0) rotate(8deg); }
+  50% { transform: translate(6px, -10px) rotate(-5deg); }
+}
+@keyframes float-c {
+  0%, 100% { transform: translate(0, 0) rotate(-4deg); }
+  25% { transform: translate(9px, 5px) rotate(7deg); }
+  50% { transform: translate(0, 11px) rotate(-4deg); }
+  75% { transform: translate(-9px, 5px) rotate(7deg); }
+}
+
+.float-badge {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: #fff;
+  border: 2.5px solid #16161a;
+  box-shadow: 3px 3px 0 0 #16161a;
+}
+
+.float-badge.float-1 { animation: float-a 5s ease-in-out infinite; }
+.float-badge.float-2 { animation: float-b 6s ease-in-out infinite; }
+.float-badge.float-3 { animation: float-c 5.5s ease-in-out infinite; }
+
+/* bento project cards */
+.bento-card {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: #17171b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.bento-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.6);
+}
+
+.bento-card:hover .bento-card-img {
+  transform: scale(1.06);
+}
+
+.bento-card-img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-card-scrim {
+  background: linear-gradient(to top, rgba(10, 10, 12, 0.97) 5%, rgba(10, 10, 12, 0.55) 55%, rgba(10, 10, 12, 0.05) 100%);
+}
+
+.pull-quote {
+  position: relative;
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--pq-accent, #98aafa);
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* case study modal */
+.case-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(8, 8, 10, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+.case-modal {
+  background: #131316;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8);
+}
+
+.case-modal::-webkit-scrollbar {
+  width: 8px;
+}
+.case-modal::-webkit-scrollbar-track {
+  background: transparent;
+}
+.case-modal::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 99px;
+}
+
+.case-section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cs-accent, #98aafa);
+}
+
+.case-step-dot {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: var(--cs-accent, #98aafa);
+  color: #0a0a0c;
+  flex: none;
 }
