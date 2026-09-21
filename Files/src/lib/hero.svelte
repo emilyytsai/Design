@@ -58,10 +58,6 @@
         <div class="absolute inset-3 overflow-hidden rounded-full border-4 border-[#16161a] shadow-xl">
           <img src="/emi-image.jpg" alt="Emily Tsai" class="h-full w-full object-cover" />
         </div>
-
-        <!-- floating illustrative badges -->
-        <div class="float-badge float-1 -left-3 -top-3 h-16 w-16 whitespace-nowrap px-1 font-sans text-lg leading-none text-[#16161a] sm:h-20 sm:w-20 sm:text-2xl" aria-hidden="true">•ᴗ•</div>
-        <div class="float-badge float-3 right-1 bottom-1 h-14 w-14 text-2xl text-[#16161a] sm:h-16 sm:w-16 sm:text-3xl" aria-hidden="true">♡</div>
       </div>
     </div>
   </div>

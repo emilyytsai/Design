@@ -6,7 +6,6 @@
   import ProjectsBento from '$lib/projects-bento.svelte';
   import Contact from '$lib/contact.svelte';
   import Gallery from '$lib/gallery.svelte';
-  import DotGrid from '$lib/dotgridbg.svelte';
 
   let showIntro = true;
   let mobileMenuOpen = false;
@@ -86,10 +85,6 @@
   class="relative min-h-screen text-white flex flex-col items-center"
   class:invisible={showIntro}
 >
-
-<!-- dot grid bg -->
-<!-- <div class="dot-grid-bg fixed inset-0 z-0 pointer-events-none"></div> -->
-<DotGrid />
 
 <!-- navbar (desktop) -->
 <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-30 w-[calc(100%-2rem)] max-w-5xl">
