@@ -6,7 +6,7 @@
 html, body {
   overflow-x: hidden;
   /* light by default: the hero owns this color; dark sections paint their own background */
-  background-color: #fbf3e7;
+  background-color: #ffffff;
 }
 
 /* scrolling bar stuff */
@@ -291,7 +291,7 @@ transform: scale(0.95);
   font-size: 1rem;
   border-radius: 0;
   background: #16161a;
-  color: #fbf3e7;
+  color: #ffffff;
   border: 2.5px solid #16161a;
   box-shadow: 5px 5px 0 0 #16161a;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -316,7 +316,7 @@ transform: scale(0.95);
   font-weight: 700;
   font-size: 1rem;
   border-radius: 0;
-  background: transparent;
+  background: #fbdde9;
   color: #16161a;
   border: 2.5px solid #16161a;
   box-shadow: 5px 5px 0 0 rgba(22, 22, 26, 0.35);
@@ -326,7 +326,7 @@ transform: scale(0.95);
 .cta-sharp-outline:hover {
   transform: translate(-3px, -3px);
   box-shadow: 8px 8px 0 0 rgba(22, 22, 26, 0.35);
-  background: rgba(22, 22, 26, 0.05);
+  background: #f8cfe1;
 }
 
 .cta-sharp-outline:active {
@@ -336,7 +336,7 @@ transform: scale(0.95);
 
 /* animated gradient text for the hero name, matching the photo border gradient */
 .name-gradient {
-  background: linear-gradient(135deg, #98aafa 0%, #f4b8d0 50%, #98aafa 100%);
+  background: linear-gradient(135deg, #98aafa 0%, #f8cfe1 50%, #98aafa 100%);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -370,7 +370,7 @@ transform: scale(0.95);
   display: grid;
   place-items: center;
   border-radius: 999px;
-  background: #fff;
+  background: #f8cfe1;
   border: 2.5px solid #16161a;
   box-shadow: 3px 3px 0 0 #16161a;
 }
@@ -461,20 +461,20 @@ transform: scale(0.95);
   justify-content: center;
   padding: 1.1rem;
   border-radius: 999px;
-  background: #fbf3e7;
+  background: #ffffff;
   border: 2.5px solid #16161a;
-  box-shadow: 4px 4px 0 0 #f4b8d0;
+  box-shadow: 4px 4px 0 0 #f8cfe1;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .sticker-tile:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 0 #f4b8d0;
+  box-shadow: 6px 6px 0 0 #f8cfe1;
 }
 
 .sticker-tile:active {
   transform: translate(0, 0);
-  box-shadow: 2px 2px 0 0 #f4b8d0;
+  box-shadow: 2px 2px 0 0 #f8cfe1;
 }
 
 /* gallery marquee carousel */

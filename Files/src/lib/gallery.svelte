@@ -79,7 +79,7 @@
     }
   </script>
 
-  <section id="gallery" class="relative z-20 w-full" style="background-color: #fbf3e7;">
+  <section id="gallery" class="relative z-20 w-full" style="background-color: #ffffff;">
     <!-- seam from the dark projects section above -->
     <!-- mobile: original -->
     <svg class="-mb-px block h-[60px] w-full text-[#0b0b0d] sm:hidden" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">

@@ -2,14 +2,14 @@
 <section
   id="home"
   class="relative z-20 w-full"
-  style="background-color: #fbf3e7;"
+  style="background-color: #ffffff;"
 >
   <div class="mx-auto flex w-full max-w-6xl flex-col-reverse items-center gap-10 px-4 pt-32 pb-20 sm:pt-40 sm:pb-28 lg:flex-row lg:gap-16 lg:pt-44">
 
     <!-- copy -->
     <div class="flex w-full flex-col items-center gap-6 text-center lg:w-3/5 lg:items-start lg:text-left">
 
-      <span class="inline-flex items-center gap-1.5 rounded-full border-2 border-[#16161a] bg-white px-5 py-2 font-outfit text-sm font-semibold tracking-wide text-[#16161a]">
+      <span class="inline-flex items-center gap-1.5 rounded-full border-2 border-[#16161a] bg-[#f8cfe1] px-5 py-2 font-outfit text-sm font-semibold tracking-wide text-[#16161a]">
       Product Designer & UI/UX Designer
       </span>
 
@@ -52,7 +52,7 @@
       <div class="relative aspect-square w-72 sm:w-96 md:w-[26rem]">
 
         <!-- colored blob / circle behind photo -->
-        <div class="absolute inset-0 rounded-full" style="background: linear-gradient(135deg, #98aafa 0%, #f4b8d0 100%);"></div>
+        <div class="absolute inset-0 rounded-full" style="background: linear-gradient(135deg, #98aafa 0%, #f8cfe1 100%);"></div>
 
         <!-- photo -->
         <div class="absolute inset-3 overflow-hidden rounded-full border-4 border-[#16161a] shadow-xl">
