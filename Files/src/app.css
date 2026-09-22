@@ -349,6 +349,14 @@ transform: scale(0.95);
   50% { background-position: 100% 50%; }
 }
 
+/* static version of the periwinkle-to-pink gradient text, no animation */
+.name-gradient-static {
+  background: linear-gradient(135deg, #98aafa 0%, #f8cfe1 50%, #98aafa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 /* bento project cards */
 .bento-card {
   position: relative;

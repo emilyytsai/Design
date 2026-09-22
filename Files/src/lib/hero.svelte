@@ -156,8 +156,8 @@
 <image
   href="/emi-image6.png"
   x="65"
-  y="28"
-  width="375"
+  y="25"
+  width="390"
   height="500"
   preserveAspectRatio="xMidYMid slice"
   clip-path="url(#photoClip)"

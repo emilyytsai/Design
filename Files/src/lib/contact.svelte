@@ -11,7 +11,7 @@
 
 <!-- contact -->
 <section id="contact" class="fade-in font-outfit relative z-20 w-full max-w-2xl lg:max-w-5xl mx-auto px-4 py-6 space-y-1 sm:space-y-3 lg:space-y-5 sm:mt-2">
-  <span class="fade-in font-outfit text-xs font-bold uppercase tracking-[0.2em] text-[#98aafa] block text-center">Contact</span>
+  <span class="name-gradient-static fade-in font-outfit text-xs font-bold uppercase tracking-[0.2em] block text-center">Contact</span>
   <h4 class="fade-in mt-3 font-fredoka text-3xl sm:text-4xl md:text-5xl font-semibold text-white text-center">Let's create something together</h4>
 
   <p class="text-base sm:text-lg lg:text-xl text-white/60 text-center py-2">

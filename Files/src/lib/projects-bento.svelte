@@ -18,7 +18,7 @@
   <div class="mx-auto w-full max-w-6xl px-4">
 
     <div class="fade-in mx-auto max-w-2xl text-center">
-      <span class="font-outfit text-xs font-bold uppercase tracking-[0.2em] text-[#98aafa]">Projects</span>
+      <span class="name-gradient-static font-outfit text-xs font-bold uppercase tracking-[0.2em]">Projects</span>
       <h4 class="mt-3 font-fredoka text-3xl font-semibold text-white sm:text-4xl md:text-5xl">
         Product design, end to end
       </h4>

@@ -91,7 +91,7 @@
     </svg>
 
     <div class="fade-in font-outfit mx-auto w-full max-w-2xl px-4 py-10 sm:space-y-3 lg:max-w-5xl lg:space-y-5">
-      <span class="block text-center font-outfit text-xs font-bold uppercase tracking-[0.2em] text-[#98aafa]">Gallery</span>
+      <span class="name-gradient-static block text-center font-outfit text-xs font-bold uppercase tracking-[0.2em]">Gallery</span>
       <h4 class="mt-3 text-center font-fredoka text-3xl font-semibold text-[#16161a] sm:text-4xl md:text-5xl">
         Snapshots of my life
       </h4>
