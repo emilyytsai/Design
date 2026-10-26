@@ -17,10 +17,10 @@
         <span class="name-gradient font-playfair italic text-6xl sm:text-7xl md:text-8xl">
           Emily Tsai
         </span>
-        <br />
-        <span class="font-fredoka font-normal">
+        <span class="mt-4 block font-outfit font-normal text-[1.375rem] leading-snug sm:text-[1.75rem] md:text-[2rem]">
           Turning ideas into reality with
-          <span class="relative inline-block whitespace-nowrap">
+          <br />
+          <span class="relative inline-block whitespace-nowrap font-fredoka font-semibold">
             design & code
             <svg
               class="absolute -bottom-1 left-0 w-full"
@@ -37,7 +37,7 @@
                 stroke-linecap="round"
               />
             </svg>
-          </span>
+          </span><span class="font-fredoka font-semibold">!</span>
         </span>
       </h1>
 
