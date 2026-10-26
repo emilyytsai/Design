@@ -336,6 +336,12 @@ transform: scale(0.95);
 
 /* animated gradient text for the hero name, matching the photo border gradient */
 .name-gradient {
+  /* italic glyphs overhang their box; pad so background-clip: text still paints the overhang */
+  display: inline-block;
+  /* vertical padding is cancelled by negative margin so the heading's spacing stays the same */
+  padding: 0.1em 0.15em 0.25em 0.05em;
+  margin: -0.1em 0 -0.25em;
+  overflow: visible;
   background: linear-gradient(135deg, #98aafa 0%, #f8cfe1 50%, #98aafa 100%);
   background-size: 200% 200%;
   -webkit-background-clip: text;
