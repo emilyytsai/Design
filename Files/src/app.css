@@ -355,8 +355,9 @@ transform: scale(0.95);
   50% { background-position: 100% 50%; }
 }
 
-/* hero role badge: on hover the label fades, then the pill spins down into a circle holding a heart.
-   only the ::before background spins, so the hover area stays put and doesn't flicker.
+/* hero role badge: on hover the label fades, then the pill spins down into a smaller pill holding a kaomoji.
+   only the ::before background spins, and it ignores the pointer (mid-spin it sweeps outside the badge),
+   so the hover area is just the badge's own box and doesn't flicker.
    hover-in delays live on the :hover rules, hover-out delays on the base rules, so it reverses in order */
 .role-badge {
   position: relative;
@@ -376,6 +377,7 @@ transform: scale(0.95);
   width: 100%;
   height: 100%;
   z-index: -1;
+  pointer-events: none;
   border: 2px solid #16161a;
   border-radius: 9999px;
   background: #f8d9e7;
@@ -399,17 +401,19 @@ transform: scale(0.95);
 
 .role-badge-heart {
   opacity: 0;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   line-height: 1;
+  white-space: nowrap;
   transform: scale(0.7);
   transition: opacity 0.1s ease, transform 0.1s ease;
 }
 
+/* --face-width is the face's measured width, set inline by hero.svelte; 8.5rem is a fallback before it's measured */
 .role-badge:hover::before {
-  width: 3rem;
-  height: 3rem;
+  width: calc(var(--face-width, 8.5rem) + 2rem);
+  height: 2.75rem;
   transform: translate(-50%, -50%) rotate(180deg);
-  background: #dfe4ff;
+  background: #c4cdff;
 }
 
 .role-badge:hover .role-badge-label {
@@ -426,8 +430,8 @@ transform: scale(0.95);
     transform 0.25s ease-out 0.35s;
 }
 
-/* lg+: the hero copy is left-aligned, so the circle and heart collapse to the badge's left edge
-   instead of its middle (on smaller screens everything is centered, so the centered circle lines up) */
+/* lg+: the hero copy is left-aligned, so the small pill and face collapse to the badge's left edge
+   instead of its middle (on smaller screens everything is centered, so the centered pill lines up) */
 @media (min-width: 64rem) {
   .role-badge::before {
     left: 0;
@@ -438,11 +442,10 @@ transform: scale(0.95);
     transform: translate(0, -50%) rotate(180deg);
   }
 
+  /* sit the face 1rem in from the badge's left edge, centered in the shrunken pill */
   .role-badge-heart {
     justify-self: start;
-    width: 3rem;
-    margin-left: calc(-1.25rem - 2px);
-    text-align: center;
+    margin-left: calc(1rem - 1.25rem - 2px);
   }
 }
 
@@ -460,6 +463,7 @@ transform: scale(0.95);
   position: absolute;
   inset: 0;
   z-index: -1;
+  pointer-events: none;
   border: 1px solid rgb(0 0 0 / 0.1);
   border-radius: 1.5rem;
   background: rgb(0 0 0 / 0.55);
@@ -514,6 +518,44 @@ transform: scale(0.95);
   .role-badge:hover .role-badge-heart {
     transition-duration: 0.01s;
     transition-delay: 0s;
+  }
+}
+
+/* hero portrait: the background gradient's colors flow through each other while hovered.
+   the animation is paused rather than removed on hover-out, so it holds instead of snapping back */
+.portrait-stop {
+  animation: 1.75s ease-in-out infinite paused;
+}
+
+.portrait-stop-1 { animation-name: portrait-stop-1; }
+.portrait-stop-2 { animation-name: portrait-stop-2; }
+.portrait-stop-3 { animation-name: portrait-stop-3; }
+
+.portrait:hover .portrait-stop {
+  animation-play-state: running;
+}
+
+@keyframes portrait-stop-1 {
+  0%, 100% { stop-color: #b5c1ff; }
+  33% { stop-color: #d3caf8; }
+  66% { stop-color: #f9ddeb; }
+}
+
+@keyframes portrait-stop-2 {
+  0%, 100% { stop-color: #d3caf8; }
+  33% { stop-color: #f9ddeb; }
+  66% { stop-color: #b5c1ff; }
+}
+
+@keyframes portrait-stop-3 {
+  0%, 100% { stop-color: #f9ddeb; }
+  33% { stop-color: #b5c1ff; }
+  66% { stop-color: #d3caf8; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portrait:hover .portrait-stop {
+    animation-play-state: paused;
   }
 }
 

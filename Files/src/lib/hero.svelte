@@ -1,3 +1,9 @@
+<script>
+  // width of the role badge's hover face, so the pill can shrink to fit it
+  /** @type {number | undefined} */
+  let faceWidth;
+</script>
+
 <!-- hero -->
 <section
   id="home"
@@ -9,9 +15,12 @@
     <!-- copy -->
     <div class="flex w-full flex-col items-center gap-6 text-center lg:w-3/5 lg:items-start lg:text-left">
 
-      <span class="role-badge font-outfit text-sm font-semibold tracking-wide text-[#16161a]">
+      <span
+        class="role-badge font-outfit text-sm font-semibold tracking-wide text-[#16161a]"
+        style={faceWidth ? `--face-width: ${faceWidth}px` : undefined}
+      >
         <span class="role-badge-label">Product Designer & UI/UX Designer</span>
-        <span class="role-badge-heart" aria-hidden="true">♡</span>
+        <span class="role-badge-heart" aria-hidden="true" bind:offsetWidth={faceWidth}>(˶ᵔ ᵕ ᵔ˶) ♡</span>
       </span>
 
       <h1 class="font-fredoka text-4xl font-bold leading-[1.05] text-[#16161a] sm:text-5xl md:text-6xl">
@@ -71,11 +80,11 @@
 
     <!-- portrait -->
     <div class="relative flex w-full shrink-0 items-center justify-center lg:w-2/5">
-      <div class="relative aspect-square w-72 sm:w-96 md:w-[26rem]">
+      <div class="portrait group relative aspect-square w-72 sm:w-96 md:w-[26rem]">
 
         <!-- SVG shape + image container -->
         <svg
-          class="absolute -inset-8 h-[calc(100%+4rem)] w-[calc(100%+4rem)] sm:-inset-10 sm:h-[calc(100%+5rem)] sm:w-[calc(100%+5rem)] md:-inset-12 md:h-[calc(100%+6rem)] md:w-[calc(100%+6rem)]"
+          class="absolute -inset-8 h-[calc(100%+4rem)] w-[calc(100%+4rem)] sm:-inset-10 sm:h-[calc(100%+5rem)] sm:w-[calc(100%+5rem)] md:-inset-12 md:h-[calc(100%+6rem)] md:w-[calc(100%+6rem)] transition duration-500 ease-out group-hover:-translate-y-2.5"
           viewBox="0 0 500 500"
           preserveAspectRatio="none"
           aria-hidden="true"
@@ -89,9 +98,9 @@
               x2="100%"
               y2="100%"
             >
-              <stop offset="0%" stop-color="#b5c1ff" />
-              <stop offset="48%" stop-color="#d3caf8" />
-              <stop offset="100%" stop-color="#f9ddeb" />
+              <stop class="portrait-stop portrait-stop-1" offset="0%" stop-color="#b5c1ff" />
+              <stop class="portrait-stop portrait-stop-2" offset="48%" stop-color="#d3caf8" />
+              <stop class="portrait-stop portrait-stop-3" offset="100%" stop-color="#f9ddeb" />
             </linearGradient>
 
             <!-- exact same shape used to crop the photo -->
@@ -131,7 +140,7 @@
 
         <!-- photo clipped to the exact same shape -->
         <svg
-          class="absolute -inset-8 h-[calc(100%+4rem)] w-[calc(100%+4rem)] sm:-inset-10 sm:h-[calc(100%+5rem)] sm:w-[calc(100%+5rem)] md:-inset-12 md:h-[calc(100%+6rem)] md:w-[calc(100%+6rem)]"
+          class="absolute -inset-8 h-[calc(100%+4rem)] w-[calc(100%+4rem)] sm:-inset-10 sm:h-[calc(100%+5rem)] sm:w-[calc(100%+5rem)] md:-inset-12 md:h-[calc(100%+6rem)] md:w-[calc(100%+6rem)] transition duration-500 ease-out group-hover:-translate-y-2.5"
           viewBox="0 0 500 500"
           preserveAspectRatio="none"
           aria-hidden="true"
@@ -167,7 +176,7 @@
 
         <!-- subtle outline -->
         <svg
-          class="absolute -inset-8 h-[calc(100%+4rem)] w-[calc(100%+4rem)] sm:-inset-10 sm:h-[calc(100%+5rem)] sm:w-[calc(100%+5rem)] md:-inset-12 md:h-[calc(100%+6rem)] md:w-[calc(100%+6rem)]"
+          class="absolute -inset-8 h-[calc(100%+4rem)] w-[calc(100%+4rem)] sm:-inset-10 sm:h-[calc(100%+5rem)] sm:w-[calc(100%+5rem)] md:-inset-12 md:h-[calc(100%+6rem)] md:w-[calc(100%+6rem)] transition duration-500 ease-out group-hover:-translate-y-2.5"
           viewBox="0 0 500 500"
           preserveAspectRatio="none"
           aria-hidden="true"
