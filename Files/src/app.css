@@ -572,6 +572,10 @@ transform: scale(0.95);
   position: relative;
   border-radius: 1.5rem;
   overflow: hidden;
+  /* keep the scaled image clipped to the rounded corners while the card itself is transformed;
+     without its own layer, Chrome/Safari can leak a hairline of the image at the bottom edge */
+  isolation: isolate;
+  will-change: transform;
   background: #17171b;
   border: 1px solid rgba(255, 255, 255, 0.08);
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
@@ -589,6 +593,7 @@ transform: scale(0.95);
 
 .bento-card-img {
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  backface-visibility: hidden;
 }
 
 .bento-card-scrim {
