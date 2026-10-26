@@ -355,6 +355,168 @@ transform: scale(0.95);
   50% { background-position: 100% 50%; }
 }
 
+/* hero role badge: on hover the label fades, then the pill spins down into a circle holding a heart.
+   only the ::before background spins, so the hover area stays put and doesn't flicker.
+   hover-in delays live on the :hover rules, hover-out delays on the base rules, so it reverses in order */
+.role-badge {
+  position: relative;
+  isolation: isolate;
+  display: inline-grid;
+  place-items: center;
+  padding: calc(0.5rem + 2px) calc(1.25rem + 2px);
+  cursor: default;
+  user-select: none;
+}
+
+.role-badge::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  border: 2px solid #16161a;
+  border-radius: 9999px;
+  background: #f8d9e7;
+  transform: translate(-50%, -50%) rotate(0deg);
+  /* no delay here: a delay on the spinning layer freezes it mid-spin whenever hover changes.
+     the slow-starting curve keeps the label fade ahead of any visible movement instead */
+  transition:
+    width 0.5s cubic-bezier(0.55, 0, 0.25, 1),
+    height 0.5s cubic-bezier(0.55, 0, 0.25, 1),
+    transform 0.5s cubic-bezier(0.55, 0, 0.25, 1),
+    background-color 0.5s ease;
+}
+
+.role-badge > * {
+  grid-area: 1 / 1;
+}
+
+.role-badge-label {
+  transition: opacity 0.15s ease 0.4s, transform 0.15s ease 0.4s;
+}
+
+.role-badge-heart {
+  opacity: 0;
+  font-size: 1.5rem;
+  line-height: 1;
+  transform: scale(0.7);
+  transition: opacity 0.1s ease, transform 0.1s ease;
+}
+
+.role-badge:hover::before {
+  width: 3rem;
+  height: 3rem;
+  transform: translate(-50%, -50%) rotate(180deg);
+  background: #dfe4ff;
+}
+
+.role-badge:hover .role-badge-label {
+  opacity: 0;
+  transform: scale(0.85);
+  transition-delay: 0s;
+}
+
+.role-badge:hover .role-badge-heart {
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 0.25s ease-out 0.35s,
+    transform 0.25s ease-out 0.35s;
+}
+
+/* lg+: the hero copy is left-aligned, so the circle and heart collapse to the badge's left edge
+   instead of its middle (on smaller screens everything is centered, so the centered circle lines up) */
+@media (min-width: 64rem) {
+  .role-badge::before {
+    left: 0;
+    transform: translate(0, -50%) rotate(0deg);
+  }
+
+  .role-badge:hover::before {
+    transform: translate(0, -50%) rotate(180deg);
+  }
+
+  .role-badge-heart {
+    justify-self: start;
+    width: 3rem;
+    margin-left: calc(-1.25rem - 2px);
+    text-align: center;
+  }
+}
+
+/* nav smile pill: same sequence as the role badge, but the pill keeps its shape while it spins */
+.smile-pill {
+  position: relative;
+  isolation: isolate;
+  padding: calc(0.5rem + 1px) calc(1.25rem + 1px);
+  cursor: default;
+  user-select: none;
+}
+
+.smile-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border: 1px solid rgb(0 0 0 / 0.1);
+  border-radius: 1.5rem;
+  background: rgb(0 0 0 / 0.55);
+  transition:
+    transform 0.5s cubic-bezier(0.55, 0, 0.25, 1),
+    background-color 0.5s ease;
+}
+
+.smile-pill > * {
+  grid-area: 1 / 1;
+}
+
+.smile-pill-face {
+  transition: opacity 0.15s ease 0.4s, transform 0.15s ease 0.4s;
+}
+
+.smile-pill-hi {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.1s ease, transform 0.1s ease;
+}
+
+.smile-pill:hover::before {
+  transform: rotate(180deg);
+  background: rgb(9 9 11 / 0.9);
+}
+
+.smile-pill:hover .smile-pill-face {
+  opacity: 0;
+  transform: scale(0.85);
+  transition-delay: 0s;
+}
+
+.smile-pill:hover .smile-pill-hi {
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 0.25s ease-out 0.35s,
+    transform 0.25s ease-out 0.35s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .smile-pill::before,
+  .smile-pill > *,
+  .smile-pill:hover::before,
+  .smile-pill:hover .smile-pill-face,
+  .smile-pill:hover .smile-pill-hi,
+  .role-badge::before,
+  .role-badge > *,
+  .role-badge:hover::before,
+  .role-badge:hover .role-badge-label,
+  .role-badge:hover .role-badge-heart {
+    transition-duration: 0.01s;
+    transition-delay: 0s;
+  }
+}
+
 /* static version of the periwinkle-to-pink gradient text, no animation */
 .name-gradient-static {
   background: linear-gradient(135deg, #98aafa 0%, #f8cfe1 50%, #98aafa 100%);

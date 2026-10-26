@@ -105,11 +105,9 @@
     </ul>
 
     <!-- smile pill -->
-    <div class="group hidden md:grid place-items-center shrink-0 px-5 py-2 rounded-3xl
-                bg-black/55 border border-black/10 font-outfit text-base text-white select-none
-                cursor-default transition-colors hover:bg-zinc-950/90">
-      <span class="col-start-1 row-start-1 transition-opacity duration-200 group-hover:opacity-0">(˶˃ ᵕ ˂˶)</span>
-      <span class="col-start-1 row-start-1 opacity-0 transition-opacity duration-200 group-hover:opacity-100">Hii !</span>
+    <div class="smile-pill hidden md:grid place-items-center shrink-0 font-outfit text-base text-white">
+      <span class="smile-pill-face">(˶˃ ᵕ ˂˶)</span>
+      <span class="smile-pill-hi">Hii !</span>
     </div>
 
     <!-- side menu button (mobile) -->

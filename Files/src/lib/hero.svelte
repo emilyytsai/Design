@@ -9,8 +9,9 @@
     <!-- copy -->
     <div class="flex w-full flex-col items-center gap-6 text-center lg:w-3/5 lg:items-start lg:text-left">
 
-      <span class="inline-flex items-center gap-1.5 rounded-full border-2 border-[#16161a] bg-[#f8d9e7] px-5 py-2 font-outfit text-sm font-semibold tracking-wide text-[#16161a]">
-        Product Designer & UI/UX Designer
+      <span class="role-badge font-outfit text-sm font-semibold tracking-wide text-[#16161a]">
+        <span class="role-badge-label">Product Designer & UI/UX Designer</span>
+        <span class="role-badge-heart" aria-hidden="true">♡</span>
       </span>
 
       <h1 class="font-fredoka text-4xl font-bold leading-[1.05] text-[#16161a] sm:text-5xl md:text-6xl">
