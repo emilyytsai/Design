@@ -650,44 +650,41 @@ transform: scale(0.95);
   box-shadow: 2px 2px 0 0 #f4b8d0;
 }
 
-/* gallery marquee carousel */
-.marquee-viewport {
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(22, 22, 26, 0.25) transparent;
+/* gallery: endlessly scrolling masonry columns that fade out into the white section at top and bottom */
+.masonry-viewport {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 14%, #000 86%, transparent);
 }
 
-.marquee-viewport::-webkit-scrollbar {
-  height: 8px;
+/* each column holds its photos twice and gallery.svelte wraps its offset at half the track height,
+   so the loop is seamless. items use margin-bottom (not gap) so the two halves are exactly the same height */
+.masonry-track {
+  will-change: transform;
 }
 
-.marquee-viewport::-webkit-scrollbar-track {
-  background: transparent;
+/* the column handles wheel and swipe itself, so touch gestures over it don't scroll the page */
+.masonry-column {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
-.marquee-viewport::-webkit-scrollbar-thumb {
-  background: rgba(22, 22, 26, 0.25);
-  border-radius: 999px;
+/* hovering the gallery dims every photo except the one under the cursor */
+.masonry-item img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, filter 0.35s ease;
 }
 
-.marquee-track {
-  display: flex;
-  width: max-content;
-  gap: 1rem;
-  padding: 0.5rem 0;
-  animation: marquee-scroll 260s linear infinite;
+.masonry-viewport:hover .masonry-item img {
+  opacity: 0.55;
+  filter: saturate(0.8);
 }
 
-.marquee-track:hover,
-.marquee-track.paused {
-  animation-play-state: paused;
-}
-
-@keyframes marquee-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+.masonry-viewport:hover .masonry-item:hover img {
+  opacity: 1;
+  filter: none;
+  transform: scale(1.06);
 }
 
 /* peeking cat: mounted and slid in/out from +page.svelte; each side flattens the edge it hugs */
