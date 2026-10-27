@@ -401,17 +401,17 @@ transform: scale(0.95);
 
 .role-badge-heart {
   opacity: 0;
-  font-size: 1.25rem;
+  font-size: 1.45rem;
   line-height: 1;
   white-space: nowrap;
   transform: scale(0.7);
   transition: opacity 0.1s ease, transform 0.1s ease;
 }
 
-/* --face-width is the face's measured width, set inline by hero.svelte; 8.5rem is a fallback before it's measured */
+/* --face-width is the face's measured width, set inline by hero.svelte; 9.75rem is a fallback before it's measured */
 .role-badge:hover::before {
-  width: calc(var(--face-width, 8.5rem) + 2rem);
-  height: 2.75rem;
+  width: calc(var(--face-width, 9.75rem) + 2rem);
+  height: 3rem;
   transform: translate(-50%, -50%) rotate(180deg);
   background: #c4cdff;
 }

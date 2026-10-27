@@ -18,7 +18,7 @@
     <div class="flex w-full flex-col items-center gap-6 text-center lg:w-auto lg:max-w-[34rem] lg:items-start lg:text-left xl:w-3/5 xl:max-w-none">
 
       <span
-        class="role-badge font-outfit text-sm font-semibold tracking-wide text-[#16161a]"
+        class="role-badge font-outfit text-base sm:text-lg font-semibold tracking-wide text-[#16161a]"
         style={faceWidth ? `--face-width: ${faceWidth}px` : undefined}
       >
         <span class="role-badge-label">Product Designer & UI/UX Designer</span>
@@ -53,7 +53,7 @@
         </span>
       </h1>
 
-      <p class="max-w-xl px-2 py-4 font-outfit text-sm leading-relaxed text-[#16161a]/60 sm:text-base">
+      <p class="max-w-xl px-2 py-4 font-outfit text-base leading-relaxed text-[#16161a]/60 sm:text-lg">
         Currently a <b class="text-[#16161a]">Computer Science</b> major with minors in
         <b class="text-[#16161a]">Data Science</b> and
         <b class="text-[#16161a]">Communication Studies</b>
