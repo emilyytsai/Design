@@ -123,8 +123,10 @@
   >
 
   <!-- animate.css -->
-    <h1 class="font-outfit text-6xl font-medium text-white relative z-20 animate__animated animate__flash">
-      (˶ᵔ ᵕ ᵔ˶)
+    <!-- the face swaps while the flash is fully dimmed, so its last flash in reveals the new one -->
+    <h1 class="intro-faces font-outfit text-6xl font-medium text-white relative z-20 animate__animated animate__flash">
+      <span class="intro-face-first">(˶ᵔ ᵕ ᵔ˶)</span>
+      <span class="intro-face-last">(˶<span class="intro-eye">˃</span> ᵕ <span class="intro-eye">˂</span>˶)</span>
     </h1>
 
     <div class="fixed inset-0 z-0 pointer-events-none"></div>

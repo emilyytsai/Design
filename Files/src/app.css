@@ -687,6 +687,57 @@ transform: scale(0.95);
   transform: scale(1.06);
 }
 
+/* intro screen: both faces sit in one spot and swap at 75% of animate.css's flash, the moment it's
+   fully dimmed, so the last flash in shows the second face. runs on the same duration as the flash */
+/* center both faces on the same point; they're different widths, so left-aligned they looked offset */
+.intro-faces {
+  display: inline-grid;
+  place-items: center;
+}
+
+.intro-faces > * {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.intro-face-first {
+  animation: intro-face-first var(--animate-duration, 1s) forwards;
+}
+
+/* the > < eyes render larger than the ᵔ eyes, so shrink them in place (scale keeps them centered on
+   their spot instead of dropping to the baseline like a smaller font-size would) */
+.intro-eye {
+  display: inline-block;
+  transform: scale(0.8);
+}
+
+/* pull each eye in toward the mouth */
+.intro-eye:first-of-type {
+  margin-right: -0.1em;
+}
+
+.intro-eye:last-of-type {
+  margin-left: -0.1em;
+}
+
+.intro-face-last {
+  /* slightly smaller than the first face; scale keeps it centered on the same point */
+  transform: scale(0.92);
+  opacity: 0;
+  animation: intro-face-last var(--animate-duration, 1s) forwards;
+}
+
+@keyframes intro-face-first {
+  0%, 74.9% { opacity: 1; }
+  75%, 100% { opacity: 0; }
+}
+
+@keyframes intro-face-last {
+  0%, 74.9% { opacity: 0; }
+  75%, 100% { opacity: 1; }
+}
+
 /* peeking cat: mounted and slid in/out from +page.svelte; each side flattens the edge it hugs */
 .peek-cat {
   position: fixed;
