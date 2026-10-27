@@ -1,7 +1,31 @@
-<script>
-  // width of the role badge's hover face, so the pill can shrink to fit it
-  /** @type {number | undefined} */
-  let faceWidth;
+<script lang="ts">
+  // portrait bob: floats up and down while hovered. done with the Web Animations API rather than a
+  // CSS :hover animation so hover-out can glide back down from wherever the bob is instead of snapping
+  let bobLayer: HTMLDivElement;
+  let bob: Animation | undefined;
+
+  function startBob() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    bob?.cancel();
+    bob = bobLayer.animate(
+      [
+        { translate: '0 0', easing: 'ease-in-out' },
+        { translate: '0 -6px', easing: 'ease-in-out' },
+        { translate: '0 0' }
+      ],
+      { duration: 2400, iterations: Infinity }
+    );
+  }
+
+  function stopBob() {
+    if (!bob) return;
+    const current = getComputedStyle(bobLayer).translate;
+    bob.cancel();
+    bob = bobLayer.animate([{ translate: current }, { translate: '0 0' }], {
+      duration: 400,
+      easing: 'ease-out'
+    });
+  }
 </script>
 
 <!-- hero -->
@@ -17,12 +41,9 @@
     <!-- copy -->
     <div class="flex w-full flex-col items-center gap-6 text-center lg:w-auto lg:max-w-[34rem] lg:items-start lg:text-left xl:w-3/5 xl:max-w-none">
 
-      <span
-        class="role-badge font-outfit text-base sm:text-lg font-semibold tracking-wide text-[#16161a]"
-        style={faceWidth ? `--face-width: ${faceWidth}px` : undefined}
-      >
+      <span class="role-badge font-outfit text-base sm:text-lg font-semibold tracking-wide text-[#16161a]">
         <span class="role-badge-label">Product Designer & UI/UX Designer</span>
-        <span class="role-badge-heart" aria-hidden="true" bind:offsetWidth={faceWidth}>(˶ᵔ ᵕ ᵔ˶) ♡</span>
+        <span class="role-badge-heart" aria-hidden="true">\ (˶ᵔ ᵕ ᵔ˶) / ♡</span>
       </span>
 
       <h1 class="font-fredoka text-4xl font-bold leading-[1.05] text-[#16161a] sm:text-5xl md:text-6xl">
@@ -83,11 +104,18 @@
     <!-- portrait -->
     <!-- lg: px-12 matches the blob's -inset-12 overhang so it's counted in the layout and isn't pushed off screen -->
     <div class="relative flex w-full shrink-0 items-center justify-center lg:w-auto lg:px-12 xl:w-2/5 xl:px-0">
-      <div class="portrait group relative aspect-square w-72 sm:w-96 md:w-[26rem] lg:w-[22rem] xl:w-[26rem]">
+      <div
+        class="portrait group relative aspect-square w-72 sm:w-96 md:w-[26rem] lg:w-[22rem] xl:w-[26rem]"
+        role="presentation"
+        on:mouseenter={startBob}
+        on:mouseleave={stopBob}
+      >
+      <!-- bobs all three layers together while hovered -->
+      <div class="absolute inset-0" bind:this={bobLayer}>
 
         <!-- SVG shape + image container -->
         <svg
-          class="absolute -inset-8 h-[calc(100%+4rem)] w-[calc(100%+4rem)] sm:-inset-10 sm:h-[calc(100%+5rem)] sm:w-[calc(100%+5rem)] md:-inset-12 md:h-[calc(100%+6rem)] md:w-[calc(100%+6rem)] transition duration-500 ease-out group-hover:-translate-y-2.5"
+          class="absolute -inset-8 h-[calc(100%+4rem)] w-[calc(100%+4rem)] sm:-inset-10 sm:h-[calc(100%+5rem)] sm:w-[calc(100%+5rem)] md:-inset-12 md:h-[calc(100%+6rem)] md:w-[calc(100%+6rem)] transition duration-500 ease-out group-hover:scale-[1.03]"
           viewBox="0 0 500 500"
           preserveAspectRatio="none"
           aria-hidden="true"
@@ -143,7 +171,7 @@
 
         <!-- photo clipped to the exact same shape -->
         <svg
-          class="absolute -inset-8 h-[calc(100%+4rem)] w-[calc(100%+4rem)] sm:-inset-10 sm:h-[calc(100%+5rem)] sm:w-[calc(100%+5rem)] md:-inset-12 md:h-[calc(100%+6rem)] md:w-[calc(100%+6rem)] transition duration-500 ease-out group-hover:-translate-y-2.5"
+          class="absolute -inset-8 h-[calc(100%+4rem)] w-[calc(100%+4rem)] sm:-inset-10 sm:h-[calc(100%+5rem)] sm:w-[calc(100%+5rem)] md:-inset-12 md:h-[calc(100%+6rem)] md:w-[calc(100%+6rem)] transition duration-500 ease-out group-hover:scale-[1.03]"
           viewBox="0 0 500 500"
           preserveAspectRatio="none"
           aria-hidden="true"
@@ -179,7 +207,7 @@
 
         <!-- subtle outline -->
         <svg
-          class="absolute -inset-8 h-[calc(100%+4rem)] w-[calc(100%+4rem)] sm:-inset-10 sm:h-[calc(100%+5rem)] sm:w-[calc(100%+5rem)] md:-inset-12 md:h-[calc(100%+6rem)] md:w-[calc(100%+6rem)] transition duration-500 ease-out group-hover:-translate-y-2.5"
+          class="absolute -inset-8 h-[calc(100%+4rem)] w-[calc(100%+4rem)] sm:-inset-10 sm:h-[calc(100%+5rem)] sm:w-[calc(100%+5rem)] md:-inset-12 md:h-[calc(100%+6rem)] md:w-[calc(100%+6rem)] transition duration-500 ease-out group-hover:scale-[1.03]"
           viewBox="0 0 500 500"
           preserveAspectRatio="none"
           aria-hidden="true"
@@ -198,11 +226,12 @@
             "
             fill="none"
             stroke="#16161a"
-            stroke-width="3"
-            opacity="0.9"
+            class="stroke-[2.25] sm:stroke-[2.5]"
+            vector-effect="non-scaling-stroke"
           />
         </svg>
 
+      </div>
       </div>
     </div>
   </div>
