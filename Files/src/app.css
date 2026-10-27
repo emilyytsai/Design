@@ -721,6 +721,67 @@ transform: scale(0.95);
   to { transform: translateX(-50%); }
 }
 
+/* peeking cat: mounted and slid in/out from +page.svelte; each side flattens the edge it hugs */
+.peek-cat {
+  position: fixed;
+  z-index: 40;
+  background: rgba(24, 24, 27, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+  line-height: 1;
+  cursor: pointer;
+  /* no tap highlight flash or double-tap zoom delay on mobile */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* each tab runs 1rem past its edge (offset by extra padding) so the bouncy
+   overshoot on the way in shows more tab instead of a gap */
+.peek-cat.from-bottom {
+  bottom: -1rem;
+  padding: 0.45rem 0.8rem 1.2rem;
+  border-radius: 1.25rem 1.25rem 0 0;
+  border-bottom: none;
+}
+
+.peek-cat-face {
+  display: inline-block;
+}
+
+/* side cats are turned so their feet face the edge they peek from */
+.peek-cat.from-left .peek-cat-face,
+.peek-cat.from-right .peek-cat-face {
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
+}
+
+.peek-cat.from-left {
+  left: -1rem;
+  padding: 0.8rem 0.45rem 0.8rem 1.2rem;
+  border-radius: 0 1.25rem 1.25rem 0;
+  border-left: none;
+}
+
+.peek-cat.from-right {
+  right: -1rem;
+  padding: 0.8rem 1.2rem 0.8rem 0.45rem;
+  border-radius: 1.25rem 0 0 1.25rem;
+  border-right: none;
+}
+
+/* vertical-rl turns the face clockwise; flip it so the right-side cat faces the other way */
+.peek-cat.from-right .peek-cat-face {
+  transform: rotate(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .peek-cat {
+    display: none;
+  }
+}
+
 .case-step-dot {
   width: 1.6rem;
   height: 1.6rem;

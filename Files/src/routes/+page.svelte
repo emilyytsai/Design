@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { slide } from 'svelte/transition';
   import { fade } from 'svelte/transition';
+  import { backOut, cubicIn } from 'svelte/easing';
   import Hero from '$lib/hero.svelte';
   import ProjectsBento from '$lib/projects-bento.svelte';
   import Contact from '$lib/contact.svelte';
@@ -17,6 +18,46 @@
   function toggleMenu() {
     mobileMenuOpen = !mobileMenuOpen;
   }
+
+  // peeking cat: stays up for 10s (or until hovered), then returns 10s after it leaves
+  type CatSide = 'bottom' | 'left' | 'right';
+  let catUp = false;
+  let catSide: CatSide = 'bottom';
+  let catOffset = 80;
+  let catTimer: ReturnType<typeof setTimeout>;
+
+  // never the same side twice in a row, and a random spot along that edge
+  function pickCatSpot() {
+    const sides = (['bottom', 'left', 'right'] as CatSide[]).filter((s) => s !== catSide);
+    catSide = sides[Math.floor(Math.random() * sides.length)];
+    catOffset = catSide === 'bottom' ? 10 + Math.random() * 70 : 20 + Math.random() * 50;
+  }
+
+  // slides the cat in/out from its edge by its own size, so it starts fully off screen
+  function peek(_node: Element, { side, duration, easing }: { side: CatSide; duration: number; easing: (t: number) => number }) {
+    const axis = side === 'bottom' ? 'Y' : 'X';
+    const sign = side === 'left' ? -1 : 1;
+    return { duration, easing, css: (t: number) => `transform: translate${axis}(${(1 - t) * 110 * sign}%)` };
+  }
+
+  function showCat() {
+    pickCatSpot();
+    catUp = true;
+    catTimer = setTimeout(hideCat, 10000);
+  }
+
+  function hideCat() {
+    if (!catUp) return;
+    catUp = false;
+    clearTimeout(catTimer);
+    catTimer = setTimeout(showCat, 10000);
+  }
+
+  onMount(() => {
+    // wait for the intro screen to finish
+    catTimer = setTimeout(showCat, 3000);
+    return () => clearTimeout(catTimer);
+  });
 
   onMount(() => {
   const observer = new IntersectionObserver(
@@ -175,3 +216,15 @@
   </div>
 
   </main>
+
+<!-- peeking cat, pops out from the bottom, left, or right and ducks back on hover (or tap on touch screens) -->
+{#if catUp}
+  <div
+    class="peek-cat from-{catSide} font-outfit text-2xl text-white"
+    style={catSide === 'bottom' ? `left: clamp(1rem, ${catOffset}%, calc(100% - 10rem))` : `top: clamp(5rem, ${catOffset}%, calc(100% - 12rem))`}
+    aria-hidden="true"
+    on:pointerenter={hideCat}
+    in:peek={{ side: catSide, duration: 600, easing: backOut }}
+    out:peek={{ side: catSide, duration: 450, easing: cubicIn }}
+  ><span class="peek-cat-face">ฅ₍^. .^₎ฅ</span></div>
+{/if}
