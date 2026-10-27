@@ -22,6 +22,7 @@
   // peeking cat: stays up for 10s (or until hovered), then returns 10s after it leaves
   type CatSide = 'bottom' | 'left' | 'right';
   let catUp = false;
+  let catStartled = false;
   let catSide: CatSide = 'bottom';
   let catOffset = 80;
   let catTimer: ReturnType<typeof setTimeout>;
@@ -42,6 +43,7 @@
 
   function showCat() {
     pickCatSpot();
+    catStartled = false;
     catUp = true;
     catTimer = setTimeout(hideCat, 10000);
   }
@@ -51,6 +53,14 @@
     catUp = false;
     clearTimeout(catTimer);
     catTimer = setTimeout(showCat, 10000);
+  }
+
+  // hover/tap: pop a "!!" over the cat, then duck away a beat later so it's seen
+  function startleCat() {
+    if (!catUp || catStartled) return;
+    catStartled = true;
+    clearTimeout(catTimer);
+    catTimer = setTimeout(hideCat, 450);
   }
 
   onMount(() => {
@@ -223,8 +233,11 @@
     class="peek-cat from-{catSide} font-outfit text-2xl text-white"
     style={catSide === 'bottom' ? `left: clamp(1rem, ${catOffset}%, calc(100% - 10rem))` : `top: clamp(5rem, ${catOffset}%, calc(100% - 12rem))`}
     aria-hidden="true"
-    on:pointerenter={hideCat}
+    on:pointerenter={startleCat}
     in:peek={{ side: catSide, duration: 600, easing: backOut }}
     out:peek={{ side: catSide, duration: 450, easing: cubicIn }}
-  ><span class="peek-cat-face">ฅ₍^. .^₎ฅ</span></div>
+  >
+    {#if catStartled}<span class="peek-cat-alert font-fredoka">!!!</span>{/if}
+    <span class="peek-cat-face">ฅ₍^. .^₎ฅ</span>
+  </div>
 {/if}
