@@ -681,13 +681,8 @@ transform: scale(0.95);
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
-  cursor: grab;
   scrollbar-width: thin;
   scrollbar-color: rgba(22, 22, 26, 0.25) transparent;
-}
-
-.marquee-viewport.dragging {
-  cursor: grabbing;
 }
 
 .marquee-viewport::-webkit-scrollbar {

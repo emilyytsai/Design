@@ -23,14 +23,11 @@
       active = null;
     }
 
-    // manual scrolling: pause the auto-scroll while the user touches/drags/scrolls,
+    // manual scrolling: pause the auto-scroll while the user touches/scrolls,
     // then resume it after a short idle period
     let viewport: HTMLDivElement;
     let userInteracting = false;
     let resumeTimer: ReturnType<typeof setTimeout>;
-    let dragging = false;
-    let dragStartX = 0;
-    let dragStartScroll = 0;
 
     function pauseAuto() {
       userInteracting = true;
@@ -56,25 +53,6 @@
       e.preventDefault();
       viewport.scrollLeft += e.deltaY;
       pauseAuto();
-      scheduleResume();
-    }
-
-    function handlePointerDown(e: PointerEvent) {
-      if (e.pointerType !== 'mouse') return;
-      dragging = true;
-      dragStartX = e.clientX;
-      dragStartScroll = viewport.scrollLeft;
-      viewport.setPointerCapture(e.pointerId);
-      pauseAuto();
-    }
-
-    function handlePointerMove(e: PointerEvent) {
-      if (!dragging) return;
-      viewport.scrollLeft = dragStartScroll - (e.clientX - dragStartX);
-    }
-
-    function handlePointerUp() {
-      dragging = false;
       scheduleResume();
     }
   </script>
@@ -103,14 +81,9 @@
 
     <div
       class="marquee-viewport fade-in mt-4 w-full"
-      class:dragging
       bind:this={viewport}
       on:scroll={handleScroll}
       on:wheel={handleWheel}
-      on:pointerdown={handlePointerDown}
-      on:pointermove={handlePointerMove}
-      on:pointerup={handlePointerUp}
-      on:pointerleave={handlePointerUp}
       on:touchstart={pauseAuto}
       on:touchend={scheduleResume}
     >
