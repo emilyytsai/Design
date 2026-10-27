@@ -722,7 +722,8 @@ transform: scale(0.95);
 }
 
 .intro-face-last {
-  /* slightly smaller than the first face; scale keeps it centered on the same point */
+  /* fallback size; +page.svelte measures both faces and scales this one to the first face's width
+     (fonts differ per device, iOS especially). scale keeps it centered on the same point */
   transform: scale(0.92);
   opacity: 0;
   animation: intro-face-last var(--animate-duration, 1s) forwards;
@@ -765,13 +766,26 @@ transform: scale(0.95);
 
 .peek-cat-face {
   display: inline-block;
+  position: relative;
 }
 
-/* side cats are turned so their feet face the edge they peek from */
+.peek-cat-glyphs {
+  display: inline-block;
+}
+
+/* side cats are turned so their feet face the edge they peek from. the face box gets the turned
+   size from +page.svelte, and the glyphs are rotated around its center */
 .peek-cat.from-left .peek-cat-face,
 .peek-cat.from-right .peek-cat-face {
-  writing-mode: vertical-rl;
-  text-orientation: sideways;
+  display: block;
+}
+
+.peek-cat.from-left .peek-cat-glyphs,
+.peek-cat.from-right .peek-cat-glyphs {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
 }
 
 .peek-cat.from-left {
@@ -788,9 +802,9 @@ transform: scale(0.95);
   border-right: none;
 }
 
-/* vertical-rl turns the face clockwise; flip it so the right-side cat faces the other way */
-.peek-cat.from-right .peek-cat-face {
-  transform: rotate(180deg);
+/* the right-side cat turns the other way */
+.peek-cat.from-right .peek-cat-glyphs {
+  transform: translate(-50%, -50%) rotate(-90deg);
 }
 
 /* startled "!!!" popping just above the tab. it stays upright on every side (turned sideways it

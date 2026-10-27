@@ -55,6 +55,33 @@
     catTimer = setTimeout(showCat, 10000);
   }
 
+  // side cats: the face is laid out sideways, then the tab is sized to its turned footprint. measured
+  // instead of using vertical writing-mode, since iOS's fallback fonts for these glyphs overflowed the tab
+  function turnSideways(node: HTMLElement, side: CatSide) {
+    const glyphs = node.firstElementChild as HTMLElement;
+    const fit = () => {
+      if (side === 'bottom') {
+        node.style.width = node.style.height = '';
+        return;
+      }
+      node.style.width = `${glyphs.offsetHeight}px`;
+      node.style.height = `${glyphs.offsetWidth}px`;
+    };
+    fit();
+    document.fonts?.ready.then(fit);
+    return { update(next: CatSide) { side = next; fit(); } };
+  }
+
+  // intro: scale the second face to the first face's width, whatever font the device draws them with
+  function matchFaces(node: HTMLElement) {
+    const [first, last] = node.children as unknown as [HTMLElement, HTMLElement];
+    const fit = () => {
+      if (last.offsetWidth) last.style.transform = `scale(${first.offsetWidth / last.offsetWidth})`;
+    };
+    fit();
+    document.fonts?.ready.then(fit);
+  }
+
   // hover/tap: pop a "!!" over the cat, then duck away a beat later so it's seen
   function startleCat() {
     if (!catUp || catStartled) return;
@@ -124,7 +151,7 @@
 
   <!-- animate.css -->
     <!-- the face swaps while the flash is fully dimmed, so its last flash in reveals the new one -->
-    <h1 class="intro-faces font-outfit text-6xl font-medium text-white relative z-20 animate__animated animate__flash">
+    <h1 class="intro-faces font-outfit text-6xl font-medium text-white relative z-20 animate__animated animate__flash" use:matchFaces>
       <span class="intro-face-first">(˶ᵔ ᵕ ᵔ˶)</span>
       <span class="intro-face-last">(˶<span class="intro-eye">˃</span> ᵕ <span class="intro-eye">˂</span>˶)</span>
     </h1>
@@ -240,6 +267,6 @@
     out:peek={{ side: catSide, duration: 450, easing: cubicIn }}
   >
     {#if catStartled}<span class="peek-cat-alert font-fredoka">!!!</span>{/if}
-    <span class="peek-cat-face">ฅ₍^. .^₎ฅ</span>
+    <span class="peek-cat-face" use:turnSideways={catSide}><span class="peek-cat-glyphs">ฅ₍^. .^₎ฅ</span></span>
   </div>
 {/if}
