@@ -35,9 +35,9 @@
           class="bento-card group aspect-[4/3] text-left sm:aspect-[16/10] lg:aspect-auto {cs.size === 'featured' ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2' : 'lg:col-span-2 lg:row-span-1'}"
           style={`--pq-accent: ${cs.accent}`}
         >
-          <div class="relative h-full w-full">
+          <div class="bento-card-clip relative h-full w-full">
             <img src={cs.image} alt={cs.title} class="bento-card-img absolute inset-0 h-full w-full object-cover" loading="lazy" />
-            <div class="bento-card-scrim absolute inset-0"></div>
+            <div class="bento-card-scrim absolute"></div>
 
             <div class="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-5 sm:p-6">
               <div class="flex flex-wrap gap-1.5">
