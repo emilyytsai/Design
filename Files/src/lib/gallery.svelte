@@ -7,9 +7,18 @@
       36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19,
       18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
     ].map((number) => ({
-      src: `/${number}.${[33, 26].includes(number) ? 'jpeg' : 'png'}`,
+      // small webp for the grid, larger one for the modal (generated from the originals in static/)
+      src: `/gallery/small/${number}.webp`,
+      full: `/gallery/full/${number}.webp`,
       alt: 'My leadership and life'
     }));
+
+    // fade each photo in once it has loaded; checks `complete` so photos cached before hydration still show
+    function fadeOnLoad(img: HTMLImageElement) {
+      const show = () => img.classList.add('is-loaded');
+      if (img.complete && img.naturalWidth) show();
+      else img.addEventListener('load', show, { once: true });
+    }
 
     // masonry: cards cycle through these shapes so the columns stagger
     const aspects = ['aspect-[3/4]', 'aspect-square', 'aspect-[4/3]', 'aspect-[4/5]', 'aspect-[3/4]', 'aspect-[5/4]'];
@@ -27,9 +36,9 @@
       return { items: [...items, ...items], reverse: c % 2 === 1, duration: 70 + ((c * 13) % 30) };
     });
 
-    let active: { src: string; alt: string } | null = null;
+    let active: { full: string; alt: string } | null = null;
 
-    function open(image: { src: string; alt: string }) {
+    function open(image: { full: string; alt: string }) {
       active = image;
     }
 
@@ -131,6 +140,13 @@
     }
 
     onMount(() => {
+      // warm the cache with every thumbnail once the page has settled, so photos are ready before
+      // the gallery scrolls into view instead of popping in one by one
+      const warm = () => galleryImages.forEach(({ src }) => (new Image().src = src));
+      const idle = window.requestIdleCallback ?? ((cb: () => void) => setTimeout(cb, 200));
+      if (document.readyState === 'complete') idle(warm);
+      else window.addEventListener('load', () => idle(warm), { once: true });
+
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       let last = performance.now();
       let frame: number;
@@ -210,7 +226,7 @@
                 <button
                   type="button"
                   on:click={() => open(image)}
-                  class="masonry-item relative mb-3 block w-full overflow-hidden rounded-2xl border border-black/10 sm:mb-4 {image.aspect}"
+                  class="masonry-item relative mb-3 block w-full overflow-hidden rounded-2xl border border-black/10 bg-[#efeff2] sm:mb-4 {image.aspect}"
                 >
                   <img
                     src={image.src}
@@ -218,6 +234,7 @@
                     loading={i < 3 ? 'eager' : 'lazy'}
                     decoding="async"
                     draggable="false"
+                    use:fadeOnLoad
                     class="h-full w-full object-cover"
                   />
                 </button>
@@ -235,5 +252,5 @@
   </section>
 
   {#if active}
-    <PhotoModal src={active.src} alt={active.alt} on:close={close} />
+    <PhotoModal src={active.full} alt={active.alt} on:close={close} />
   {/if}

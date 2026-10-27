@@ -687,6 +687,11 @@ transform: scale(0.95);
   transform: scale(1.06);
 }
 
+/* until a photo has loaded it stays hidden over the card's placeholder tint, then fades in (gallery.svelte) */
+.masonry-viewport .masonry-item img:not(.is-loaded) {
+  opacity: 0;
+}
+
 /* intro screen: both faces sit in one spot and swap at 75% of animate.css's flash, the moment it's
    fully dimmed, so the last flash in shows the second face. runs on the same duration as the flash */
 /* center both faces on the same point; they're different widths, so left-aligned they looked offset */
