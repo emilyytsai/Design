@@ -88,7 +88,7 @@
             {#if section.body}
               <p class="font-outfit text-sm leading-relaxed text-white/80 sm:text-base">{section.body}</p>
             {/if}
-            {#if section.list}
+            {#if section.list?.length}
               <ul class="space-y-1.5">
                 {#each section.list as item}
                   <li class="flex gap-2 font-outfit text-sm leading-relaxed text-white/80 sm:text-base">

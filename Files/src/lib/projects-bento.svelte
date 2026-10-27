@@ -12,6 +12,11 @@
   function close() {
     active = null;
   }
+
+  // an odd number of standard cards leaves the last one alone in its row; stretch it to fill
+  const standardCount = caseStudies.filter((cs) => cs.size === 'standard').length;
+  const lastId = caseStudies[caseStudies.length - 1].id;
+  const isOrphan = (cs: CaseStudy) => standardCount % 2 === 1 && cs.id === lastId && cs.size === 'standard';
 </script>
 
 <section id="projects" class="relative z-20 w-full pb-24 pt-4 sm:pb-32" style="background-color: #0b0b0d;">
@@ -27,12 +32,12 @@
       </p>
     </div>
 
-    <div class="fade-in mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:auto-rows-[240px] lg:grid-cols-4">
+    <div class="fade-in mt-12 grid grid-cols-1 gap-5 sm:grid-flow-row-dense sm:grid-cols-2 lg:auto-rows-[240px] lg:grid-cols-4">
       {#each caseStudies as cs (cs.id)}
         <button
           type="button"
           on:click={() => open(cs)}
-          class="bento-card group aspect-[4/3] text-left sm:aspect-[16/10] lg:aspect-auto {cs.size === 'featured' ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2' : 'lg:col-span-2 lg:row-span-1'}"
+          class="bento-card group aspect-[4/3] text-left sm:aspect-[16/10] lg:aspect-auto {cs.size === 'featured' ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2' : isOrphan(cs) ? 'sm:col-span-2 lg:col-span-4 lg:row-span-1' : 'lg:col-span-2 lg:row-span-1'}"
           style={`--pq-accent: ${cs.accent}`}
         >
           <div class="bento-card-clip relative h-full w-full">

@@ -35,7 +35,8 @@ export const caseStudies: CaseStudy[] = [
 		accent: '#a07fd4',
 		links: [
 			{ label: 'Demo', href: 'https://sonarpath.vercel.app/' },
-			{ label: 'Devpost', href: 'https://devpost.com/software/sonarpath' }
+			{ label: 'Devpost', href: 'https://devpost.com/software/sonarpath' },
+			{ label: 'GitHub', href: 'https://github.com/emilyytsai/SonarPath' }
 		],
 		problem:
 			"Commercial shipping lanes cut straight through critical marine mammal habitats, and captains plotting a route have no way to see the acoustic impact of their path before setting sail. At FullyHacks 2026, our team set out to make that invisible cost visible.",
@@ -57,6 +58,74 @@ export const caseStudies: CaseStudy[] = [
 		]
 	},
 	{
+		id: 'finlife',
+		title: 'FinLife',
+		tagline: 'A "what if" simulator that shows how big money decisions change your financial life',
+		image: '/project-4.png',
+		tags: [
+			'Next.js',
+			'React',
+			'TypeScript',
+			'Tailwind',
+			'Framer Motion',
+			'Recharts',
+			'FastAPI',
+			'DynamoDB'
+		],
+		size: 'featured',
+		accent: '#656fb5',
+		links: [
+			{ label: 'Demo', href: 'https://finlife-dev.vercel.app/' },
+			{ label: 'GitHub', href: 'https://github.com/emilyytsai/FinLife' }
+		],
+		problem:
+			'People make major financial decisions, like buying a house, having a kid or taking on a car loan, without understanding their long-term impact. At LPL Financial’s University Hackathon, my team built an approachable tool that lets anyone explore “what if?” scenarios and visualize their financial future.',
+		research: [
+			'Most people can\'t turn a single decision like "a $350k house at 28" into its effects decades later on cash, debt and retirement savings.',
+			'Users without financial training needed something they could understand at a glance and at any skill level.',
+			'Advisors get little context before a first meeting. A shareable summary of what the client explored makes that meeting more productive.'
+		],
+		iteration: [
+			'Started with a conventional layout: a side insights panel and flat SVG icons. Testing it showed the panel competed with the timeline, so I replaced it with hover insights that appear in context.',
+			'Rebuilt the icons as 3D point-cloud models drawn as LiDAR-style dots that scan in from the bottom up.',
+			'Overhauled the UI into a dark palette with floating, glassmorphism financial cards, and later added a light mode with navy accents.',
+			'Designed a time-travel age slider. Dragging it moves the scene through your life, and any what-if you add sends you straight to the year it happens.'
+		],
+		solution:
+			'FinLife, an app that helps users understand their financial health and explore how major life decisions impact their future. Users can test “what if” scenarios, compare projected financial outcomes, and generate a shareable advisor brief, all in one accessible platform.',
+		impact: [
+			'Owned the entire frontend and product design on a team of four at LPL Financial\'s University Hackathon, from the 3D point-cloud scene to the time-travel slider.'
+		]
+	},
+	{
+		id: 'hug-atelier',
+		title: 'HUG Atelier Lookbook',
+		tagline: 'An interactive digital lookbook designed to transform how customers explore jewelry',
+		image: '/project-3.png',
+		tags: ['Vanilla JavaScript', 'Tailwind CSS v4', 'Node.js'],
+		size: 'standard',
+		accent: '#E8D9C0',
+		links: [{ label: 'Demo', href: 'https://hug-atelier.vercel.app/' }],
+		problem:
+			'HUG Atelier needed a better way to showcase its freshwater pearl jewelry at pop-up events, where printed catalogs and websites fail to capture each piece’s unique beauty. It also had to keep working on weak venue wifi, and the owner had to be able to update it without a developer.',
+		research: [
+			'Pop-up venues often have unreliable Wi-Fi, and unattended tablets risk exposing personal apps, photos, and notifications to clients.',
+			"Editing: the person updating the collection isn't a developer. Smart quotes in TextEdit, or a .js file that runs when double-clicked on Windows, could silently break the whole catalog.",
+			'Messy source data: two supplier sheets disagreed on 13 fields (pearl shape, material) across the 40 live pieces and the jewelry prices came in VND.'
+		],
+		iteration: [
+			'Built a working digital catalog: an auto-rotating hero carousel, a split-screen piece view, hover zoom, and a touch-and-hold navigation for tablets.',
+			'Added tablet gestures one review round at a time: pinch-to-zoom, pull-down-to-close, swiping through photos and then on to the next piece, and a browsable grid of all jewelry pieces.',
+			"A collaborative design review refined the typography, carousel animations, button interactions, and the logo’s dynamic color-changing effect.",
+			'Consolidated the catalog into 40 named pieces, resolved conflicting supplier data, standardized VND-to-USD price conversions and rounding, and verified every price before importing the collection.'
+		],
+		solution:
+			"Launched an interactive, tablet-first digital lookbook used at HUG Atelier pop-ups, transforming pearl browsing into a hands-on shopping experience. A built-in validation tool enables code-free updates to all 40 jewelry pieces.",
+		impact: [
+			"Used live at HUG Atelier's pop-up shop, where clients browsed the collection on a tablet right at the table."
+		]
+	},
+	{
 		id: 'nodebud',
 		title: 'NodeBud',
 		tagline: 'An AI mock-interview platform, designed from wireframe to shipped design system',
@@ -66,7 +135,8 @@ export const caseStudies: CaseStudy[] = [
 		accent: '#4D7BF0',
 		links: [
 			{ label: 'Demo', href: 'https://nodebud.vercel.app/' },
-			{ label: 'Devpost', href: 'https://devpost.com/software/nodebud' }
+			{ label: 'Devpost', href: 'https://devpost.com/software/nodebud' },
+			{ label: 'GitHub', href: 'https://github.com/emilyytsai/NodeBud' }
 		],
 		problem:
 			'Students preparing for technical interviews mostly get practice from friends or paid platforms. There was no free, low-pressure space to rehearse a full interview flow and get structured feedback.',
@@ -118,7 +188,10 @@ export const caseStudies: CaseStudy[] = [
 		tags: ['Unity', 'C#', 'GitHub'],
 		size: 'standard',
 		accent: '#85969E',
-		links: [{ label: 'GitHub', href: 'https://github.com/emilyytsai/CountryLifeCafe' }],
+		links: [
+			{ label: 'Demo Video', href: 'https://www.youtube.com/watch?v=Vb7xCwOkYAs' },
+			{ label: 'GitHub', href: 'https://github.com/emilyytsai/CountryLifeCafe' }
+		],
 		problem:
 			'As lead, the game needed to stay engaging across a wide range of player skill without hand-tuning every level.',
 		research: [
@@ -132,14 +205,38 @@ export const caseStudies: CaseStudy[] = [
 		impact: ['Led the development team from gameplay loop through asset integration.']
 	},
 	{
+		id: 'wave-rave',
+		title: 'Wave Rave',
+		tagline: 'Tuning UI and enemy pacing so encounters feel fair',
+		image: '/game-6.png',
+		tags: ['Unity', 'C#', 'GitHub'],
+		size: 'standard',
+		accent: '#9CE2FF',
+		links: [
+			{ label: 'itch.io', href: 'https://pomjellies.itch.io/wave-rave' },
+			{ label: 'GitHub', href: 'https://github.com/21ttran11/RhythmGame' }
+		],
+		problem: 'The game needed clear UI and a balanced sense of challenge from its enemy encounters.',
+		research: ['Early playthroughs showed spawn patterns that felt either too sparse or overwhelming.'],
+		iteration: [
+			'Implemented UI elements and menus, then iterated on the enemy spawning system to tune pacing.'
+		],
+		solution:
+			'Polished UI/menus paired with a tuned enemy-spawn system that keeps encounters challenging but fair.',
+		impact: ['Shipped and published on itch.io.']
+	},
+	{
 		id: 'out-of-this-world-cafe',
 		title: 'Out of This World Cafe',
-		tagline: 'A hackathon game where UI clarity had to happen fast',
+		tagline: 'A winning Hackathon game where UI clarity had to happen fast',
 		image: '/game-1.png',
 		tags: ['Unity', 'C#', 'GitHub'],
 		size: 'standard',
 		accent: '#e9b4d9',
-		links: [{ label: 'Devpost', href: 'https://devpost.com/software/out-of-this-world-cafe' }],
+		links: [
+			{ label: 'Devpost', href: 'https://devpost.com/software/out-of-this-world-cafe' },
+			{ label: 'GitHub', href: 'https://github.com/emilyytsai/OutOfThisWorldCafe' }
+		],
 		problem:
 			'At FullyHacks 2025, our team had 24 hours to make a game feel polished: mechanics, animation, and UI all had to click together fast.',
 		research: [
@@ -149,25 +246,7 @@ export const caseStudies: CaseStudy[] = [
 			'Guided the process across game mechanics, animations, and UI/UX in tight feedback loops with the team.'
 		],
 		solution:
-			'A polished hackathon game with cohesive UI/UX and gameplay systems, built under serious time pressure.',
+			'A polished Hackathon game with cohesive UI/UX and gameplay systems, built under serious time pressure.',
 		impact: ['Won Best Game at FullyHacks 2025.']
-	},
-	{
-		id: 'wave-rave',
-		title: 'Wave Rave',
-		tagline: 'Tuning UI and enemy pacing so encounters feel fair',
-		image: '/game-6.png',
-		tags: ['Unity', 'C#', 'GitHub'],
-		size: 'standard',
-		accent: '#9CE2FF',
-		links: [{ label: 'itch.io', href: 'https://pomjellies.itch.io/wave-rave' }],
-		problem: 'The game needed clear UI and a balanced sense of challenge from its enemy encounters.',
-		research: ['Early playthroughs showed spawn patterns that felt either too sparse or overwhelming.'],
-		iteration: [
-			'Implemented UI elements and menus, then iterated on the enemy spawning system to tune pacing.'
-		],
-		solution:
-			'Polished UI/menus paired with a tuned enemy-spawn system that keeps encounters challenging but fair.',
-		impact: ['Shipped and published on itch.io.']
 	}
 ];
