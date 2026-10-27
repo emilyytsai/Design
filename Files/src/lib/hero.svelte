@@ -10,10 +10,12 @@
   class="relative z-20 w-full"
   style="background-color: #ffffff;"
 >
-  <div class="mx-auto flex w-full max-w-6xl flex-col-reverse items-center gap-10 px-4 pt-32 pb-20 sm:pt-40 sm:pb-28 lg:flex-row lg:gap-16 lg:pt-44">
+  <!-- lg: columns size to their content and the pair is centered so they sit closer together;
+       xl+: back to the 3/5 + 2/5 split -->
+  <div class="mx-auto flex w-full max-w-6xl flex-col-reverse items-center gap-10 px-4 pt-32 pb-20 sm:pt-40 sm:pb-28 lg:flex-row lg:justify-center lg:gap-10 lg:pt-44 xl:gap-16">
 
     <!-- copy -->
-    <div class="flex w-full flex-col items-center gap-6 text-center lg:w-3/5 lg:items-start lg:text-left">
+    <div class="flex w-full flex-col items-center gap-6 text-center lg:w-auto lg:max-w-[34rem] lg:items-start lg:text-left xl:w-3/5 xl:max-w-none">
 
       <span
         class="role-badge font-outfit text-sm font-semibold tracking-wide text-[#16161a]"
@@ -79,8 +81,9 @@
     </div>
 
     <!-- portrait -->
-    <div class="relative flex w-full shrink-0 items-center justify-center lg:w-2/5">
-      <div class="portrait group relative aspect-square w-72 sm:w-96 md:w-[26rem]">
+    <!-- lg: px-12 matches the blob's -inset-12 overhang so it's counted in the layout and isn't pushed off screen -->
+    <div class="relative flex w-full shrink-0 items-center justify-center lg:w-auto lg:px-12 xl:w-2/5 xl:px-0">
+      <div class="portrait group relative aspect-square w-72 sm:w-96 md:w-[26rem] lg:w-[22rem] xl:w-[26rem]">
 
         <!-- SVG shape + image container -->
         <svg
