@@ -794,7 +794,7 @@ transform: scale(0.95);
 
   .intro-face-last .intro-eye {
     font-weight: 700;
-    -webkit-text-stroke: 0.03em currentColor;
+    -webkit-text-stroke: 0.015em currentColor;
     transform: scale(0.95);
   }
 
