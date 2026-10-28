@@ -19,8 +19,8 @@
   const isOrphan = (cs: CaseStudy) => standardCount % 2 === 1 && cs.id === lastId && cs.size === 'standard';
 
   // phone carousel in a narrow desktop window: a mouse can't swipe, so click-and-drag scrolls it instead.
-  // snapping is off mid-drag so it doesn't fight the pointer, and a real drag swallows the click so it
-  // doesn't open a case study by accident. touch keeps the browser's native swipe
+  // a real drag swallows the click so it doesn't open a case study by accident. touch keeps the
+  // browser's native swipe
   function dragScroll(node: HTMLElement) {
     let startX = 0;
     let startScroll = 0;
@@ -91,12 +91,12 @@
     </div>
 
     <!-- phones: two rows that swipe sideways instead of a long stack, columns sized so the next pair peeks in from the edge -->
-    <div use:dragScroll class="bento-scroller fade-in mt-12 grid gap-5 max-sm:-mx-4 max-sm:auto-cols-[82%] max-sm:grid-flow-col max-sm:grid-rows-2 max-sm:snap-x max-sm:snap-mandatory max-sm:scroll-px-4 max-sm:gap-3 max-sm:overflow-x-auto max-sm:px-4 sm:grid-flow-row-dense sm:grid-cols-2 lg:auto-rows-[240px] lg:grid-cols-4">
+    <div use:dragScroll class="bento-scroller fade-in mt-12 grid gap-5 max-sm:-mx-4 max-sm:auto-cols-[82%] max-sm:grid-flow-col max-sm:grid-rows-2 max-sm:gap-3 max-sm:overflow-x-auto max-sm:px-4 sm:grid-flow-row-dense sm:grid-cols-2 lg:auto-rows-[240px] lg:grid-cols-4">
       {#each caseStudies as cs (cs.id)}
         <button
           type="button"
           on:click={() => open(cs)}
-          class="bento-card group aspect-[4/3] text-left sm:aspect-[16/10] lg:aspect-auto max-sm:snap-start {cs.size === 'featured' ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2' : isOrphan(cs) ? 'sm:col-span-2 lg:col-span-4 lg:row-span-1' : 'lg:col-span-2 lg:row-span-1'}"
+          class="bento-card group aspect-[4/3] text-left sm:aspect-[16/10] lg:aspect-auto {cs.size === 'featured' ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2' : isOrphan(cs) ? 'sm:col-span-2 lg:col-span-4 lg:row-span-1' : 'lg:col-span-2 lg:row-span-1'}"
           style={`--pq-accent: ${cs.accent}`}
         >
           <div class="bento-card-clip relative h-full w-full">

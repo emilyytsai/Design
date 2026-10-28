@@ -595,10 +595,8 @@ transform: scale(0.95);
   }
 }
 
-/* while dragging, let the pointer move the row freely; it snaps to the nearest card again on release */
 .bento-scroller.is-dragging {
   cursor: grabbing;
-  scroll-snap-type: none;
   user-select: none;
 }
 
@@ -784,6 +782,30 @@ transform: scale(0.95);
   transform: scale(0.92);
   opacity: 0;
   animation: intro-face-last var(--animate-duration, 1s) forwards;
+}
+
+/* phones (iOS especially) draw these glyphs with heavier fallback fonts: lighten the parentheses and
+   smile, and give the eyes more size and weight. the eyes still use scale, so they don't change the
+   face's layout width; matchFaces in +page.svelte re-measures and keeps both faces the same size */
+@media (hover: none) and (pointer: coarse) {
+  .intro-face-last {
+    font-weight: 400;
+  }
+
+  .intro-face-last .intro-eye {
+    font-weight: 700;
+    -webkit-text-stroke: 0.03em currentColor;
+    transform: scale(0.95);
+  }
+
+  /* bigger eyes need a little less pull toward the mouth so they don't crowd it */
+  .intro-face-last .intro-eye:first-of-type {
+    margin-right: -0.06em;
+  }
+
+  .intro-face-last .intro-eye:last-of-type {
+    margin-left: -0.06em;
+  }
 }
 
 @keyframes intro-face-first {
