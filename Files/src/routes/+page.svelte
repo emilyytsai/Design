@@ -143,7 +143,7 @@
 <svelte:head>
   <title>Emily Tsai · Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Fredoka:wght@500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Fredoka:wght@500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&display=swap" rel="stylesheet"/>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet"/>
   
 </svelte:head>
@@ -159,7 +159,7 @@
     <!-- the face swaps while the flash is fully dimmed, so its last flash in reveals the new one -->
     <h1 class="intro-faces font-outfit text-6xl font-medium text-white relative z-20 animate__animated animate__flash" use:matchFaces>
       <span class="intro-face-first">(˶ᵔ ᵕ ᵔ˶)</span>
-      <span class="intro-face-last">(˶<span class="intro-eye">˃</span> ᵕ <span class="intro-eye">˂</span>˶)</span>
+      <span class="intro-face-last"><span class="intro-paren">(</span>˶<span class="intro-eye intro-eye-left">˃</span> ᵕ <span class="intro-eye intro-eye-right">˂</span>˶<span class="intro-paren">)</span></span>
     </h1>
 
     <div class="fixed inset-0 z-0 pointer-events-none"></div>

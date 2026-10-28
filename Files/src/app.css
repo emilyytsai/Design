@@ -768,11 +768,11 @@ transform: scale(0.95);
 }
 
 /* pull each eye in toward the mouth */
-.intro-eye:first-of-type {
+.intro-eye-left {
   margin-right: -0.1em;
 }
 
-.intro-eye:last-of-type {
+.intro-eye-right {
   margin-left: -0.1em;
 }
 
@@ -789,21 +789,26 @@ transform: scale(0.95);
    face's layout width; matchFaces in +page.svelte re-measures and keeps both faces the same size */
 @media (hover: none) and (pointer: coarse) {
   .intro-face-last {
-    font-weight: 400;
+    font-weight: 300;
+  }
+
+  /* parentheses keep the heading's weight (font-medium on .intro-faces), matching the first face */
+  .intro-face-last .intro-paren {
+    font-weight: 500;
   }
 
   .intro-face-last .intro-eye {
-    font-weight: 700;
+    font-weight: 600;
     -webkit-text-stroke: 0.008em currentColor;
     transform: scale(0.95);
   }
 
   /* bigger eyes need a little less pull toward the mouth so they don't crowd it */
-  .intro-face-last .intro-eye:first-of-type {
+  .intro-face-last .intro-eye-left {
     margin-right: -0.06em;
   }
 
-  .intro-face-last .intro-eye:last-of-type {
+  .intro-face-last .intro-eye-right {
     margin-left: -0.06em;
   }
 }
