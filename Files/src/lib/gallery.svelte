@@ -59,6 +59,7 @@
       lastY: number;
       lastT: number;
       idleUntil: number; // auto-scroll waits until this time after manual input
+      suppressClick: boolean; // the last press was a drag, or a tap to stop a flick, not a tap on a photo
     };
 
     let tracks: HTMLDivElement[] = [];
@@ -72,7 +73,8 @@
       startY: 0,
       lastY: 0,
       lastT: 0,
-      idleUntil: 0
+      idleUntil: 0,
+      suppressClick: false
     }));
 
     const RESUME_DELAY = 800;
@@ -96,6 +98,8 @@
     function handlePointerDown(e: PointerEvent, c: number) {
       const s = columnState[c];
       s.pointerDown = true;
+      // touching a column that's still gliding from a flick just stops it
+      s.suppressClick = Math.abs(s.velocity) > 50;
       s.startY = s.lastY = e.clientY;
       s.lastT = e.timeStamp;
       s.velocity = 0;
@@ -110,6 +114,7 @@
       if (!s.dragging) {
         if (Math.abs(e.clientY - s.startY) < DRAG_THRESHOLD) return;
         s.dragging = true;
+        s.suppressClick = true;
         (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
       }
       const step = e.clientY - s.lastY;
@@ -132,6 +137,17 @@
       } else {
         s.idleUntil = 0;
       }
+    }
+
+    // pointer capture alone isn't enough on touch screens: phones can still fire a click on the photo
+    // where a swipe started, so a swipe or a flick-stopping tap is caught here before it reaches the photo.
+    // keyboard clicks (detail 0) always go through
+    function handleClick(e: MouseEvent, c: number) {
+      const s = columnState[c];
+      if (!s.suppressClick || e.detail === 0) return;
+      s.suppressClick = false;
+      e.preventDefault();
+      e.stopPropagation();
     }
 
     function handlePointerLeave(e: PointerEvent, c: number) {
@@ -220,6 +236,7 @@
             on:pointerup={(e) => handlePointerUp(e, c)}
             on:pointercancel={(e) => handlePointerUp(e, c)}
             on:pointerleave={(e) => handlePointerLeave(e, c)}
+            on:click|capture={(e) => handleClick(e, c)}
           >
             <div class="masonry-track" bind:this={tracks[c]}>
               {#each column.items as image, i (i)}

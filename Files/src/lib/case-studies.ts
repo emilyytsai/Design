@@ -28,7 +28,7 @@ export const caseStudies: CaseStudy[] = [
 	{
 		id: 'sonarpath',
 		title: 'SonarPath',
-		tagline: 'Real-time sea routing that visualizes underwater noise impact',
+		tagline: 'Hackathon-winning real-time sea routing that visualizes underwater noise impact',
 		image: '/project-1.png',
 		tags: ['React', 'Vite', 'TypeScript', 'ArcGIS Maps SDK', 'Gemini API'],
 		size: 'featured',

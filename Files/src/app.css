@@ -551,14 +551,59 @@ transform: scale(0.95);
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
-.bento-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(255, 255, 255, 0.18);
-  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.6);
+/* mouse only: a tap leaves a sticky :hover on touch screens, and the lift would get clipped by the
+   phone carousel's scroll box */
+@media (hover: hover) and (pointer: fine) {
+  .bento-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.6);
+  }
+
+  .bento-card:hover .bento-card-img {
+    transform: scale(1.06);
+  }
 }
 
-.bento-card:hover .bento-card-img {
-  transform: scale(1.06);
+/* phone carousel of project cards (projects-bento.svelte): swipeable, without a visible scrollbar on touch.
+   with a mouse (a narrowed desktop window) it drags, and keeps a thin scrollbar so it's clear it scrolls */
+.bento-scroller {
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.bento-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) and (max-width: 639px) {
+  .bento-scroller {
+    cursor: grab;
+    padding-bottom: 0.75rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  }
+
+  .bento-scroller::-webkit-scrollbar {
+    display: block;
+    height: 6px;
+  }
+
+  .bento-scroller::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 99px;
+  }
+}
+
+/* while dragging, let the pointer move the row freely; it snaps to the nearest card again on release */
+.bento-scroller.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
+.bento-scroller.is-dragging .bento-card {
+  pointer-events: none;
 }
 
 .bento-card-img {
@@ -671,20 +716,27 @@ transform: scale(0.95);
   -webkit-user-select: none;
 }
 
-/* hovering the gallery dims every photo except the one under the cursor */
+/* hovering the gallery dims every photo except the one under the cursor. mouse only: on touch screens
+   taps leave a sticky :hover behind, which made the photos flicker and dim as you swiped */
+.masonry-item {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .masonry-item img {
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, filter 0.35s ease;
 }
 
-.masonry-viewport:hover .masonry-item img {
-  opacity: 0.55;
-  filter: saturate(0.8);
-}
+@media (hover: hover) and (pointer: fine) {
+  .masonry-viewport:hover .masonry-item img {
+    opacity: 0.55;
+    filter: saturate(0.8);
+  }
 
-.masonry-viewport:hover .masonry-item:hover img {
-  opacity: 1;
-  filter: none;
-  transform: scale(1.06);
+  .masonry-viewport:hover .masonry-item:hover img {
+    opacity: 1;
+    filter: none;
+    transform: scale(1.06);
+  }
 }
 
 /* until a photo has loaded it stays hidden over the card's placeholder tint, then fades in (gallery.svelte) */
