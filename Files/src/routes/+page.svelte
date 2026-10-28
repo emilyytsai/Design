@@ -2,7 +2,7 @@
   import { onMount } from 'svelte';
   import { slide } from 'svelte/transition';
   import { fade } from 'svelte/transition';
-  import { backOut, cubicIn } from 'svelte/easing';
+  // import { backOut, cubicIn } from 'svelte/easing'; // peeking cat (disabled)
   import Hero from '$lib/hero.svelte';
   import ProjectsBento from '$lib/projects-bento.svelte';
   import Contact from '$lib/contact.svelte';
@@ -18,6 +18,9 @@
   function toggleMenu() {
     mobileMenuOpen = !mobileMenuOpen;
   }
+
+  /* peeking cat: disabled for now (too distracting). to bring it back, uncomment this block, the one
+     after matchFaces, the easing import above, and the markup at the bottom of the file
 
   // peeking cat: stays up for 10s (or until hovered), then returns 10s after it leaves
   type CatSide = 'bottom' | 'left' | 'right';
@@ -71,6 +74,7 @@
     document.fonts?.ready.then(fit);
     return { update(next: CatSide) { side = next; fit(); } };
   }
+  */
 
   // intro: scale the second face to the first face's width, whatever font the device draws them with
   function matchFaces(node: HTMLElement) {
@@ -82,6 +86,7 @@
     document.fonts?.ready.then(fit);
   }
 
+  /* peeking cat (disabled)
   // hover/tap: pop a "!!" over the cat, then duck away a beat later so it's seen
   function startleCat() {
     if (!catUp || catStartled) return;
@@ -95,6 +100,7 @@
     catTimer = setTimeout(showCat, 3000);
     return () => clearTimeout(catTimer);
   });
+  */
 
   onMount(() => {
   const observer = new IntersectionObserver(
@@ -257,6 +263,7 @@
   </main>
 
 <!-- peeking cat, pops out from the bottom, left, or right and ducks back on hover (or tap on touch screens) -->
+<!-- disabled for now, uncomment along with the script blocks to bring it back
 {#if catUp}
   <div
     class="peek-cat from-{catSide} font-outfit text-2xl text-white"
@@ -270,3 +277,4 @@
     <span class="peek-cat-face" use:turnSideways={catSide}><span class="peek-cat-glyphs">ฅ₍^. .^₎ฅ</span></span>
   </div>
 {/if}
+-->
