@@ -76,13 +76,11 @@
   }
   */
 
-  // intro: scale the second face to the first face's width, whatever font the device draws them with.
-  // --intro-face-boost (app.css) nudges it a bit past that where its lighter glyphs read smaller
+  // intro: scale the second face to the first face's width, whatever font the device draws them with
   function matchFaces(node: HTMLElement) {
     const [first, last] = node.children as unknown as [HTMLElement, HTMLElement];
     const fit = () => {
-      const boost = parseFloat(getComputedStyle(last).getPropertyValue('--intro-face-boost')) || 1;
-      if (last.offsetWidth) last.style.transform = `scale(${(first.offsetWidth / last.offsetWidth) * boost})`;
+      if (last.offsetWidth) last.style.transform = `scale(${first.offsetWidth / last.offsetWidth})`;
     };
     fit();
     document.fonts?.ready.then(fit);
@@ -161,7 +159,7 @@
     <!-- the face swaps while the flash is fully dimmed, so its last flash in reveals the new one -->
     <h1 class="intro-faces font-outfit text-6xl font-medium text-white relative z-20 animate__animated animate__flash" use:matchFaces>
       <span class="intro-face-first">(˶ᵔ ᵕ ᵔ˶)</span>
-      <span class="intro-face-last"><span class="intro-paren">(</span>˶<span class="intro-eye intro-eye-left">˃</span> ᵕ <span class="intro-eye intro-eye-right">˂</span>˶<span class="intro-paren">)</span></span>
+      <span class="intro-face-last"><span class="intro-paren">(</span><span class="intro-face-inner">˶<span class="intro-eye intro-eye-left">˃</span> ᵕ <span class="intro-eye intro-eye-right">˂</span>˶</span><span class="intro-paren">)</span></span>
     </h1>
 
     <div class="fixed inset-0 z-0 pointer-events-none"></div>

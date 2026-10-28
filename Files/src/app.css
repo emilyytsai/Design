@@ -790,8 +790,13 @@ transform: scale(0.95);
 @media (hover: none) and (pointer: coarse) {
   .intro-face-last {
     font-weight: 300;
-    /* the lighter face reads a touch small at an exact width match, so matchFaces scales it up a little */
-    --intro-face-boost: 1.05;
+  }
+
+  /* the lighter face reads a touch small, so grow everything between the parentheses. scale doesn't
+     change the layout width, so the parentheses stay exactly where the first face's are */
+  .intro-face-inner {
+    display: inline-block;
+    transform: scale(1.08);
   }
 
   /* parentheses keep the heading's weight (font-medium on .intro-faces), matching the first face */
