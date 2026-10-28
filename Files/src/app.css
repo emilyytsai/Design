@@ -790,6 +790,8 @@ transform: scale(0.95);
 @media (hover: none) and (pointer: coarse) {
   .intro-face-last {
     font-weight: 300;
+    /* the lighter face reads a touch small at an exact width match, so matchFaces scales it up a little */
+    --intro-face-boost: 1.05;
   }
 
   /* parentheses keep the heading's weight (font-medium on .intro-faces), matching the first face */

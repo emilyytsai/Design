@@ -76,11 +76,13 @@
   }
   */
 
-  // intro: scale the second face to the first face's width, whatever font the device draws them with
+  // intro: scale the second face to the first face's width, whatever font the device draws them with.
+  // --intro-face-boost (app.css) nudges it a bit past that where its lighter glyphs read smaller
   function matchFaces(node: HTMLElement) {
     const [first, last] = node.children as unknown as [HTMLElement, HTMLElement];
     const fit = () => {
-      if (last.offsetWidth) last.style.transform = `scale(${first.offsetWidth / last.offsetWidth})`;
+      const boost = parseFloat(getComputedStyle(last).getPropertyValue('--intro-face-boost')) || 1;
+      if (last.offsetWidth) last.style.transform = `scale(${(first.offsetWidth / last.offsetWidth) * boost})`;
     };
     fit();
     document.fonts?.ready.then(fit);
