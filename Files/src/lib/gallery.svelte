@@ -1,6 +1,6 @@
 <!-- gallery -->
   <script lang="ts">
-    import { onMount } from 'svelte';
+    import { onMount, tick } from 'svelte';
     import PhotoModal from './photo-modal.svelte';
 
     const galleryImages = [
@@ -36,14 +36,40 @@
       return { items: [...items, ...items], reverse: c % 2 === 1, duration: 70 + ((c * 13) % 30) };
     });
 
-    let active: { full: string; alt: string } | null = null;
+    type Photo = { src: string; full: string; alt: string };
+    let active: Photo | null = null;
+    let activeEl: HTMLElement | null = null;
+    // the other tiles hop back while a photo is open, and bounce back in when it closes
+    let expanded = false;
+    let returning = false;
+    let returnTimer: ReturnType<typeof setTimeout>;
 
-    function open(image: { full: string; alt: string }) {
+    function open(image: Photo, e: MouseEvent) {
+      if (active) return;
+      activeEl = e.currentTarget as HTMLElement;
+      // its stand-in is the expanding layer. set by hand: each photo is in its column twice,
+      // so only this exact copy should hide
+      activeEl.classList.add('is-source');
       active = image;
+      returning = false;
+      expanded = true;
     }
 
-    function close() {
+    function closeStart() {
+      expanded = false;
+      returning = true;
+      clearTimeout(returnTimer);
+      returnTimer = setTimeout(() => (returning = false), 1200);
+    }
+
+    async function closed() {
+      const el = activeEl;
       active = null;
+      activeEl = null;
+      await tick();
+      // the layer has landed exactly on the tile: swap them in the same frame
+      el?.classList.remove('is-source');
+      el?.focus({ preventScroll: true });
     }
 
     // each column's position is driven from JS (not a CSS animation) so auto-scroll, the mouse wheel,
@@ -167,7 +193,7 @@
       let last = performance.now();
       let frame: number;
 
-      function tick(now: number) {
+      function step(now: number) {
         // clamp so a backgrounded tab doesn't jump on return
         const dt = Math.min(now - last, 50) / 1000;
         last = now;
@@ -179,7 +205,8 @@
           const half = el.scrollHeight / 2;
           if (!half) return;
 
-          if (!s.dragging) {
+          // hold every column still while a photo is open, so its tile is right where it left
+          if (!s.dragging && !active) {
             if (Math.abs(s.velocity) > 5) {
               // flick glide, losing ~95% of its speed per second
               s.offset += s.velocity * dt;
@@ -196,10 +223,10 @@
           el.style.transform = `translate3d(0, ${-s.offset}px, 0)`;
         });
 
-        frame = requestAnimationFrame(tick);
+        frame = requestAnimationFrame(step);
       }
 
-      frame = requestAnimationFrame(tick);
+      frame = requestAnimationFrame(step);
       return () => cancelAnimationFrame(frame);
     });
   </script>
@@ -223,11 +250,12 @@
       </p>
     </div>
 
-    <div class="masonry-viewport fade-in mx-auto mt-4 h-[28rem] w-full max-w-[110rem] px-4 sm:h-[34rem] sm:px-6 lg:h-[38rem] lg:px-10">
+    <div class:is-expanded={expanded} class:is-returning={returning} class="masonry-viewport fade-in mx-auto mt-4 h-[28rem] w-full max-w-[110rem] px-4 sm:h-[34rem] sm:px-6 lg:h-[38rem] lg:px-10">
       <div class="flex h-full gap-3 sm:gap-4">
         {#each columns as column, c (`${columnCount}-${c}`)}
           <div
             class="masonry-column min-w-0 flex-1"
+            style={`--c: ${c}`}
             role="presentation"
             on:wheel|nonpassive={(e) => handleWheel(e, c)}
             on:pointerenter={(e) => handlePointerEnter(e, c)}
@@ -242,7 +270,7 @@
               {#each column.items as image, i (i)}
                 <button
                   type="button"
-                  on:click={() => open(image)}
+                  on:click={(e) => open(image, e)}
                   class="masonry-item relative mb-3 block w-full overflow-hidden rounded-2xl border border-black/10 bg-[#efeff2] sm:mb-4 {image.aspect}"
                 >
                   <img
@@ -269,5 +297,7 @@
   </section>
 
   {#if active}
-    <PhotoModal src={active.full} alt={active.alt} on:close={close} />
+    {#if activeEl}
+      <PhotoModal src={active.full} thumb={active.src} alt={active.alt} sourceEl={activeEl} on:closestart={closeStart} on:closed={closed} />
+    {/if}
   {/if}

@@ -631,31 +631,70 @@ transform: scale(0.95);
   color: rgba(255, 255, 255, 0.82);
 }
 
-/* photo modal (photo-modal.svelte) */
-.case-modal-backdrop {
+/* photo: the clicked gallery tile springs out into a floating panel (photo-modal.svelte) */
+.ph-backdrop {
   position: fixed;
   inset: 0;
   z-index: 60;
   background: rgba(8, 8, 10, 0.72);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
 }
 
-.case-modal {
-  background: #131316;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1.5rem;
-  box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8);
+.ph-backdrop.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  animation: cs-backdrop-in 0.4s ease;
 }
 
-.case-modal::-webkit-scrollbar {
-  width: 8px;
+.ph-shell {
+  position: fixed;
+  z-index: 61;
+  overflow: hidden;
+  background: #efeff2;
+  box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.7);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
-.case-modal::-webkit-scrollbar-track {
-  background: transparent;
+
+.ph-full {
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
-.case-modal::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 99px;
+
+.ph-full.is-loaded {
+  opacity: 1;
+}
+
+/* while a photo is open the other tiles hop back, column by column... */
+.masonry-item {
+  transition: transform 0.35s ease;
+}
+
+.masonry-viewport.is-expanded .masonry-item:not(.is-source) {
+  transform: scale(0.88);
+  transition: transform 0.4s cubic-bezier(0.34, 1.7, 0.64, 1);
+  transition-delay: calc(var(--c, 0) * 0.04s);
+}
+
+/* ...and boing back into place when it closes */
+.masonry-viewport.is-returning .masonry-item:not(.is-source) {
+  transition: transform 0.7s cubic-bezier(0.34, 1.9, 0.5, 1);
+  transition-delay: calc(var(--c, 0) * 0.04s);
+}
+
+/* the clicked tile is stood in for by the expanding layer */
+.masonry-item.is-source {
+  opacity: 0;
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .masonry-viewport.is-expanded .masonry-item:not(.is-source),
+  .masonry-viewport.is-returning .masonry-item:not(.is-source) {
+    transform: none;
+  }
 }
 
 /* case study: the clicked bento card expands into a full-screen page (case-study-modal.svelte) */

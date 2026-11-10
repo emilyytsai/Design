@@ -3,6 +3,7 @@
 <script lang="ts">
   import { onMount, onDestroy, createEventDispatcher, tick } from 'svelte';
   import type { CaseStudy } from './case-studies';
+  import { EASE_OUT, SPRING, POP, GLIDE, prefersReducedMotion, rectStyle, frame, viewportBox, stop, settle, squish } from './expand-motion';
 
   export let cs: CaseStudy;
   // the bento card this opened from: where the expansion starts and where closing lands
@@ -15,74 +16,26 @@
   let hero: HTMLDivElement;
   let closeBtn: HTMLButtonElement;
 
-  // expanding: card growing to full screen. settling: header shrinking to reveal the body. open: done.
-  let phase: 'expanding' | 'settling' | 'open' | 'closing' = 'expanding';
+  let phase: 'expanding' | 'open' | 'closing' = 'expanding';
   let closing = false;
+  let showClose = false;
   let backdropOn = true;
 
-  const reduced = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduced = prefersReducedMotion();
   const ms = (n: number) => (reduced ? 0 : n);
-  const EASE_OUT = 'cubic-bezier(0.16, 1, 0.3, 1)';
-  // springy: overshoots a little and settles back, for the playful bounce
-  const SPRING = 'cubic-bezier(0.34, 1.4, 0.64, 1)';
-  const POP = 'cubic-bezier(0.34, 1.7, 0.64, 1)';
-  // smooth glide with no overshoot, for closing in one continuous motion
-  const GLIDE = 'cubic-bezier(0.32, 0.72, 0, 1)';
   const RADIUS = '1.5rem';
   const PANEL_RADIUS = '2rem';
   const PANEL_MAX = 1080;
 
   const start = sourceEl.getBoundingClientRect();
-  const rectStyle = (r: { top: number; left: number; width: number; height: number }) =>
-    `top:${r.top}px;left:${r.left}px;width:${r.width}px;height:${r.height}px;`;
 
   // the open panel: a big rounded card floating over the dimmed page, not edge to edge.
   // keep in sync with .cs-shell.is-docked in app.css, which takes over once it's open
   const panel = () => {
-    const vw = document.documentElement.clientWidth;
-    const vh = document.documentElement.clientHeight;
-    const m = vw < 640 ? 12 : 28;
+    const { vw, vh, margin: m } = viewportBox();
     const left = Math.max(m, (vw - PANEL_MAX) / 2);
     return { top: m, left, width: vw - left * 2, height: vh - m * 2 };
   };
-
-  const frame = (r: { top: number; left: number; width: number; height: number }, radius: string) => ({
-    top: `${r.top}px`,
-    left: `${r.left}px`,
-    width: `${r.width}px`,
-    height: `${r.height}px`,
-    borderRadius: radius
-  });
-
-  // freeze anything still animating on el where it is right now, so the next animation picks up
-  // from there (closing mid-open reverses smoothly instead of jumping)
-  function stop(el: HTMLElement) {
-    for (const a of el.getAnimations()) {
-      if (!(a instanceof CSSAnimation) && !(a instanceof CSSTransition)) {
-        try {
-          a.commitStyles();
-        } catch {}
-        a.cancel();
-      }
-    }
-  }
-
-  // animate el from wherever it is now to `to`, then leave it there as inline style.
-  // resolves false if a later animation took over the element first
-  function settle(el: HTMLElement, to: Keyframe, options: KeyframeAnimationOptions): Promise<boolean> {
-    stop(el);
-    const a = el.animate([to], { fill: 'forwards', ...options });
-    return a.finished.then(
-      () => {
-        try {
-          a.commitStyles();
-        } catch {}
-        a.cancel();
-        return true;
-      },
-      () => false
-    );
-  }
 
   function fadeEls(selector: string, to: 0 | 1, duration: number, delay = 0, y = 0) {
     const els = Array.from(shell.querySelectorAll<HTMLElement>(selector));
@@ -118,43 +71,33 @@
     requestAnimationFrame(step);
   }
 
-  // animate the header between full-card height and settled header height
-  function resizeHero(settled: boolean, duration: number, easing: string) {
-    stop(hero);
-    const from = hero.offsetHeight;
-    hero.style.height = '';
-    hero.classList.toggle('is-settled', settled);
-    const to = hero.offsetHeight;
-    hero.style.height = `${from}px`;
-    // once there, hand the height back to css (it's responsive)
-    return settle(hero, { height: `${to}px` }, { duration: ms(duration), easing }).then((ok) => {
-      if (ok) hero.style.height = '';
-    });
-  }
-
+  // one continuous motion: the card springs open into the panel while, at the same time, its image
+  // eases to header height and the write-up fades up underneath into the space the panel opens up
   async function expand() {
-    // 1. the card grows from its grid spot to fill the viewport; its small label fades as it goes
-    fadeEls('[data-card-text]', 0, 140);
-    const grown = settle(shell, frame(panel(), PANEL_RADIUS), { duration: ms(520), easing: SPRING });
+    const DURATION = ms(640);
+
+    // header: from the card's height straight to its settled height, on the same curve as the panel
+    hero.classList.add('is-settled');
+    const headerHeight = hero.offsetHeight;
+    hero.style.height = `${start.height}px`;
+
+    const grown = settle(shell, frame(panel(), PANEL_RADIUS), { duration: DURATION, easing: SPRING });
+    settle(hero, { height: `${headerHeight}px` }, { duration: DURATION, easing: SPRING });
     // a little squish as it's pressed, then it springs open
-    if (!reduced) {
-      shell.animate(
-        [{ transform: 'scale(1)' }, { transform: 'scale(0.94)', offset: 0.18 }, { transform: 'scale(1)' }],
-        { duration: 360, easing: 'ease-out', composite: 'add' }
-      );
-    }
-    await grown;
-    if (closing) return;
-    // hand the size over to css so window resizes keep the panel in place
+    if (!reduced) squish(shell);
+
+    fadeEls('[data-card-text]', 0, 140);
+    fadeEls('[data-hero-text]', 1, 420, DURATION * 0.3, 18);
+    fadeEls('[data-body]', 1, 480, DURATION * 0.4, 36);
+    // the close button arrives as the panel lands
+    setTimeout(() => !closing && (showClose = true), DURATION * 0.6);
+
+    if (!(await grown) || closing) return;
+    // hand sizes back to css so window resizes keep the panel and header in place
     Object.assign(shell.style, { top: '', left: '', width: '', height: '', borderRadius: '' });
     shell.classList.add('is-docked');
-
-    // 2. the image settles into a header and the write-up pops up underneath
-    phase = 'settling';
-    fadeEls('[data-hero-text]', 1, 420, 40, 18);
-    fadeEls('[data-body]', 1, 480, 80, 36);
-    await resizeHero(true, 480, SPRING);
-    if (closing) return;
+    stop(hero);
+    hero.style.height = '';
     phase = 'open';
     closeBtn?.focus({ preventScroll: true });
   }
@@ -306,8 +249,9 @@
     on:click={close}
     aria-label="Close case study"
     class="cs-close absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full border border-white/25 bg-black/50 text-xl text-white backdrop-blur-md transition hover:border-white/60 sm:right-6 sm:top-6"
-    class:is-visible={phase === 'settling' || phase === 'open'}
+    class:is-visible={showClose && phase !== 'closing'}
   >
-    &times;
+    <!-- drawn x instead of the &times; glyph, which sits low in the circle because of the font -->
+    <svg viewBox="0 0 14 14" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" /></svg>
   </button>
 </div>
