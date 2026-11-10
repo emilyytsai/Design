@@ -548,7 +548,7 @@ transform: scale(0.95);
   overflow: hidden;
   background: #17171b;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, opacity 0.45s ease;
 }
 
 /* mouse only: a tap leaves a sticky :hover on touch screens, and the lift would get clipped by the
@@ -631,7 +631,7 @@ transform: scale(0.95);
   color: rgba(255, 255, 255, 0.82);
 }
 
-/* case study modal */
+/* photo modal (photo-modal.svelte) */
 .case-modal-backdrop {
   position: fixed;
   inset: 0;
@@ -656,6 +656,142 @@ transform: scale(0.95);
 .case-modal::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 99px;
+}
+
+/* case study: the clicked bento card expands into a full-screen page (case-study-modal.svelte) */
+.cs-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(8, 8, 10, 0.55);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.cs-backdrop.is-visible {
+  opacity: 1;
+  animation: cs-backdrop-in 0.5s ease;
+}
+
+@keyframes cs-backdrop-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.cs-shell {
+  position: fixed;
+  z-index: 61;
+  overflow: hidden;
+  background: #131316;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.85);
+  /* keep the rounded corners clipped cleanly while the size animates */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
+/* the open case study floats as a big rounded panel; keep in sync with panel() in case-study-modal.svelte */
+.cs-shell.is-docked {
+  top: 28px;
+  bottom: 28px;
+  left: max(28px, calc((100% - 1080px) / 2));
+  right: max(28px, calc((100% - 1080px) / 2));
+  border-radius: 2rem;
+}
+
+@media (max-width: 639px) {
+  .cs-shell.is-docked {
+    top: 12px;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+  }
+}
+
+.cs-scroll {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.cs-scroll.is-locked {
+  overflow: hidden;
+}
+
+.cs-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.cs-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.cs-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 99px;
+}
+
+/* the header starts out as the whole card, then settles to a header height */
+.cs-hero {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cs-hero.is-settled {
+  height: min(58vh, 540px);
+}
+
+@media (max-width: 639px) {
+  .cs-hero.is-settled {
+    height: 44vh;
+  }
+}
+
+.cs-reveal {
+  opacity: 0;
+}
+
+.cs-close {
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, border-color 0.2s ease;
+}
+
+.cs-close.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* while a case study is open, the rest of the grid hops back one card after another,
+   peeking out dimmed around the panel */
+.bento-scroller.is-expanded .bento-card:not(.is-source) {
+  opacity: 0.35;
+  transform: scale(0.86);
+  transition: transform 0.4s cubic-bezier(0.34, 1.7, 0.64, 1), opacity 0.3s ease;
+  transition-delay: calc(0.03s + var(--i, 0) * 0.03s);
+}
+
+/* ...and boing back into place when it closes */
+.bento-scroller.is-returning .bento-card:not(.is-source) {
+  transition: transform 0.7s cubic-bezier(0.34, 1.9, 0.5, 1), opacity 0.35s ease;
+  transition-delay: calc(var(--i, 0) * 0.05s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bento-scroller.is-expanded .bento-card:not(.is-source),
+  .bento-scroller.is-returning .bento-card:not(.is-source) {
+    transition: opacity 0.2s ease;
+    transform: none;
+  }
+}
+
+/* the clicked card is stood in for by the expanding layer */
+.bento-card.is-source {
+  opacity: 0;
+  transition: none;
 }
 
 .case-section-label {
