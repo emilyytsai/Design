@@ -8,12 +8,12 @@
   import Contact from '$lib/contact.svelte';
   import Gallery from '$lib/gallery.svelte';
 
-  let showIntro = true;
+  // let showIntro = true;
   let mobileMenuOpen = false;
 
-  setTimeout(() => {
-    showIntro = false;
-  }, 2000);
+  // setTimeout(() => {
+  //   showIntro = false;
+  // }, 2000);
 
   function toggleMenu() {
     mobileMenuOpen = !mobileMenuOpen;
@@ -77,14 +77,14 @@
   */
 
   // intro: scale the second face to the first face's width, whatever font the device draws them with
-  function matchFaces(node: HTMLElement) {
-    const [first, last] = node.children as unknown as [HTMLElement, HTMLElement];
-    const fit = () => {
-      if (last.offsetWidth) last.style.transform = `scale(${first.offsetWidth / last.offsetWidth})`;
-    };
-    fit();
-    document.fonts?.ready.then(fit);
-  }
+  //function matchFaces(node: HTMLElement) {
+    //const [first, last] = node.children as unknown as [HTMLElement, HTMLElement];
+    //const fit = () => {
+      //if (last.offsetWidth) last.style.transform = `scale(${first.offsetWidth / last.offsetWidth})`;
+    //};
+    //fit();
+    //document.fonts?.ready.then(fit);
+  //}
 
   /* peeking cat (disabled)
   // hover/tap: pop a "!!" over the cat, then duck away a beat later so it's seen
@@ -149,27 +149,26 @@
 </svelte:head>
 
 <!-- intro screen-->
-{#if showIntro}
+<!-- {#if showIntro}
   <section
     class="fixed inset-0 bg-zinc-900 flex items-center justify-center z-50 overflow-hidden"
     out:fade={{ duration: 500 }}
-  >
+  > -->
 
   <!-- animate.css -->
     <!-- the face swaps while the flash is fully dimmed, so its last flash in reveals the new one -->
-    <h1 class="intro-faces font-outfit text-6xl font-medium text-white relative z-20 animate__animated animate__flash" use:matchFaces>
+    <!-- <h1 class="intro-faces font-outfit text-6xl font-medium text-white relative z-20 animate__animated animate__flash" use:matchFaces>
       <span class="intro-face-first">(˶ᵔ ᵕ ᵔ˶)</span>
       <span class="intro-face-last"><span class="intro-paren">(</span><span class="intro-face-inner">˶<span class="intro-eye intro-eye-left">˃</span> ᵕ <span class="intro-eye intro-eye-right">˂</span>˶</span><span class="intro-paren">)</span></span>
     </h1>
 
     <div class="fixed inset-0 z-0 pointer-events-none"></div>
   </section>
-{/if}
+{/if} -->
 
 <!-- portfolio -->
 <main
   class="relative min-h-screen text-white flex flex-col items-center"
-  class:invisible={showIntro}
 >
 
 <!-- navbar (desktop) -->

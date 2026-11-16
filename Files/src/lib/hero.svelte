@@ -43,7 +43,7 @@
 
       <span class="role-badge font-outfit text-base sm:text-lg font-semibold tracking-wide text-[#16161a]">
         <span class="role-badge-label">Product Designer & UI/UX Designer</span>
-        <span class="role-badge-heart" aria-hidden="true">\ (˶ᵔ ᵕ ᵔ˶) / ♡</span>
+        <span class="role-badge-heart" aria-hidden="true">(˶ᵔ ᵕ ᵔ˶) ♡</span>
       </span>
 
       <h1 class="font-fredoka text-4xl font-bold leading-[1.05] text-[#16161a] sm:text-5xl md:text-6xl">
