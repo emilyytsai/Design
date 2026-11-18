@@ -202,6 +202,8 @@
   height="500"
   preserveAspectRatio="xMidYMid slice"
   clip-path="url(#photoClip)"
+  loading="eager"
+  decoding="sync"
 />
         </svg>
 
