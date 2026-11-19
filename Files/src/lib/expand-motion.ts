@@ -32,16 +32,32 @@ export function viewportBox() {
 
 // freeze anything still animating on el where it is right now, so the next animation picks up
 // from there (closing mid-open reverses smoothly instead of jumping)
+// (reads the live computed values and writes them inline by hand instead of commitStyles(), which
+// mobile Safari doesn't apply reliably: cancel() then dropped the element back to its css start state)
 export function stop(el: HTMLElement) {
-  for (const a of el.getAnimations()) {
-    if (!(a instanceof CSSAnimation) && !(a instanceof CSSTransition)) {
-      try {
-        a.commitStyles();
-      } catch {}
-      a.cancel();
+  const anims = el
+    .getAnimations()
+    .filter((a) => !(a instanceof CSSAnimation) && !(a instanceof CSSTransition));
+  if (!anims.length) return;
+
+  const props = new Set<string>();
+  for (const a of anims) {
+    const effect = a.effect as KeyframeEffect | null;
+    // additive layers (squish) just drop away; freezing them would bake the squish in
+    if (!effect || effect.composite !== 'replace') continue;
+    for (const k of effect.getKeyframes()) {
+      for (const p of Object.keys(k)) if (!META_KEYS.has(p)) props.add(p);
     }
   }
+  const cs = getComputedStyle(el);
+  const frozen: Record<string, string> = {};
+  for (const p of props) frozen[p] = cs[p as keyof CSSStyleDeclaration] as string;
+
+  for (const a of anims) a.cancel();
+  Object.assign(el.style, frozen);
 }
+
+const META_KEYS = new Set(['offset', 'computedOffset', 'easing', 'composite']);
 
 // animate el from wherever it is now to `to`, then leave it there as inline style.
 // resolves false if a later animation took over the element first
@@ -50,9 +66,10 @@ export function settle(el: HTMLElement, to: Keyframe, options: KeyframeAnimation
   const a = el.animate([to], { fill: 'forwards', ...options });
   return a.finished.then(
     () => {
-      try {
-        a.commitStyles();
-      } catch {}
+      // write the end state inline ourselves, then drop the animation
+      for (const [p, v] of Object.entries(to)) {
+        if (!META_KEYS.has(p) && v != null) (el.style as unknown as Record<string, string>)[p] = String(v);
+      }
       a.cancel();
       return true;
     },
