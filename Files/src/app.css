@@ -143,7 +143,7 @@ transform: scale(0.95);
   bottom: -2px;
   left: 50%; right: 50%;
   height: 2px;
-  background: #98aafa;
+  background: #6476d4;
   transition: left 0.3s ease, right 0.3s ease;
 }
 .underline-center:hover::after {
@@ -157,7 +157,7 @@ transform: scale(0.95);
   transition: color 0.2s ease, transform 0.2s ease;
 }
 .nav-link:hover {
-  color: #98aafa;
+  color: #6476d4;
   transform: translateY(-2px);
 }
 
@@ -290,22 +290,22 @@ transform: scale(0.95);
   font-weight: 700;
   font-size: 1rem;
   border-radius: 0;
-  background: #fce4ee;
-  color: #16161a;
-  border: 2.5px solid #16161a;
-  box-shadow: 5px 5px 0 0 #e3cdd6;
+  background: #3a2e40;
+  color: #efedec;
+  border: 2.5px solid #3a2e40;
+  box-shadow: 5px 5px 0 0 #c9cdf0;
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
 .cta-sharp:hover {
   transform: translate(-3px, -3px);
-  box-shadow: 8px 8px 0 0 #e3cdd6;
-  background: #f8cfe1;
+  box-shadow: 8px 8px 0 0 #c9cdf0;
+  background: #4b3d52;
 }
 
 .cta-sharp:active {
   transform: translate(0, 0);
-  box-shadow: 2px 2px 0 0 #e3cdd6;
+  box-shadow: 2px 2px 0 0 #c9cdf0;
 }
 
 .cta-sharp-outline {
@@ -317,22 +317,22 @@ transform: scale(0.95);
   font-weight: 700;
   font-size: 1rem;
   border-radius: 0;
-  background: #dde1fb;
-  color: #16161a;
-  border: 2.5px solid #16161a;
-  box-shadow: 5px 5px 0 0 #c7cbe2;
+  background: #ffffff;
+  color: #3a2e40;
+  border: 2.5px solid #3a2e40;
+  box-shadow: 5px 5px 0 0 #c9cdf0;
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
 .cta-sharp-outline:hover {
   transform: translate(-3px, -3px);
-  box-shadow: 8px 8px 0 0 #c7cbe2;
-  background: #d3daff;
+  box-shadow: 8px 8px 0 0 #c9cdf0;
+  background: #eceefb;
 }
 
 .cta-sharp-outline:active {
   transform: translate(0, 0);
-  box-shadow: 2px 2px 0 0 #c7cbe2;
+  box-shadow: 2px 2px 0 0 #c9cdf0;
 }
 
 /* animated gradient text for the hero name, matching the photo border gradient */
@@ -376,9 +376,9 @@ transform: scale(0.95);
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  border: 2px solid #16161a;
+  border: 2px solid #3a2e40;
   border-radius: 9999px;
-  background: #f8d9e7;
+  background: #dde1fb;
   transition:
     transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
     background-color 0.3s ease;
@@ -405,7 +405,7 @@ transform: scale(0.95);
 
 .role-badge:hover::before {
   transform: scale(0.94);
-  background: #dde1fb;
+  background: #f8d9e7;
 }
 
 .role-badge:hover .role-badge-label {
@@ -439,7 +439,7 @@ transform: scale(0.95);
   pointer-events: none;
   border: 2px solid rgb(0 0 0 / 0.1);
   border-radius: 1.5rem;
-  background: #fce4ee;
+  background: #ebe8ea;
   transition:
     transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
     background-color 0.3s ease;
@@ -463,7 +463,7 @@ transform: scale(0.95);
 
 .smile-pill:hover::before {
   transform: scale(1.04);
-  background: #f8cfe1;
+  background: #e2e5f8;
 }
 
 .smile-pill:hover .smile-pill-face {
@@ -627,7 +627,7 @@ transform: scale(0.95);
 /* project cards use a light scrim with dark text; the case study header keeps the dark one */
 .bento-card-scrim-light {
   inset: -1px;
-  background: linear-gradient(to top, rgba(251, 243, 246, 0.9) 5%, rgba(251, 243, 246, 0.5) 55%, rgba(251, 243, 246, 0) 100%);
+  background: linear-gradient(to top, rgba(239, 237, 236, 0.9) 5%, rgba(239, 237, 236, 0.5) 55%, rgba(239, 237, 236, 0) 100%);
 }
 
 .bento-card .tech-tag,
@@ -738,7 +738,7 @@ transform: scale(0.95);
   position: fixed;
   z-index: 61;
   overflow: hidden;
-  background: #fbf3f6;
+  background: #efedec;
   border: 1px solid rgba(58, 46, 64, 0.1);
   box-shadow: 0 40px 100px -20px rgba(58, 46, 64, 0.45);
   /* keep the rounded corners clipped cleanly while the size animates */
@@ -867,19 +867,19 @@ transform: scale(0.95);
   padding: 1.1rem;
   border-radius: 999px;
   background: #ffffff;
-  border: 2.5px solid #16161a;
-  box-shadow: 4px 4px 0 0 #f4b8d0;
+  border: 2.5px solid #3a2e40;
+  box-shadow: 4px 4px 0 0 #b8c3f8;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .sticker-tile:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0 0 #f4b8d0;
+  box-shadow: 6px 6px 0 0 #b8c3f8;
 }
 
 .sticker-tile:active {
   transform: translate(0, 0);
-  box-shadow: 2px 2px 0 0 #f4b8d0;
+  box-shadow: 2px 2px 0 0 #b8c3f8;
 }
 
 /* gallery: endlessly scrolling masonry columns that fade out into the white section at top and bottom */
@@ -1162,16 +1162,27 @@ transform: scale(0.95);
   background: rgba(255, 255, 255, 0.6);
 }
 
-/* section label variants of .name-gradient-static */
-.label-gradient-periwinkle-lean {
-  background: linear-gradient(90deg, #7f93f0 0%, #98aafa 55%, #ee9fc2 100%);
+
+
+/* section labels: periwinkle with a subtle dusty-pink finish */
+.label-gradient {
+  background: linear-gradient(90deg, #6476d4 0%, #7a7fd0 55%, #b98aac 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-.label-gradient-pink-lean {
-  background: linear-gradient(90deg, #c2b2ee 0%, #f2a6c6 35%, #e98ab3 100%);
+/* contact: the dusty pink sits at the start instead */
+.label-gradient-reverse {
+  background: linear-gradient(90deg, #b98aac 0%, #7a7fd0 45%, #6476d4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* projects: periwinkle on both ends with the dusty pink in the middle */
+.label-gradient-center {
+  background: linear-gradient(135deg, #6476d4 0%, #b98aac 50%, #6476d4 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

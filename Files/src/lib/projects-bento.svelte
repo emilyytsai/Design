@@ -105,15 +105,15 @@
   }
 </script>
 
-<section id="projects" class="relative z-20 w-full pb-24 pt-4 sm:pb-32" style="background-color: #fbf3f6;">
+<section id="projects" class="relative z-20 w-full pb-24 pt-4 sm:pb-32" style="background-color: #efedec;">
   <div class="mx-auto w-full max-w-6xl px-4">
 
     <div class="fade-in mx-auto max-w-2xl text-center">
-      <span class="name-gradient-static font-outfit text-sm sm:text-base font-bold uppercase tracking-[0.2em]">Projects</span>
-      <h4 class="mt-3 font-fredoka text-3xl font-semibold text-[#16161a] sm:text-4xl md:text-5xl">
+      <span class="label-gradient-center font-outfit text-sm sm:text-base font-bold uppercase tracking-[0.2em]">Projects</span>
+      <h4 class="mt-3 font-fredoka text-3xl font-semibold text-[#3a2e40] sm:text-4xl md:text-5xl">
         Product design, end to end
       </h4>
-      <p class="mt-3 font-outfit text-base text-[#16161a]/60 sm:text-lg">
+      <p class="mt-3 font-outfit text-base text-[#3a2e40]/60 sm:text-lg">
         A few case studies from problem to shipped product & the UI/UX work that supports them!
       </p>
     </div>

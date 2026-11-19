@@ -41,12 +41,12 @@
     <!-- copy -->
     <div class="flex w-full flex-col items-center gap-6 text-center lg:w-auto lg:max-w-[34rem] lg:items-start lg:text-left xl:w-3/5 xl:max-w-none">
 
-      <span class="role-badge font-outfit text-base sm:text-lg font-semibold tracking-wide text-[#16161a]">
+      <span class="role-badge font-outfit text-base sm:text-lg font-semibold tracking-wide text-[#3a2e40]">
         <span class="role-badge-label">Product Designer & UI/UX Designer</span>
         <span class="role-badge-heart" aria-hidden="true">(˶ᵔ ᵕ ᵔ˶) ♡</span>
       </span>
 
-      <h1 class="font-fredoka text-4xl font-bold leading-[1.05] text-[#16161a] sm:text-5xl md:text-6xl">
+      <h1 class="font-fredoka text-4xl font-bold leading-[1.05] text-[#3a2e40] sm:text-5xl md:text-6xl">
         <span class="name-gradient font-playfair italic text-6xl sm:text-7xl md:text-8xl">
           Emily Tsai
         </span>
@@ -74,14 +74,14 @@
         </span>
       </h1>
 
-      <p class="max-w-xl px-2 py-4 font-outfit text-base leading-relaxed text-[#16161a]/60 sm:text-lg">
-        Currently a <b class="text-[#16161a]">Computer Science</b> major with minors in
-        <b class="text-[#16161a]">Data Science</b> and
-        <b class="text-[#16161a]">Communication Studies</b>
+      <p class="max-w-xl px-2 py-4 font-outfit text-base leading-relaxed text-[#3a2e40]/60 sm:text-lg">
+        Currently a <b class="text-[#3a2e40]">Computer Science</b> major with minors in
+        <b class="text-[#3a2e40]">Data Science</b> and
+        <b class="text-[#3a2e40]">Communication Studies</b>
         at CSU Fullerton, where I am President of VGDC, Co-Team Lead for ACM Node Buds, and an
         Officer for ACM Open Source. I am also an
-        <b class="text-[#16161a]">Event Specialist Campus Launcher</b>
-        at <b class="text-[#16161a]">DoorDash</b>! ♡
+        <b class="text-[#3a2e40]">Event Specialist Campus Launcher</b>
+        at <b class="text-[#3a2e40]">DoorDash</b>! ♡
       </p>
 
       <div class="mt-2 flex flex-wrap items-center justify-center gap-5 lg:justify-start">
@@ -225,7 +225,7 @@
               Z
             "
             fill="none"
-            stroke="#16161a"
+            stroke="#3a2e40"
             class="stroke-[2.25] sm:stroke-[2.5]"
             vector-effect="non-scaling-stroke"
           />
@@ -238,7 +238,7 @@
 
   <!-- soft seam into the dark section below -->
   <svg
-    class="-mb-px block h-[60px] w-full text-[#fbf3f6]"
+    class="-mb-px block h-[60px] w-full text-[#efedec]"
     viewBox="0 0 1440 60"
     preserveAspectRatio="none"
     aria-hidden="true"
