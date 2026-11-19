@@ -182,7 +182,7 @@
 <!-- navbar (desktop) -->
 <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-30 w-[calc(100%-2rem)] max-w-5xl">
   <div class="flex items-center justify-between px-6 py-3 rounded-full
-              bg-zinc-900/85 border border-black/15 backdrop-blur-md shadow-2xl">
+              bg-[#fbf3f6]/90 border-2 border-[#16161a] backdrop-blur-md shadow-lg text-[#16161a]">
 
     <!-- name -->
     <a href="#home" class="flex items-center shrink-0">
@@ -190,7 +190,7 @@
     </a>
 
     <!-- links -->
-    <ul class="hidden md:flex items-center gap-8 text-[1.25rem] font-outfit text-white">
+    <ul class="hidden md:flex items-center gap-8 text-[1.25rem] font-outfit text-[#16161a]">
       <li><a href="#home" class="nav-link">Home</a></li>
       <li><a href="#projects" class="nav-link">Projects</a></li>
       <li><a href="#gallery" class="nav-link">Gallery</a></li>
@@ -198,7 +198,7 @@
     </ul>
 
     <!-- smile pill -->
-    <div class="smile-pill hidden md:grid place-items-center shrink-0 font-outfit text-base text-white">
+    <div class="smile-pill hidden md:grid place-items-center shrink-0 font-outfit text-base text-[#16161a]">
       <span class="smile-pill-face">(˶˃ ᵕ ˂˶)</span>
       <span class="smile-pill-hi">Hii !</span>
     </div>
@@ -209,13 +209,13 @@
       on:click={toggleMenu}
       aria-label="Toggle menu"
     >
-      <span class={`absolute left-0 w-7 h-0.5 bg-white transition-all duration-300
+      <span class={`absolute left-0 w-7 h-0.5 bg-[#16161a] transition-all duration-300
         ${mobileMenuOpen ? 'rotate-45 top-3' : 'top-1'}`}></span>
 
-      <span class={`absolute left-0 w-7 h-0.5 bg-white transition-all duration-300
+      <span class={`absolute left-0 w-7 h-0.5 bg-[#16161a] transition-all duration-300
         ${mobileMenuOpen ? 'opacity-0 top-3' : 'top-3'}`}></span>
 
-      <span class={`absolute left-0 w-7 h-0.5 bg-white transition-all duration-300
+      <span class={`absolute left-0 w-7 h-0.5 bg-[#16161a] transition-all duration-300
         ${mobileMenuOpen ? '-rotate-45 top-3' : 'top-5'}`}></span>
     </button>
   </div>
@@ -225,8 +225,8 @@
 {#if mobileMenuOpen}
   <div class="md:hidden fixed top-[80px] left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-5xl z-40 overflow-hidden">
     <div
-      class="bg-zinc-950/40 backdrop-blur-md flex flex-col items-center
-             py-8 space-y-6 text-xl font-outfit rounded-2xl border border-black/50 shadow-2xl"
+      class="bg-[#fbf3f6]/90 text-[#16161a] backdrop-blur-md flex flex-col items-center
+             py-8 space-y-6 text-xl font-outfit rounded-2xl border-2 border-[#16161a] shadow-lg"
       in:slide={{ duration: 200 }}
       out:slide={{ duration: 200 }}
     >
@@ -247,8 +247,8 @@
 <!-- gallery (light surface, matches the hero) -->
 <Gallery />
 
-<!-- contact + footer live on the dark surface -->
-<div class="w-full" style="background-color: #0b0b0d;">
+<!-- contact + footer live on the blush surface -->
+<div class="w-full" style="background-color: #fbf3f6;">
 <!-- contact -->
     <Contact />
 
@@ -258,11 +258,11 @@
     <img 
       src="/signature.png" 
       alt="Emily Tsai signature" 
-      class="w-24 sm:w-30 md:w-36 mix-blend-screen"
+      class="w-24 sm:w-30 md:w-36 invert"
       style="opacity: 0.85;"
     />
   </div>
-    <footer class="font-outfit relative z-20 text-center text-white/50 text-sm py-6">
+    <footer class="font-outfit relative z-20 text-center text-[#16161a]/50 text-sm py-6">
       <p>© 2026 Emily Tsai</p>
     </footer>
   </div>

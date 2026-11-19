@@ -290,21 +290,22 @@ transform: scale(0.95);
   font-weight: 700;
   font-size: 1rem;
   border-radius: 0;
-  background: #16161a;
-  color: #ffffff;
+  background: #fce4ee;
+  color: #16161a;
   border: 2.5px solid #16161a;
-  box-shadow: 5px 5px 0 0 #16161a;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 5px 5px 0 0 #e3cdd6;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
 .cta-sharp:hover {
   transform: translate(-3px, -3px);
-  box-shadow: 8px 8px 0 0 #16161a;
+  box-shadow: 8px 8px 0 0 #e3cdd6;
+  background: #f8cfe1;
 }
 
 .cta-sharp:active {
   transform: translate(0, 0);
-  box-shadow: 2px 2px 0 0 #16161a;
+  box-shadow: 2px 2px 0 0 #e3cdd6;
 }
 
 .cta-sharp-outline {
@@ -316,22 +317,22 @@ transform: scale(0.95);
   font-weight: 700;
   font-size: 1rem;
   border-radius: 0;
-  background: #f8cfe1;
+  background: #dde1fb;
   color: #16161a;
   border: 2.5px solid #16161a;
-  box-shadow: 5px 5px 0 0 rgba(22, 22, 26, 0.35);
+  box-shadow: 5px 5px 0 0 #c7cbe2;
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 
 .cta-sharp-outline:hover {
   transform: translate(-3px, -3px);
-  box-shadow: 8px 8px 0 0 rgba(22, 22, 26, 0.35);
-  background: #fbdde9;
+  box-shadow: 8px 8px 0 0 #c7cbe2;
+  background: #d3daff;
 }
 
 .cta-sharp-outline:active {
   transform: translate(0, 0);
-  box-shadow: 2px 2px 0 0 rgba(22, 22, 26, 0.35);
+  box-shadow: 2px 2px 0 0 #c7cbe2;
 }
 
 /* animated gradient text for the hero name, matching the photo border gradient */
@@ -404,7 +405,7 @@ transform: scale(0.95);
 
 .role-badge:hover::before {
   transform: scale(0.94);
-  background: #c4cdff;
+  background: #dde1fb;
 }
 
 .role-badge:hover .role-badge-label {
@@ -436,9 +437,9 @@ transform: scale(0.95);
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  border: 1px solid rgb(0 0 0 / 0.1);
+  border: 2px solid rgb(0 0 0 / 0.1);
   border-radius: 1.5rem;
-  background: rgb(0 0 0 / 0.55);
+  background: #fce4ee;
   transition:
     transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
     background-color 0.3s ease;
@@ -462,7 +463,7 @@ transform: scale(0.95);
 
 .smile-pill:hover::before {
   transform: scale(1.04);
-  background: rgb(9 9 11 / 0.9);
+  background: #f8cfe1;
 }
 
 .smile-pill:hover .smile-pill-face {
@@ -535,7 +536,7 @@ transform: scale(0.95);
 
 /* static version of the periwinkle-to-pink gradient text, no animation */
 .name-gradient-static {
-  background: linear-gradient(135deg, #98aafa 0%, #f8cfe1 50%, #98aafa 100%);
+  background: linear-gradient(135deg, #98aafa 0%, #eea3c4 50%, #98aafa 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -546,8 +547,8 @@ transform: scale(0.95);
   position: relative;
   border-radius: 1.5rem;
   overflow: hidden;
-  background: #17171b;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #efe6ec;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, opacity 0.45s ease;
 }
 
@@ -556,8 +557,8 @@ transform: scale(0.95);
 @media (hover: hover) and (pointer: fine) {
   .bento-card:hover {
     transform: translateY(-6px);
-    border-color: rgba(255, 255, 255, 0.18);
-    box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.6);
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 20px 45px -15px rgba(80, 40, 60, 0.35);
   }
 
   .bento-card:hover .bento-card-img {
@@ -581,7 +582,7 @@ transform: scale(0.95);
     cursor: grab;
     padding-bottom: 0.75rem;
     scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
   }
 
   .bento-scroller::-webkit-scrollbar {
@@ -590,7 +591,7 @@ transform: scale(0.95);
   }
 
   .bento-scroller::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
     border-radius: 99px;
   }
 }
@@ -621,6 +622,19 @@ transform: scale(0.95);
   /* bleed past the edges so no sliver of the bright image is left uncovered */
   inset: -1px;
   background: linear-gradient(to top, rgba(10, 10, 12, 0.97) 5%, rgba(10, 10, 12, 0.55) 55%, rgba(10, 10, 12, 0.05) 100%);
+}
+
+/* project cards use a light scrim with dark text; the case study header keeps the dark one */
+.bento-card-scrim-light {
+  inset: -1px;
+  background: linear-gradient(to top, rgba(251, 243, 246, 0.9) 5%, rgba(251, 243, 246, 0.5) 55%, rgba(251, 243, 246, 0) 100%);
+}
+
+.bento-card .tech-tag,
+.cs-shell .tech-tag {
+  background: rgba(58, 46, 64, 0.06);
+  border-color: rgba(58, 46, 64, 0.16);
+  color: rgba(58, 46, 64, 0.8);
 }
 
 .pull-quote {
@@ -702,7 +716,7 @@ transform: scale(0.95);
   position: fixed;
   inset: 0;
   z-index: 60;
-  background: rgba(8, 8, 10, 0.55);
+  background: rgba(58, 46, 64, 0.35);
   backdrop-filter: blur(3px);
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -724,9 +738,9 @@ transform: scale(0.95);
   position: fixed;
   z-index: 61;
   overflow: hidden;
-  background: #131316;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.85);
+  background: #fbf3f6;
+  border: 1px solid rgba(58, 46, 64, 0.1);
+  box-shadow: 0 40px 100px -20px rgba(58, 46, 64, 0.45);
   /* keep the rounded corners clipped cleanly while the size animates */
   -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
@@ -767,7 +781,7 @@ transform: scale(0.95);
   background: transparent;
 }
 .cs-scroll::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(58, 46, 64, 0.2);
   border-radius: 99px;
 }
 
@@ -842,7 +856,7 @@ transform: scale(0.95);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--cs-accent, #98aafa);
+  color: var(--cs-ink, var(--cs-accent, #98aafa));
 }
 
 /* playful sticker tile for contact icons, matching the hero's badge motif */
@@ -1140,4 +1154,25 @@ transform: scale(0.95);
   background: var(--cs-accent, #98aafa);
   color: #0a0a0c;
   flex: none;
+}
+
+
+/* link pills inside the light case study panel */
+.cs-shell .pill-btn {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* section label variants of .name-gradient-static */
+.label-gradient-periwinkle-lean {
+  background: linear-gradient(90deg, #7f93f0 0%, #98aafa 55%, #ee9fc2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.label-gradient-pink-lean {
+  background: linear-gradient(90deg, #c2b2ee 0%, #f2a6c6 35%, #e98ab3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }

@@ -167,7 +167,7 @@
 <div
   bind:this={shell}
   class="cs-shell"
-  style={rectStyle(start) + `border-radius:${RADIUS};--cs-accent:${cs.accent};--pq-accent:${cs.accent}`}
+  style={rectStyle(start) + `border-radius:${RADIUS};--cs-accent:${cs.accent};--pq-accent:${cs.accent};--cs-ink:color-mix(in srgb, ${cs.accent} 60%, #3a2e40)`}
   role="dialog"
   aria-modal="true"
   aria-label={cs.title}
@@ -177,7 +177,7 @@
     <!-- header: starts out as the card itself, then settles to a header -->
     <div bind:this={hero} class="cs-hero">
       <img src={cs.image} alt={cs.title} class="absolute inset-0 h-full w-full object-cover" draggable="false" />
-      <div class="bento-card-scrim absolute"></div>
+      <div class="bento-card-scrim-light absolute"></div>
 
       <!-- the card's own label, so the first frames match the grid exactly -->
       <div data-card-text class="cs-card-text absolute bottom-0 left-0 flex flex-col gap-2 p-5 sm:p-6" style={`width:${start.width}px`}>
@@ -186,18 +186,18 @@
             <span class="tech-tag !text-[0.68rem]">{tag}</span>
           {/each}
         </div>
-        <p class="font-fredoka text-xl font-bold text-white sm:text-2xl">{cs.title}</p>
-        <p class="font-outfit text-sm text-white/70 sm:text-base">{cs.tagline}</p>
-        <span class="mt-2 inline-flex w-fit items-center gap-1 font-outfit text-sm font-semibold text-white">
+        <p class="font-fredoka text-xl font-bold text-[#3a2e40] sm:text-2xl">{cs.title}</p>
+        <p class="font-outfit text-sm text-[#3a2e40]/75 sm:text-base">{cs.tagline}</p>
+        <span class="mt-2 inline-flex w-fit items-center gap-1 font-outfit text-sm font-semibold text-[#3a2e40]">
           View case study <span aria-hidden="true">&rarr;</span>
         </span>
       </div>
 
       <div class="absolute inset-x-0 bottom-0">
         <div class="mx-auto w-full max-w-3xl px-5 pb-8 sm:px-8 sm:pb-12">
-          <p data-hero-text class="cs-reveal font-outfit text-xs font-bold uppercase tracking-[0.2em]" style="color: var(--cs-accent);">Case study</p>
-          <p data-hero-text class="cs-reveal mt-2 font-fredoka text-3xl font-bold text-white sm:text-5xl">{cs.title}</p>
-          <p data-hero-text class="cs-reveal mt-2 font-outfit text-base text-white/75 sm:text-lg">{cs.tagline}</p>
+          <p data-hero-text class="cs-reveal font-outfit text-xs font-bold uppercase tracking-[0.2em]" style="color: var(--cs-ink);">Case study</p>
+          <p data-hero-text class="cs-reveal mt-2 font-fredoka text-3xl font-bold text-[#3a2e40] sm:text-5xl">{cs.title}</p>
+          <p data-hero-text class="cs-reveal mt-2 font-outfit text-base text-[#3a2e40]/75 sm:text-lg">{cs.tagline}</p>
         </div>
       </div>
     </div>
@@ -215,12 +215,12 @@
           <div class="flex-1 space-y-2">
             <p class="case-section-label">{section.label.slice(5)}</p>
             {#if section.body}
-              <p class="font-outfit text-sm leading-relaxed text-white/80 sm:text-base">{section.body}</p>
+              <p class="font-outfit text-sm leading-relaxed text-[#3a2e40]/80 sm:text-base">{section.body}</p>
             {/if}
             {#if section.list?.length}
               <ul class="space-y-1.5">
                 {#each section.list as item}
-                  <li class="flex gap-2 font-outfit text-sm leading-relaxed text-white/80 sm:text-base">
+                  <li class="flex gap-2 font-outfit text-sm leading-relaxed text-[#3a2e40]/80 sm:text-base">
                     <span class="mt-2 h-1 w-1 shrink-0 rounded-full" style="background: var(--cs-accent);"></span>
                     {item}
                   </li>
@@ -234,7 +234,7 @@
       {#if cs.links.length}
         <div data-body class="cs-reveal btn-row !justify-start pt-2">
           {#each cs.links as link}
-            <a href={link.href} target="_blank" rel="noopener noreferrer" class="pill-btn" style="color: {cs.accent}; border-color: {cs.accent}66;">
+            <a href={link.href} target="_blank" rel="noopener noreferrer" class="pill-btn" style="color: var(--cs-ink); border-color: {cs.accent}99;">
               {link.label}
             </a>
           {/each}
@@ -248,7 +248,7 @@
     type="button"
     on:click={close}
     aria-label="Close case study"
-    class="cs-close absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full border border-white/25 bg-black/50 text-xl text-white backdrop-blur-md transition hover:border-white/60 sm:right-6 sm:top-6"
+    class="cs-close absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full border border-[#3a2e40]/20 bg-white/70 text-xl text-[#3a2e40] backdrop-blur-md transition hover:border-[#3a2e40]/50 sm:right-6 sm:top-6"
     class:is-visible={showClose && phase !== 'closing'}
   >
     <!-- drawn x instead of the &times; glyph, which sits low in the circle because of the font -->

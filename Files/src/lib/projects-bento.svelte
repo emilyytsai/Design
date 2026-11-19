@@ -105,15 +105,15 @@
   }
 </script>
 
-<section id="projects" class="relative z-20 w-full pb-24 pt-4 sm:pb-32" style="background-color: #0b0b0d;">
+<section id="projects" class="relative z-20 w-full pb-24 pt-4 sm:pb-32" style="background-color: #fbf3f6;">
   <div class="mx-auto w-full max-w-6xl px-4">
 
     <div class="fade-in mx-auto max-w-2xl text-center">
       <span class="name-gradient-static font-outfit text-sm sm:text-base font-bold uppercase tracking-[0.2em]">Projects</span>
-      <h4 class="mt-3 font-fredoka text-3xl font-semibold text-white sm:text-4xl md:text-5xl">
+      <h4 class="mt-3 font-fredoka text-3xl font-semibold text-[#16161a] sm:text-4xl md:text-5xl">
         Product design, end to end
       </h4>
-      <p class="mt-3 font-outfit text-base text-white/60 sm:text-lg">
+      <p class="mt-3 font-outfit text-base text-[#16161a]/60 sm:text-lg">
         A few case studies from problem to shipped product & the UI/UX work that supports them!
       </p>
     </div>
@@ -130,7 +130,7 @@
         >
           <div class="bento-card-clip relative h-full w-full">
             <img src={cs.image} alt={cs.title} class="bento-card-img absolute inset-0 h-full w-full object-cover" loading="lazy" draggable="false" />
-            <div class="bento-card-scrim absolute"></div>
+            <div class="bento-card-scrim-light absolute"></div>
 
             <div class="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-5 sm:p-6">
               <div class="flex flex-wrap gap-1.5">
@@ -139,10 +139,10 @@
                 {/each}
               </div>
 
-              <p class="font-fredoka text-xl font-bold text-white sm:text-2xl">{cs.title}</p>
-              <p class="font-outfit text-sm text-white/70 sm:text-base">{cs.tagline}</p>
+              <p class="font-fredoka text-xl font-bold text-[#3a2e40] sm:text-2xl">{cs.title}</p>
+              <p class="font-outfit text-sm text-[#3a2e40]/75 sm:text-base">{cs.tagline}</p>
 
-              <span class="mt-2 inline-flex w-fit items-center gap-1 font-outfit text-sm font-semibold text-white transition-transform group-hover:translate-x-1">
+              <span class="mt-2 inline-flex w-fit items-center gap-1 font-outfit text-sm font-semibold text-[#3a2e40] transition-transform group-hover:translate-x-1">
                 View case study <span aria-hidden="true">&rarr;</span>
               </span>
             </div>

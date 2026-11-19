@@ -235,12 +235,12 @@
 
   <section id="gallery" class="relative z-20 w-full" style="background-color: #ffffff;">
     <!-- seam from the dark projects section above -->
-    <svg class="-mb-px block h-[60px] w-full text-[#0b0b0d]" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+    <svg class="-mb-px block h-[60px] w-full text-[#fbf3f6]" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
       <path fill="currentColor" d="M0 0 L1440 0 L1440 60 C1140 15 720 5 0 50 Z"></path>
     </svg>
 
     <div class="fade-in font-outfit mx-auto w-full max-w-2xl px-4 py-10 sm:space-y-3 lg:max-w-5xl lg:space-y-5">
-      <span class="block text-center font-outfit text-sm sm:text-base font-bold uppercase tracking-[0.2em] text-[#98aafa]">Gallery</span>
+      <span class="label-gradient-periwinkle-lean block w-fit mx-auto text-center font-outfit text-sm sm:text-base font-bold uppercase tracking-[0.2em]">Gallery</span>
       <h4 class="mt-3 text-center font-fredoka text-3xl font-semibold text-[#16161a] sm:text-4xl md:text-5xl">
         Snapshots of my life
       </h4>
@@ -291,7 +291,7 @@
     </div>
 
     <!-- seam into the dark contact section below -->
-    <svg class="-mb-px mt-10 block h-[60px] w-full text-[#0b0b0d]" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+    <svg class="-mb-px mt-10 block h-[60px] w-full text-[#fbf3f6]" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
       <path fill="currentColor" d="M0 60 L1440 60 L1440 0 C1140 45 720 55 0 10 Z"></path>
     </svg>
   </section>

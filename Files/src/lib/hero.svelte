@@ -36,7 +36,7 @@
 >
   <!-- lg: columns size to their content and the pair is centered so they sit closer together;
        xl+: back to the 3/5 + 2/5 split -->
-  <div class="mx-auto flex w-full max-w-6xl flex-col-reverse items-center gap-10 px-4 pt-32 pb-20 sm:pt-40 sm:pb-28 lg:flex-row lg:justify-center lg:gap-10 lg:pt-44 xl:gap-16">
+  <div class="mx-auto flex w-full max-w-6xl flex-col-reverse items-center gap-10 px-4 pt-[7.5rem] pb-14 sm:pt-36 sm:pb-20 lg:flex-row lg:justify-center lg:gap-10 lg:pt-40 xl:gap-16">
 
     <!-- copy -->
     <div class="flex w-full flex-col items-center gap-6 text-center lg:w-auto lg:max-w-[34rem] lg:items-start lg:text-left xl:w-3/5 xl:max-w-none">
@@ -238,7 +238,7 @@
 
   <!-- soft seam into the dark section below -->
   <svg
-    class="-mb-px block h-[60px] w-full text-[#0b0b0d]"
+    class="-mb-px block h-[60px] w-full text-[#fbf3f6]"
     viewBox="0 0 1440 60"
     preserveAspectRatio="none"
     aria-hidden="true"

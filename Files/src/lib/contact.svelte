@@ -11,17 +11,23 @@
 
 <!-- contact -->
 <section id="contact" class="fade-in font-outfit relative z-20 w-full max-w-2xl lg:max-w-5xl mx-auto px-4 py-6 space-y-1 sm:space-y-3 lg:space-y-5 sm:mt-2">
-  <span class="name-gradient-static fade-in font-outfit text-sm sm:text-base font-bold uppercase tracking-[0.2em] block text-center">Contact</span>
-  <h4 class="fade-in mt-3 font-fredoka text-3xl sm:text-4xl md:text-5xl font-semibold text-white text-center">Let's create something together</h4>
+  <span class="label-gradient-pink-lean fade-in font-outfit text-sm sm:text-base font-bold uppercase tracking-[0.2em] block w-fit mx-auto text-center">Contact</span>
+  <h4 class="fade-in mt-3 font-fredoka text-3xl sm:text-4xl md:text-5xl font-semibold text-[#16161a] text-center">Let's create something together</h4>
 
-  <p class="text-base sm:text-lg lg:text-xl text-white/60 text-center py-2">
+  <p class="text-base sm:text-lg lg:text-xl text-[#16161a]/60 text-center py-2">
     Feel free to reach out, I would love to connect!
   </p>
 
   <div class="flex flex-wrap justify-center gap-4 pt-4 sm:gap-5 lg:gap-6 z-20">
     {#each links as link}
       <a href={link.href} target={link.target} rel="noopener noreferrer" class="sticker-tile aspect-square h-[75px] sm:h-[80px] lg:h-[90px] w-auto">
-        <img src={link.src} alt={link.alt} class="h-full w-full object-contain [filter:brightness(0)]" />
+        <!-- the icon's shape is used as a mask so it can be tinted any color -->
+        <span
+          role="img"
+          aria-label={link.alt}
+          class="block h-full w-full bg-[#3a2e40]"
+          style={`-webkit-mask: url(${link.src}) center / contain no-repeat; mask: url(${link.src}) center / contain no-repeat;`}
+        ></span>
       </a>
     {/each}
   </div>
