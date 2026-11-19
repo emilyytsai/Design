@@ -105,15 +105,15 @@
   }
 </script>
 
-<section id="projects" class="relative z-20 w-full pb-24 pt-4 sm:pb-32" style="background-color: #efedec;">
+<section id="projects" class="relative z-20 w-full pb-24 pt-4 sm:pb-32" style="background-color: #3e3140;">
   <div class="mx-auto w-full max-w-6xl px-4">
 
     <div class="fade-in mx-auto max-w-2xl text-center">
       <span class="label-gradient-center font-outfit text-sm sm:text-base font-bold uppercase tracking-[0.2em]">Projects</span>
-      <h4 class="mt-3 font-fredoka text-3xl font-semibold text-[#3a2e40] sm:text-4xl md:text-5xl">
+      <h4 class="mt-3 font-fredoka text-3xl font-semibold text-[#f4ebf2] sm:text-4xl md:text-5xl">
         Product design, end to end
       </h4>
-      <p class="mt-3 font-outfit text-base text-[#3a2e40]/60 sm:text-lg">
+      <p class="mt-3 font-outfit text-base text-[#f4ebf2]/60 sm:text-lg">
         A few case studies from problem to shipped product & the UI/UX work that supports them!
       </p>
     </div>
@@ -139,10 +139,10 @@
                 {/each}
               </div>
 
-              <p class="font-fredoka text-xl font-bold text-[#3a2e40] sm:text-2xl">{cs.title}</p>
-              <p class="font-outfit text-sm text-[#3a2e40]/75 sm:text-base">{cs.tagline}</p>
+              <p class="font-fredoka text-xl font-bold text-[#f4ebf2] sm:text-2xl">{cs.title}</p>
+              <p class="font-outfit text-sm text-[#f4ebf2]/75 sm:text-base">{cs.tagline}</p>
 
-              <span class="mt-2 inline-flex w-fit items-center gap-1 font-outfit text-sm font-semibold text-[#3a2e40] transition-transform group-hover:translate-x-1">
+              <span class="mt-2 inline-flex w-fit items-center gap-1 font-outfit text-sm font-semibold text-[#f4ebf2] transition-transform group-hover:translate-x-1">
                 View case study <span aria-hidden="true">&rarr;</span>
               </span>
             </div>

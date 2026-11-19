@@ -238,7 +238,7 @@
 
   <!-- soft seam into the dark section below -->
   <svg
-    class="-mb-px block h-[60px] w-full text-[#efedec]"
+    class="-mb-px block h-[60px] w-full text-[#3e3140]"
     viewBox="0 0 1440 60"
     preserveAspectRatio="none"
     aria-hidden="true"

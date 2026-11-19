@@ -182,15 +182,15 @@
 <!-- navbar (desktop) -->
 <nav class="fixed top-4 left-1/2 -translate-x-1/2 z-30 w-[calc(100%-2rem)] max-w-5xl">
   <div class="flex items-center justify-between px-6 py-3 rounded-full
-              bg-[#efedec]/90 border-2 border-[#3a2e40] backdrop-blur-md shadow-lg text-[#3a2e40]">
+              bg-[#3e3140]/90 border-2 border-[#f4ebf2]/30 backdrop-blur-md shadow-lg text-[#f4ebf2]">
 
     <!-- name -->
     <a href="#home" class="flex items-center shrink-0">
-      <div class="underline-center hover:text-[#6476d4] font-outfit text-3xl font-semibold whitespace-nowrap" data-text="Emily Tsai">Emily Tsai</div>
+      <div class="underline-center hover:text-[#b5c1ff] font-outfit text-3xl font-semibold whitespace-nowrap" data-text="Emily Tsai">Emily Tsai</div>
     </a>
 
     <!-- links -->
-    <ul class="hidden md:flex items-center gap-8 text-[1.25rem] font-outfit text-[#3a2e40]">
+    <ul class="hidden md:flex items-center gap-8 text-[1.25rem] font-outfit text-[#f4ebf2]">
       <li><a href="#home" class="nav-link">Home</a></li>
       <li><a href="#projects" class="nav-link">Projects</a></li>
       <li><a href="#gallery" class="nav-link">Gallery</a></li>
@@ -198,7 +198,7 @@
     </ul>
 
     <!-- smile pill -->
-    <div class="smile-pill hidden md:grid place-items-center shrink-0 font-outfit text-base text-[#3a2e40]">
+    <div class="smile-pill hidden md:grid place-items-center shrink-0 font-outfit text-base text-[#f4ebf2]">
       <span class="smile-pill-face">(˶˃ ᵕ ˂˶)</span>
       <span class="smile-pill-hi">Hii !</span>
     </div>
@@ -209,13 +209,13 @@
       on:click={toggleMenu}
       aria-label="Toggle menu"
     >
-      <span class={`absolute left-0 w-7 h-0.5 bg-[#3a2e40] transition-all duration-300
+      <span class={`absolute left-0 w-7 h-0.5 bg-[#f4ebf2] transition-all duration-300
         ${mobileMenuOpen ? 'rotate-45 top-3' : 'top-1'}`}></span>
 
-      <span class={`absolute left-0 w-7 h-0.5 bg-[#3a2e40] transition-all duration-300
+      <span class={`absolute left-0 w-7 h-0.5 bg-[#f4ebf2] transition-all duration-300
         ${mobileMenuOpen ? 'opacity-0 top-3' : 'top-3'}`}></span>
 
-      <span class={`absolute left-0 w-7 h-0.5 bg-[#3a2e40] transition-all duration-300
+      <span class={`absolute left-0 w-7 h-0.5 bg-[#f4ebf2] transition-all duration-300
         ${mobileMenuOpen ? '-rotate-45 top-3' : 'top-5'}`}></span>
     </button>
   </div>
@@ -225,15 +225,15 @@
 {#if mobileMenuOpen}
   <div class="md:hidden fixed top-[80px] left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-5xl z-40 overflow-hidden">
     <div
-      class="bg-[#efedec]/90 text-[#3a2e40] backdrop-blur-md flex flex-col items-center
-             py-8 space-y-6 text-xl font-outfit rounded-2xl border-2 border-[#3a2e40] shadow-lg"
+      class="bg-[#3e3140]/90 text-[#f4ebf2] backdrop-blur-md flex flex-col items-center
+             py-8 space-y-6 text-xl font-outfit rounded-2xl border-2 border-[#f4ebf2]/30 shadow-lg"
       in:slide={{ duration: 200 }}
       out:slide={{ duration: 200 }}
     >
-      <a href="#home" on:click={toggleMenu} class="hover:text-[#6476d4] transition">Home</a>
-      <a href="#projects" on:click={toggleMenu} class="hover:text-[#6476d4] transition">Projects</a>
-      <a href="#gallery" on:click={toggleMenu} class="hover:text-[#6476d4] transition">Gallery</a>
-      <a href="#contact" on:click={toggleMenu} class="hover:text-[#6476d4] transition">Contact</a>
+      <a href="#home" on:click={toggleMenu} class="hover:text-[#b5c1ff] transition">Home</a>
+      <a href="#projects" on:click={toggleMenu} class="hover:text-[#b5c1ff] transition">Projects</a>
+      <a href="#gallery" on:click={toggleMenu} class="hover:text-[#b5c1ff] transition">Gallery</a>
+      <a href="#contact" on:click={toggleMenu} class="hover:text-[#b5c1ff] transition">Contact</a>
     </div>
   </div>
 {/if}
@@ -248,7 +248,7 @@
 <Gallery />
 
 <!-- contact + footer live on the blush surface -->
-<div class="w-full" style="background-color: #efedec;">
+<div class="w-full" style="background-color: #3e3140;">
 <!-- contact -->
     <Contact />
 
@@ -258,11 +258,11 @@
     <img 
       src="/signature.png" 
       alt="Emily Tsai signature" 
-      class="w-24 sm:w-30 md:w-36 invert"
+      class="w-24 sm:w-30 md:w-36"
       style="opacity: 0.85;"
     />
   </div>
-    <footer class="font-outfit relative z-20 text-center text-[#3a2e40]/50 text-sm py-6">
+    <footer class="font-outfit relative z-20 text-center text-[#f4ebf2]/50 text-sm py-6">
       <p>© 2026 Emily Tsai</p>
     </footer>
   </div>

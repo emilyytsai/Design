@@ -235,7 +235,7 @@
 
   <section id="gallery" class="relative z-20 w-full" style="background-color: #ffffff;">
     <!-- seam from the dark projects section above -->
-    <svg class="-mb-px block h-[60px] w-full text-[#efedec]" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+    <svg class="-mb-px block h-[60px] w-full text-[#3e3140]" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
       <path fill="currentColor" d="M0 0 L1440 0 L1440 60 C1140 15 720 5 0 50 Z"></path>
     </svg>
 
@@ -291,7 +291,7 @@
     </div>
 
     <!-- seam into the dark contact section below -->
-    <svg class="-mb-px mt-10 block h-[60px] w-full text-[#efedec]" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+    <svg class="-mb-px mt-10 block h-[60px] w-full text-[#3e3140]" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
       <path fill="currentColor" d="M0 60 L1440 60 L1440 0 C1140 45 720 55 0 10 Z"></path>
     </svg>
   </section>

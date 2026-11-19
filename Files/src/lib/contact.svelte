@@ -12,9 +12,9 @@
 <!-- contact -->
 <section id="contact" class="fade-in font-outfit relative z-20 w-full max-w-2xl lg:max-w-5xl mx-auto px-4 py-6 space-y-1 sm:space-y-3 lg:space-y-5 sm:mt-2">
   <span class="label-gradient-reverse fade-in font-outfit text-sm sm:text-base font-bold uppercase tracking-[0.2em] block w-fit mx-auto text-center">Contact</span>
-  <h4 class="fade-in mt-3 font-fredoka text-3xl sm:text-4xl md:text-5xl font-semibold text-[#3a2e40] text-center">Let's create something together</h4>
+  <h4 class="fade-in mt-3 font-fredoka text-3xl sm:text-4xl md:text-5xl font-semibold text-[#f4ebf2] text-center">Let's create something together</h4>
 
-  <p class="text-base sm:text-lg lg:text-xl text-[#3a2e40]/60 text-center py-2">
+  <p class="text-base sm:text-lg lg:text-xl text-[#f4ebf2]/60 text-center py-2">
     Feel free to reach out, I would love to connect!
   </p>
 

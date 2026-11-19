@@ -167,7 +167,7 @@
 <div
   bind:this={shell}
   class="cs-shell"
-  style={rectStyle(start) + `border-radius:${RADIUS};--cs-accent:${cs.accent};--pq-accent:${cs.accent};--cs-ink:color-mix(in srgb, ${cs.accent} 60%, #3a2e40)`}
+  style={rectStyle(start) + `border-radius:${RADIUS};--cs-accent:${cs.accent};--pq-accent:${cs.accent};--cs-ink:color-mix(in srgb, ${cs.accent} 55%, #ffffff)`}
   role="dialog"
   aria-modal="true"
   aria-label={cs.title}
@@ -186,9 +186,9 @@
             <span class="tech-tag !text-[0.68rem]">{tag}</span>
           {/each}
         </div>
-        <p class="font-fredoka text-xl font-bold text-[#3a2e40] sm:text-2xl">{cs.title}</p>
-        <p class="font-outfit text-sm text-[#3a2e40]/75 sm:text-base">{cs.tagline}</p>
-        <span class="mt-2 inline-flex w-fit items-center gap-1 font-outfit text-sm font-semibold text-[#3a2e40]">
+        <p class="font-fredoka text-xl font-bold text-[#f4ebf2] sm:text-2xl">{cs.title}</p>
+        <p class="font-outfit text-sm text-[#f4ebf2]/75 sm:text-base">{cs.tagline}</p>
+        <span class="mt-2 inline-flex w-fit items-center gap-1 font-outfit text-sm font-semibold text-[#f4ebf2]">
           View case study <span aria-hidden="true">&rarr;</span>
         </span>
       </div>
@@ -196,8 +196,8 @@
       <div class="absolute inset-x-0 bottom-0">
         <div class="mx-auto w-full max-w-3xl px-5 pb-8 sm:px-8 sm:pb-12">
           <p data-hero-text class="cs-reveal font-outfit text-xs font-bold uppercase tracking-[0.2em]" style="color: var(--cs-ink);">Case study</p>
-          <p data-hero-text class="cs-reveal mt-2 font-fredoka text-3xl font-bold text-[#3a2e40] sm:text-5xl">{cs.title}</p>
-          <p data-hero-text class="cs-reveal mt-2 font-outfit text-base text-[#3a2e40]/75 sm:text-lg">{cs.tagline}</p>
+          <p data-hero-text class="cs-reveal mt-2 font-fredoka text-3xl font-bold text-[#f4ebf2] sm:text-5xl">{cs.title}</p>
+          <p data-hero-text class="cs-reveal mt-2 font-outfit text-base text-[#f4ebf2]/75 sm:text-lg">{cs.tagline}</p>
         </div>
       </div>
     </div>
@@ -215,12 +215,12 @@
           <div class="flex-1 space-y-2">
             <p class="case-section-label">{section.label.slice(5)}</p>
             {#if section.body}
-              <p class="font-outfit text-sm leading-relaxed text-[#3a2e40]/80 sm:text-base">{section.body}</p>
+              <p class="font-outfit text-sm leading-relaxed text-[#f4ebf2]/80 sm:text-base">{section.body}</p>
             {/if}
             {#if section.list?.length}
               <ul class="space-y-1.5">
                 {#each section.list as item}
-                  <li class="flex gap-2 font-outfit text-sm leading-relaxed text-[#3a2e40]/80 sm:text-base">
+                  <li class="flex gap-2 font-outfit text-sm leading-relaxed text-[#f4ebf2]/80 sm:text-base">
                     <span class="mt-2 h-1 w-1 shrink-0 rounded-full" style="background: var(--cs-accent);"></span>
                     {item}
                   </li>
@@ -248,7 +248,7 @@
     type="button"
     on:click={close}
     aria-label="Close case study"
-    class="cs-close absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full border border-[#3a2e40]/20 bg-white/70 text-xl text-[#3a2e40] backdrop-blur-md transition hover:border-[#3a2e40]/50 sm:right-6 sm:top-6"
+    class="cs-close absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-full border border-[#f4ebf2]/20 bg-[#3e3140]/70 text-xl text-[#f4ebf2] backdrop-blur-md transition hover:border-[#f4ebf2]/50 sm:right-6 sm:top-6"
     class:is-visible={showClose && phase !== 'closing'}
   >
     <!-- drawn x instead of the &times; glyph, which sits low in the circle because of the font -->
