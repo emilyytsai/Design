@@ -195,15 +195,13 @@
           </defs>
 
 <image
-  href="/emi-image6.png"
+  href="/emi-hero.webp"
   x="65"
   y="25"
   width="390"
   height="500"
   preserveAspectRatio="xMidYMid slice"
   clip-path="url(#photoClip)"
-  loading="eager"
-  decoding="sync"
 />
         </svg>
 

@@ -149,7 +149,8 @@
   <link
     rel="preload"
     as="image"
-    href="/emi-image6.png"
+    href="/emi-hero.webp"
+    type="image/webp"
     fetchpriority="high"
   />
   
